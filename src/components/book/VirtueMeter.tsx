@@ -59,7 +59,7 @@ export default function VirtueMeter() {
   if (activeVirtues.length === 0) return null;
 
   return (
-    <div className="fixed bottom-16 left-4 z-20">
+    <div className="fixed bottom-16 left-4 z-20 virtue-glow">
       <AnimatePresence mode="popLayout">
         <div className="flex flex-col gap-1.5">
           {activeVirtues.map((virtue) => (
@@ -70,9 +70,9 @@ export default function VirtueMeter() {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -10, scale: 0.9 }}
               transition={{ duration: 0.4, type: 'spring', stiffness: 200, damping: 20 }}
-              className="flex items-center gap-2 px-2 py-1 rounded-lg bg-black/30 backdrop-blur-sm border border-amber-900/10"
+              className="virtue-card flex items-center gap-2 px-2 py-1 rounded-lg bg-black/30 backdrop-blur-sm border border-amber-900/10"
             >
-              <span className="text-[10px] leading-none">{virtue.emoji}</span>
+              <span className="text-[10px] leading-none virtue-emoji-pulse">{virtue.emoji}</span>
               <span className={`text-[10px] font-serif ${virtue.color} opacity-70`}>
                 {virtue.label}
               </span>
@@ -84,7 +84,7 @@ export default function VirtueMeter() {
                     initial={i < virtue.points ? { scale: 0 } : false}
                     animate={{ scale: 1 }}
                     transition={{ delay: i * 0.1, type: 'spring', stiffness: 300 }}
-                    className={`w-1.5 h-1.5 rounded-full ${
+                    className={`w-2 h-2 rounded-full ${
                       i < virtue.points ? virtue.bgColor : 'bg-amber-900/20'
                     }`}
                   />

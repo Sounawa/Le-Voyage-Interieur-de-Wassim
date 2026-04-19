@@ -1,6 +1,6 @@
 # Le Voyage Intérieur de Souhayl - Worklog
 
-## Project Status: ✅ Phase 6 Complete — Achievements, Audio Polish, Mobile UX
+## Project Status: ✅ Phase 7 Complete — TTS Narration, Chapter Map, Focus Mode, Styling Polish
 
 ### Current Status Assessment
 The interactive book now has a comprehensive feature set:
@@ -8,9 +8,10 @@ The interactive book now has a comprehensive feature set:
 - **20 choice points** with exactly 3 choices each, all valid paths
 - **4 distinct endings** (Light, Wisdom, Shadow, Pure/Integration)
 - **6 AI-generated illustrations** at key story moments
-- **23 React components** across the application (up from 19)
-- **~8,353 lines of TypeScript/CSS code** (up from ~7,049)
-- **Lint: ✅ Clean** | **Compilation: ✅ Passes**
+- **26 React components** across the application (up from 23)
+- **4 custom hooks** (useTTS, useSwipeNavigation, + 2 existing)
+- **~15,537 lines of TypeScript/CSS code** (up from ~8,353)
+- **Lint: ✅ Clean** | **Compilation: ✅ Passes** (26KB page)
 
 ### Architecture
 ```
@@ -206,3 +207,55 @@ Stage Summary:
 - Volume Slider: custom amber-styled range input
 - Achievements: 12 achievements with auto-detection + toast notifications
 - Lint: ✅ Clean | Compilation: ✅ Passes
+
+---
+Task ID: 7c
+Agent: Swipe + Focus Mode Agent
+Task: Created swipe navigation hook and focus/immersive reading mode
+
+Work Log:
+- Created useSwipeNavigation.ts touch gesture hook
+- Created FocusModeToggle.tsx component
+- Added focusMode, setFocusMode, toggleFocusMode to Zustand store
+- Added CSS classes for focus mode and swipe hints
+
+Stage Summary:
+- Swipe left/right for page navigation on touch devices
+- 50px threshold, 300ms debounce
+- Focus mode hides all UI chrome for immersive reading
+- Toggle button stays visible at low opacity in focus mode
+
+---
+Task ID: 7b
+Agent: Chapter Map Agent
+Task: Created chapter map navigation panel
+
+Work Log:
+- Created ChapterMap.tsx slide-in panel from right
+- Chapter cards with progress indicators and current/completed states
+- Global exploration progress bar
+- Added chapter map CSS classes
+
+Stage Summary:
+- Visual chapter overview with page visit counts
+- Click to navigate to any chapter
+- Current chapter highlighted
+- Responsive design (full-width mobile, 320px desktop)
+
+---
+Task ID: 7a
+Agent: TTS Narration Agent
+Task: Created TTS narration system with Web Speech API
+
+Work Log:
+- Created useTTS.ts hook with Web Speech API integration
+- Created TTSNarration.tsx component with play/pause/stop controls
+- Added ttsEnabled, ttsRate, ttsAutoPlay to Zustand store
+- Added TTS CSS classes to globals.css
+
+Stage Summary:
+- TTS uses browser's speechSynthesis API (no backend needed)
+- French voice auto-selected
+- Speed control: 0.5x to 1.25x
+- Paragraph highlighting during narration
+- Clean integration point for page.tsx

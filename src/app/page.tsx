@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { BookOpen, BookMarked, Bookmark, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
+import { BookOpen, BookMarked, Bookmark, Map, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
 import type { Choice, MoodType } from '@/lib/story-types';
@@ -28,12 +28,15 @@ import MoodIndicator from '@/components/book/MoodIndicator';
 import PageTurnSound from '@/components/book/PageTurnSound';
 import AchievementNotification from '@/components/book/AchievementNotification';
 import AchievementsPanel from '@/components/book/AchievementsPanel';
+import TTSNarration from '@/components/book/TTSNarration';
+import ChapterMap from '@/components/book/ChapterMap';
+import FocusModeToggle from '@/components/book/FocusModeToggle';
 import type { PageTurnSoundHandle } from '@/components/book/PageTurnSound';
 
 type AppView = 'cover' | 'reading' | 'chapter-transition' | 'ending';
 
 export default function Home() {
-  const { currentPageId, visitedPages, endingsFound, goToPage, makeChoice, markEndingFound, restart } = useStoryStore();
+  const { currentPageId, visitedPages, endingsFound, goToPage, makeChoice, markEndingFound, restart, focusMode } = useStoryStore();
   const [savedView] = useState<AppView>(() => {
     if (typeof window === 'undefined') return 'cover';
     const hasSave = useStoryStore.getState().hasStarted;
@@ -47,6 +50,7 @@ export default function Home() {
   const [glossaryOpen, setGlossaryOpen] = useState(false);
   const [bookmarkOpen, setBookmarkOpen] = useState(false);
   const [achievementsOpen, setAchievementsOpen] = useState(false);
+  const [chapterMapOpen, setChapterMapOpen] = useState(false);
   const [isAppReady, setIsAppReady] = useState(false);
   const pageTurnSoundRef = useRef<PageTurnSoundHandle>(null);
 
@@ -210,7 +214,7 @@ export default function Home() {
           </p>
         </div>
       )}
-      <main className="flex-1 text-amber-100/90 transition-colors duration-1000">
+      <main className={`flex-1 text-amber-100/90 transition-colors duration-1000 ${focusMode ? 'focus-mode-active' : ''}`}>
         {/* Background layers */}
         <div className="fixed inset-0 -z-10">
           <div className={`absolute inset-0 ${getMoodClasses()}`} style={{ transition: 'background 1.5s ease' }} />
@@ -234,10 +238,11 @@ export default function Home() {
 
         {view !== 'cover' && view !== 'ending' && (
           <>
-            <ProgressBar currentPageId={currentPageId} totalPages={Object.keys(storyPages).length} />
+            {/* Progress bar — hidden in focus mode */}
+            {!focusMode && <ProgressBar currentPageId={currentPageId} totalPages={Object.keys(storyPages).length} />}
 
-            {/* Top bar buttons: back, glossary, journal, settings */}
-            <div className="fixed top-14 right-4 z-30 flex items-center gap-2">
+            {/* Top bar buttons — hidden in focus mode */}
+            {!focusMode && <div className="fixed top-14 right-4 z-30 flex items-center gap-2">
               {/* Settings gear button */}
               {showSettingsButton && (
                 <button
@@ -274,6 +279,18 @@ export default function Home() {
                 </button>
               )}
 
+              {/* Chapter Map button */}
+              {showSettingsButton && (
+                <button
+                  onClick={() => setChapterMapOpen(true)}
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Carte du Voyage"
+                  aria-label="Ouvrir la carte du voyage"
+                >
+                  <Map className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
+
               {/* Achievements / Trophy button */}
               {showSettingsButton && (
                 <button
@@ -285,15 +302,15 @@ export default function Home() {
                   <Trophy className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
-            </div>
+            </div>}
           </>
         )}
 
-        {/* Back button */}
-        {showBackButton && <BackButton onGoBack={handleGoBack} />}
+        {/* Back button — hidden in focus mode */}
+        {showBackButton && !focusMode && <BackButton onGoBack={handleGoBack} />}
 
-        {/* Bookmarks panel button — next to back button */}
-        {showBookmarkButton && (
+        {/* Bookmarks panel button — hidden in focus mode */}
+        {showBookmarkButton && !focusMode && (
           <button
             onClick={() => setBookmarkOpen(true)}
             className="fixed top-14 left-14 z-30 p-2.5 rounded-lg bg-transparent hover:bg-amber-900/20 border border-transparent hover:border-amber-800/15 transition-all duration-300 group"
@@ -341,14 +358,24 @@ export default function Home() {
           )}
         </AnimatePresence>
 
-        {/* Bookmark Button — bottom right */}
-        {showReadingUI && <BookmarkButton pageId={currentPageId} />}
+        {/* TTS Narration — only in reading mode */}
+        {showReadingUI && currentPage && (
+          <TTSNarration paragraphs={currentPage.paragraphs} />
+        )}
 
-        {/* Mood Indicator Widget — bottom center */}
-        {showReadingUI && <MoodIndicator mood={currentMood} />}
+        {/* Focus Mode Toggle — only in reading mode */}
+        {showReadingUI && !focusMode && <FocusModeToggle />}
+        {/* In focus mode, show toggle at very low opacity */}
+        {showReadingUI && focusMode && <FocusModeToggle />}
 
-        {/* Virtue Meter */}
-        {showVirtueMeter && <VirtueMeter />}
+        {/* Bookmark Button — hidden in focus mode */}
+        {showReadingUI && !focusMode && <BookmarkButton pageId={currentPageId} />}
+
+        {/* Mood Indicator Widget — hidden in focus mode */}
+        {showReadingUI && !focusMode && <MoodIndicator mood={currentMood} />}
+
+        {/* Virtue Meter — hidden in focus mode */}
+        {showVirtueMeter && !focusMode && <VirtueMeter />}
 
         {/* Choice Journal sidebar */}
         <ChoiceJournal isOpen={journalOpen} onClose={() => setJournalOpen(false)} />
@@ -369,6 +396,20 @@ export default function Home() {
         {/* Spiritual Glossary */}
         <SpiritualGlossary isOpen={glossaryOpen} onClose={() => setGlossaryOpen(false)} />
 
+        {/* Chapter Map Panel */}
+        <ChapterMap
+          isOpen={chapterMapOpen}
+          onClose={() => setChapterMapOpen(false)}
+          onNavigate={(pageId) => {
+            setView('reading');
+            setTransitioningChapter(null);
+            const page = storyPages[pageId];
+            if (page) {
+              goToPage(pageId, page.chapter);
+            }
+          }}
+        />
+
         {/* Bookmarks Panel */}
         <BookmarksPanel
           isOpen={bookmarkOpen}
@@ -384,10 +425,11 @@ export default function Home() {
         />
       </main>
 
-      {/* Sticky footer - only during reading */}
-      {showFooter && (
-        <footer className="relative z-20 mt-auto py-3 px-4 text-center bg-gradient-to-t from-[#0a0a0f]/80 to-transparent backdrop-blur-sm border-t border-amber-900/10">
+      {/* Sticky footer — only during reading, hidden in focus mode */}
+      {showFooter && !focusMode && (
+        <footer className="enhanced-footer relative z-20 mt-auto py-3 px-4 text-center bg-gradient-to-t from-[#0a0a0f]/80 to-transparent backdrop-blur-sm border-t border-amber-900/10">
           <div className="flex items-center justify-center gap-2">
+            <span className="text-amber-700/25" style={{ fontSize: '12px' }}>✦</span>
             <Moon className="w-3 h-3 text-amber-700/30" />
             <span className="text-amber-700/30 text-[11px] font-serif tracking-wide">
               Le Voyage Intérieur de Souhayl — Tome 1

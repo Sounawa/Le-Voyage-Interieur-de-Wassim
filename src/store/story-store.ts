@@ -20,6 +20,10 @@ interface StoryStore {
   soundEnabled: boolean;
   soundVolume: number; // 0-100, default 50
   autoContinue: boolean;
+  ttsEnabled: boolean;
+  ttsRate: number;
+  ttsAutoPlay: boolean;
+  focusMode: boolean;
 
   // Bookmarks
   bookmarks: string[];
@@ -43,6 +47,11 @@ interface StoryStore {
   setSoundEnabled: (enabled: boolean) => void;
   setSoundVolume: (vol: number) => void;
   setAutoContinue: (enabled: boolean) => void;
+  setTTSEnabled: (enabled: boolean) => void;
+  setTTSRate: (rate: number) => void;
+  setTTSAutoPlay: (auto: boolean) => void;
+  setFocusMode: (enabled: boolean) => void;
+  toggleFocusMode: () => void;
 
   // Bookmark actions
   toggleBookmark: (pageId: string) => void;
@@ -78,6 +87,10 @@ const settingsInitialState = {
   soundEnabled: true,
   soundVolume: 50 as number,
   autoContinue: false,
+  ttsEnabled: false,
+  ttsRate: 1,
+  ttsAutoPlay: false,
+  focusMode: false,
   bookmarks: [] as string[],
   readingStartTime: null as number | null,
   achievements: [] as string[],
@@ -275,6 +288,11 @@ export const useStoryStore = create<StoryStore>()(
       setSoundEnabled: (enabled) => set({ soundEnabled: enabled }),
       setSoundVolume: (vol) => set({ soundVolume: Math.max(0, Math.min(100, vol)) }),
       setAutoContinue: (enabled) => set({ autoContinue: enabled }),
+      setTTSEnabled: (enabled) => set({ ttsEnabled: enabled }),
+      setTTSRate: (r) => set({ ttsRate: Math.max(0.5, Math.min(2, r)) }),
+      setTTSAutoPlay: (auto) => set({ ttsAutoPlay: auto }),
+      setFocusMode: (enabled) => set({ focusMode: enabled }),
+      toggleFocusMode: () => set((state) => ({ focusMode: !state.focusMode })),
 
       toggleBookmark: (pageId) => {
         set((state) => {
