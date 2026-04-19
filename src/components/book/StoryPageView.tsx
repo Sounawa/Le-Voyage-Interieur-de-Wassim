@@ -1,8 +1,10 @@
 'use client';
 
+import { useCallback, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronRight, Sparkles, Hand } from 'lucide-react';
 import type { StoryPage } from '@/lib/story-types';
+import StoryIllustration from '@/components/book/StoryIllustration';
 
 interface StoryPageViewProps {
   page: StoryPage;
@@ -11,6 +13,27 @@ interface StoryPageViewProps {
 
 export default function StoryPageView({ page, onContinue }: StoryPageViewProps) {
   const baseDelay = page.paragraphs.length * 0.15 + 0.3;
+  const isLinear = !page.choices && !!page.next;
+
+  // Keyboard listener for spacebar/enter to continue
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (isLinear && (e.key === ' ' || e.key === 'Enter')) {
+      e.preventDefault();
+      onContinue();
+    }
+  }, [isLinear, onContinue]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
+  // For linear pages, make the entire page clickable
+  const handlePageClick = useCallback(() => {
+    if (isLinear) {
+      onContinue();
+    }
+  }, [isLinear, onContinue]);
 
   return (
     <motion.div
@@ -19,9 +42,13 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="flex items-start justify-center min-h-screen px-4 py-20 sm:py-24"
+      onClick={handlePageClick}
+      className={`flex items-start justify-center min-h-screen px-4 py-20 sm:py-24 ${isLinear ? 'cursor-pointer' : ''}`}
     >
       <div className="max-w-2xl w-full">
+        {/* Illustration (if available) */}
+        <StoryIllustration pageId={page.id} />
+
         {/* Page title */}
         {page.title && (
           <motion.h3
@@ -94,21 +121,39 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
           </motion.div>
         )}
 
-        {/* Continue button (for linear pages) */}
-        {!page.choices && page.next && (
+        {/* Continue section (for linear pages) */}
+        {isLinear && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: baseDelay + 0.8, duration: 0.6 }}
-            className="mt-10 flex justify-center"
+            className="mt-10 flex flex-col items-center gap-3"
           >
+            {/* Continue button */}
             <button
-              onClick={onContinue}
+              onClick={(e) => {
+                e.stopPropagation();
+                onContinue();
+              }}
               className="group inline-flex items-center gap-2 px-6 py-3 text-amber-400/70 hover:text-amber-300 font-serif text-sm transition-colors duration-300"
             >
               <span>Continuer</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
+
+            {/* Tap-to-continue hint with pulse animation */}
+            <motion.p
+              animate={{ opacity: [0.3, 0.7, 0.3] }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="flex items-center gap-1.5 text-amber-600/40 text-[11px] font-serif select-none"
+            >
+              <Hand className="w-3 h-3" />
+              <span>Touchez n&apos;importe où pour continuer</span>
+            </motion.p>
           </motion.div>
         )}
       </div>

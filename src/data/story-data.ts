@@ -51,7 +51,7 @@ export const storyPages: Record<string, StoryPage> = {
       },
       {
         id: 'school-walk',
-        text: 'Se lever et partir sans rien dire — serrer les dents, baisser la tête, s'éloigner. Ne pas lui donner cette satisfaction.',
+        text: "Se lever et partir sans rien dire — serrer les dents, baisser la tête, s'éloigner. Ne pas lui donner cette satisfaction.",
         nextPage: 'prologue-a2-walk',
         tag: 'avoidance',
         emoji: '🚶',
@@ -130,7 +130,7 @@ export const storyPages: Record<string, StoryPage> = {
     choices: [
       {
         id: 'prayer-obey',
-        text: 'Laisser tomber le ballon et aller prier — sa mère a raison, la prière d'abord. Le foot après.',
+        text: "Laisser tomber le ballon et aller prier — sa mère a raison, la prière d'abord. Le foot après.",
         nextPage: 'prologue-b1-obey',
         tag: 'obedience',
         emoji: '🕌',
@@ -144,7 +144,7 @@ export const storyPages: Record<string, StoryPage> = {
       },
       {
         id: 'prayer-ignore',
-        text: 'Pretendre de ne pas avoir entendu — faire semblant d'être concentré sur le jeu. Peut-être qu'elle va oublier.',
+        text: "Pretendre de ne pas avoir entendu — faire semblant d'être concentré sur le jeu. Peut-être qu'elle va oublier.",
         nextPage: 'prologue-b3-ignore',
         tag: 'avoidance',
         emoji: '🤫',
@@ -216,21 +216,21 @@ export const storyPages: Record<string, StoryPage> = {
     choices: [
       {
         id: 'broken-blame',
-        text: 'Dire « C'est Amina ! Elle a joué trop près de l'étagère ! » — mentir pour se protéger. Amina est petite, on ne la punira pas trop...',
+        text: "Dire « C'est Amina ! Elle a joué trop près de l'étagère ! » — mentir pour se protéger. Amina est petite, on ne la punira pas trop...",
         nextPage: 'prologue-c1-blame',
         tag: 'deceit',
         emoji: '🤥',
       },
       {
         id: 'broken-silent',
-        text: 'Ne rien dire — ramasser les morceaux en silence et espérer que personne ne pose de questions. Peut-être que Moulay ne s'en rendra pas compte...',
+        text: "Ne rien dire — ramasser les morceaux en silence et espérer que personne ne pose de questions. Peut-être que Moulay ne s'en rendra pas compte...",
         nextPage: 'prologue-c2-silent',
         tag: 'avoidance',
         emoji: '🤐',
       },
       {
         id: 'broken-confess',
-        text: 'Dire « C'est moi. Je l'ai cassé. Je suis désolé, Moulay. » Avouer, même si ça fait peur.',
+        text: "Dire « C'est moi. Je l'ai cassé. Je suis désolé, Moulay. » Avouer, même si ça fait peur.",
         nextPage: 'prologue-c3-confess',
         tag: 'honesty',
         emoji: '💛',
