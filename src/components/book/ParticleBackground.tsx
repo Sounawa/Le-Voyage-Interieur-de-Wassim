@@ -10,6 +10,7 @@ interface Particle {
   speedY: number;
   opacity: number;
   fadeSpeed: number;
+  phase: number;
 }
 
 export default function ParticleBackground() {
@@ -17,14 +18,15 @@ export default function ParticleBackground() {
   const particlesRef = useRef<Particle[]>([]);
   const animFrameRef = useRef<number>(0);
 
-  const createParticle = useCallback((width: number, height: number): Particle => ({
+  const createParticle = useCallback((width: number, height: number, startY?: number): Particle => ({
     x: Math.random() * width,
-    y: Math.random() * height,
-    size: Math.random() * 2.5 + 0.5,
-    speedX: (Math.random() - 0.5) * 0.3,
-    speedY: -Math.random() * 0.5 - 0.1,
-    opacity: Math.random() * 0.6 + 0.1,
-    fadeSpeed: Math.random() * 0.005 + 0.002,
+    y: startY !== undefined ? startY : Math.random() * height,
+    size: Math.random() * 2 + 0.3,
+    speedX: (Math.random() - 0.5) * 0.15,
+    speedY: -Math.random() * 0.35 - 0.08,
+    opacity: Math.random() * 0.4 + 0.05,
+    fadeSpeed: Math.random() * 0.003 + 0.001,
+    phase: Math.random() * Math.PI * 2,
   }), []);
 
   useEffect(() => {
@@ -40,35 +42,47 @@ export default function ParticleBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Initialize particles
-    for (let i = 0; i < 50; i++) {
+    // Initialize particles with varied distribution
+    const count = Math.min(70, Math.floor((canvas.width * canvas.height) / 20000));
+    for (let i = 0; i < count; i++) {
       particlesRef.current.push(createParticle(canvas.width, canvas.height));
     }
 
+    let time = 0;
+
     const animate = () => {
+      time += 0.016;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particlesRef.current.forEach((p, i) => {
-        p.x += p.speedX;
+        // Gentle sinusoidal drift
+        p.x += p.speedX + Math.sin(time + p.phase) * 0.08;
         p.y += p.speedY;
-        p.opacity += Math.sin(Date.now() * p.fadeSpeed) * 0.01;
-        p.opacity = Math.max(0.05, Math.min(0.7, p.opacity));
+        
+        // Breathing opacity
+        const breathOpacity = p.opacity + Math.sin(time * 0.5 + p.phase) * 0.08;
+        const finalOpacity = Math.max(0.02, Math.min(0.5, breathOpacity));
 
         // Reset particle if out of bounds
-        if (p.y < -10 || p.x < -10 || p.x > canvas.width + 10) {
-          particlesRef.current[i] = createParticle(canvas.width, canvas.height);
-          particlesRef.current[i].y = canvas.height + 10;
+        if (p.y < -20 || p.x < -20 || p.x > canvas.width + 20) {
+          particlesRef.current[i] = createParticle(canvas.width, canvas.height, canvas.height + 20);
         }
 
+        // Main particle - soft glow, not harsh circle
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        gradient.addColorStop(0, `rgba(212, 165, 116, ${finalOpacity})`);
+        gradient.addColorStop(0.3, `rgba(212, 165, 116, ${finalOpacity * 0.4})`);
+        gradient.addColorStop(1, `rgba(212, 165, 116, 0)`);
+        
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 165, 116, ${p.opacity})`;
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
         ctx.fill();
 
-        // Glow effect
+        // Bright core
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 165, 116, ${p.opacity * 0.15})`;
+        ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 230, 200, ${finalOpacity * 0.8})`;
         ctx.fill();
       });
 
@@ -86,7 +100,7 @@ export default function ParticleBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.7 }}
     />
   );
 }
