@@ -1995,3 +1995,174 @@ a,
 .progress-glow {
   box-shadow: 0 0 6px rgba(212, 165, 116, 0.3), 0 0 12px rgba(212, 165, 116, 0.1);
 }
+
+/* ============================================
+   PHASE 8: Micro-Interactions & Polish
+   ============================================ */
+
+/* Book cover star twinkle animation */
+.star-twinkle {
+  animation: star-twinkle-anim 3s ease-in-out infinite;
+}
+
+@keyframes star-twinkle-anim {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Smooth page content fade for reading mode */
+.page-content-fade-in {
+  animation: content-fade 0.6s ease-out;
+}
+
+@keyframes content-fade {
+  from { opacity: 0; filter: blur(2px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+/* Glow pulse for active/focused elements */
+.glow-pulse-amber {
+  animation: glow-pulse-amber-anim 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse-amber-anim {
+  0%, 100% { box-shadow: 0 0 5px rgba(212, 165, 116, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(212, 165, 116, 0.25), 0 0 30px rgba(212, 165, 116, 0.1); }
+}
+
+/* Ornamental corner decorations for panels */
+.panel-corner-ornament::before,
+.panel-corner-ornament::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(212, 165, 116, 0.12);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.panel-corner-ornament::before {
+  top: 8px;
+  left: 8px;
+  border-width: 1px 0 0 1px;
+  border-radius: 3px 0 0 0;
+}
+
+.panel-corner-ornament::after {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 1px 1px 0;
+  border-radius: 0 0 3px 0;
+}
+
+/* Subtle text shadow for better readability on dark background */
+.text-shadow-subtle {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Breathing animation for decorative elements */
+.breathing {
+  animation: breathing-anim 4s ease-in-out infinite;
+}
+
+@keyframes breathing-anim {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Smooth scrollbar for all panels */
+.smooth-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.smooth-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.smooth-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 165, 116, 0.15);
+  border-radius: 2px;
+}
+
+.smooth-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 165, 116, 0.3);
+}
+
+/* Glass card hover lift */
+.glass-card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 12px rgba(212, 165, 116, 0.05);
+}
+
+/* Decorative dot pattern for backgrounds */
+.dot-pattern {
+  background-image: radial-gradient(rgba(212, 165, 116, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Spiritual Quiz Styles */
+.quiz-panel {
+  @apply fixed top-0 left-0 z-50 h-full overflow-y-auto;
+  background: rgba(18, 17, 26, 0.95);
+  backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(139, 92, 42, 0.15);
+}
+
+.quiz-option {
+  @apply w-full text-left px-4 py-3 rounded-xl border transition-all duration-300 cursor-pointer;
+  background: rgba(10, 10, 15, 0.5);
+  border-color: rgba(139, 92, 42, 0.1);
+  font-family: 'Georgia', serif;
+}
+
+.quiz-option:hover:not(.selected) {
+  border-color: rgba(212, 165, 116, 0.25);
+  background: rgba(212, 165, 116, 0.04);
+}
+
+.quiz-option.correct {
+  border-color: rgba(34, 197, 94, 0.5);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.quiz-option.wrong {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.quiz-option.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.quiz-progress-dot {
+  @apply w-2 h-2 rounded-full transition-all duration-300;
+  background: rgba(212, 165, 116, 0.15);
+}
+
+.quiz-progress-dot.active {
+  background: rgba(212, 165, 116, 0.6);
+}
+
+.quiz-progress-dot.correct-dot {
+  background: rgba(34, 197, 94, 0.6);
+}
+
+.quiz-progress-dot.wrong-dot {
+  background: rgba(239, 68, 68, 0.6);
+}
+
+@keyframes quiz-correct-flash {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.3); }
+  70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.quiz-option.correct {
+  animation: quiz-correct-flash 0.6s ease-out;
+}

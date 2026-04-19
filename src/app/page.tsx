@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { BookOpen, BookMarked, Bookmark, Map, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
+import { BookOpen, BookMarked, Bookmark, HelpCircle, MapIcon, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
 import type { Choice, MoodType } from '@/lib/story-types';
@@ -26,12 +26,17 @@ import BookmarkButton from '@/components/book/BookmarkButton';
 import BookmarksPanel from '@/components/book/BookmarksPanel';
 import MoodIndicator from '@/components/book/MoodIndicator';
 import PageTurnSound from '@/components/book/PageTurnSound';
+import ChoiceSound from '@/components/book/ChoiceSound';
+import AchievementSound from '@/components/book/AchievementSound';
 import AchievementNotification from '@/components/book/AchievementNotification';
 import AchievementsPanel from '@/components/book/AchievementsPanel';
 import TTSNarration from '@/components/book/TTSNarration';
 import ChapterMap from '@/components/book/ChapterMap';
+import SpiritualQuiz from '@/components/book/SpiritualQuiz';
 import FocusModeToggle from '@/components/book/FocusModeToggle';
 import type { PageTurnSoundHandle } from '@/components/book/PageTurnSound';
+import type { ChoiceSoundHandle } from '@/components/book/ChoiceSound';
+import type { AchievementSoundHandle } from '@/components/book/AchievementSound';
 
 type AppView = 'cover' | 'reading' | 'chapter-transition' | 'ending';
 
@@ -51,8 +56,11 @@ export default function Home() {
   const [bookmarkOpen, setBookmarkOpen] = useState(false);
   const [achievementsOpen, setAchievementsOpen] = useState(false);
   const [chapterMapOpen, setChapterMapOpen] = useState(false);
+  const [quizOpen, setQuizOpen] = useState(false);
   const [isAppReady, setIsAppReady] = useState(false);
   const pageTurnSoundRef = useRef<PageTurnSoundHandle>(null);
+  const choiceSoundRef = useRef<ChoiceSoundHandle>(null);
+  const achievementSoundRef = useRef<AchievementSoundHandle>(null);
 
   const currentPage = storyPages[currentPageId];
 
@@ -101,6 +109,7 @@ export default function Home() {
     if (!nextPage) return;
 
     pageTurnSoundRef.current?.playPageTurn();
+    choiceSoundRef.current?.playChoiceSound();
 
     if (choice.tag) {
       if (nextPage.isChapterStart && nextPage.chapter !== previousChapter) {
@@ -225,6 +234,8 @@ export default function Home() {
         <VignetteOverlay />
         <AmbientSound mood={currentMood} />
         <PageTurnSound ref={pageTurnSoundRef} />
+        <ChoiceSound ref={choiceSoundRef} />
+        <AchievementSound ref={achievementSoundRef} />
 
         {isAppReady && view === 'cover' && (
           <motion.div
@@ -279,6 +290,18 @@ export default function Home() {
                 </button>
               )}
 
+              {/* Quiz button */}
+              {showGlossaryButton && (
+                <button
+                  onClick={() => setQuizOpen(true)}
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Quiz Spirituel"
+                  aria-label="Ouvrir le quiz spirituel"
+                >
+                  <HelpCircle className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
+
               {/* Chapter Map button */}
               {showSettingsButton && (
                 <button
@@ -287,7 +310,7 @@ export default function Home() {
                   title="Carte du Voyage"
                   aria-label="Ouvrir la carte du voyage"
                 >
-                  <Map className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                  <MapIcon className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -363,10 +386,8 @@ export default function Home() {
           <TTSNarration paragraphs={currentPage.paragraphs} />
         )}
 
-        {/* Focus Mode Toggle — only in reading mode */}
-        {showReadingUI && !focusMode && <FocusModeToggle />}
-        {/* In focus mode, show toggle at very low opacity */}
-        {showReadingUI && focusMode && <FocusModeToggle />}
+        {/* Focus Mode Toggle — always shown in reading mode (handles own visibility) */}
+        {showReadingUI && <FocusModeToggle />}
 
         {/* Bookmark Button — hidden in focus mode */}
         {showReadingUI && !focusMode && <BookmarkButton pageId={currentPageId} />}
@@ -409,6 +430,9 @@ export default function Home() {
             }
           }}
         />
+
+        {/* Spiritual Quiz Panel */}
+        <SpiritualQuiz isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
 
         {/* Bookmarks Panel */}
         <BookmarksPanel

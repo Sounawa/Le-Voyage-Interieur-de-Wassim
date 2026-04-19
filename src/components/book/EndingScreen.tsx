@@ -248,7 +248,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1 }}
-          className="font-serif text-3xl sm:text-4xl text-amber-100 font-bold mb-6 shimmer-text"
+          className="font-serif text-3xl sm:text-4xl text-amber-100 font-bold mb-6 shimmer-text-gold"
           style={{ textShadow: '0 0 30px rgba(212, 165, 116, 0.15)' }}
         >
           {ending.title}

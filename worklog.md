@@ -1,17 +1,18 @@
 # Le Voyage Intérieur de Souhayl - Worklog
 
-## Project Status: ✅ Phase 7 Complete — TTS Narration, Chapter Map, Focus Mode, Styling Polish
+## Project Status: ✅ Phase 8 Complete — Sound Effects, Quiz, Styling Polish
 
 ### Current Status Assessment
-The interactive book now has a comprehensive feature set:
+The interactive book is feature-rich with comprehensive polish:
 - **167 story pages** with rich narrative, dialogue, and action
 - **20 choice points** with exactly 3 choices each, all valid paths
 - **4 distinct endings** (Light, Wisdom, Shadow, Pure/Integration)
 - **6 AI-generated illustrations** at key story moments
-- **26 React components** across the application (up from 23)
+- **29 React components** across the application (up from 26)
 - **4 custom hooks** (useTTS, useSwipeNavigation, + 2 existing)
-- **~15,537 lines of TypeScript/CSS code** (up from ~8,353)
-- **Lint: ✅ Clean** | **Compilation: ✅ Passes** (26KB page)
+- **~10,817 lines of TypeScript/CSS code** in core files
+- **Lint: ✅ Clean** | **Compilation: ✅ Passes** (HTTP 200, 23KB page)
+- **Runtime: ✅ No errors in dev log**
 
 ### Architecture
 ```
@@ -40,10 +41,16 @@ src/
 │   ├── BookmarkButton.tsx      # Toggle bookmark on current page
 │   ├── BookmarksPanel.tsx      # Slide-in bookmark manager from left
 │   ├── SpiritualGlossary.tsx   # 25 Tassawuf terms with search modal
-│   ├── MoodIndicator.tsx       # NEW: Bottom-center mood display pill
-│   ├── AchievementNotification.tsx # NEW: Toast notification for achievements
-│   ├── AchievementsPanel.tsx   # NEW: Grid of 12 unlockable achievements
-│   └── PageTurnSound.tsx       # NEW: Web Audio API page-turn sound
+│   ├── MoodIndicator.tsx       # Bottom-center mood display pill
+│   ├── AchievementNotification.tsx # Toast notification for achievements
+│   ├── AchievementsPanel.tsx   # Grid of 12 unlockable achievements
+│   ├── PageTurnSound.tsx       # Web Audio API page-turn sound
+│   ├── TTSNarration.tsx        # Text-to-speech read-aloud with Web Speech API
+│   ├── ChapterMap.tsx          # Visual chapter navigation panel (slide from right)
+│   ├── FocusModeToggle.tsx     # Immersive reading mode toggle
+│   ├── ChoiceSound.tsx         # Dual-tone chime on choice selection
+│   ├── AchievementSound.tsx    # Ascending arpeggio on achievement unlock
+│   └── SpiritualQuiz.tsx       # 10-question quiz mini-game panel
 ├── data/
 │   ├── story-data.ts           # 1837 lines, 167 pages, 20 choices
 │   └── achievements.ts         # 10 achievement definitions
@@ -130,32 +137,104 @@ src/
 - **Ch4 La Montagne de la Vérité** (3 choices): Cliff, companion, final choice → 4 endings
 
 ### Story Stats
-- Pages: 167 | Choice points: 20 | Endings: 4 | Achievements: 12
+- Pages: 167 | Choice points: 20 | Endings: 4 | Achievements: 12 | Quiz Questions: 10
 - Characters: Souhayl, Zaki, Moulay, Nafs, Waswās
-- Components: 23 | Total LOC: ~8,353 (TypeScript + CSS)
+- Components: 29 | Hooks: 4 | Total core LOC: ~10,817
+
+### Phase 7+8 Changes (Recent Sessions)
+
+#### Bug Fix: Map Import Name Collision
+- `Map` from lucide-react shadowed JavaScript's built-in `Map` constructor in ChapterMap.tsx and page.tsx
+- Fixed by renaming import to `MapIcon` in both files
+- Resolved HTTP 500 runtime error
+
+#### New Features (Phase 7)
+
+**1. TTS Narration (TTSNarration.tsx + useTTS.ts)**
+- Browser's `speechSynthesis` API for text-to-speech (no backend needed)
+- Floating play/pause button with expanded control panel
+- French voice auto-selected, 4 speed settings (0.5x–1.25x)
+- Voice selector dropdown, paragraph tracking
+- Chrome 15s pause workaround
+
+**2. Chapter Map (ChapterMap.tsx)**
+- Slide-in panel from right with chapter cards
+- 5 chapter cards with progress indicators
+- Click to navigate, current/completed states
+- Global exploration progress bar
+
+**3. Focus/Immersive Mode (FocusModeToggle.tsx)**
+- Eye/eye-off toggle hides all UI chrome
+- `focusMode` state in Zustand store
+- Toggle button visible at low opacity in focus mode
+- Hides: progress bar, top buttons, bookmarks, mood, virtues, footer
+
+**4. Swipe Navigation Hook (useSwipeNavigation.ts)**
+- Touch gesture detection (swipe left = continue, right = go back)
+- 50px threshold, horizontal-only detection, 300ms debounce
+
+#### New Features (Phase 8)
+
+**5. Choice Sound Effect (ChoiceSound.tsx)**
+- Dual-tone chime: 880Hz + 1320Hz sine waves, 60ms each
+- Fires on choice selection via imperative handle
+- Respects soundEnabled and soundVolume settings
+
+**6. Achievement Sound Effect (AchievementSound.tsx)**
+- C5-E5-G5 ascending arpeggio (523Hz → 659Hz → 784Hz)
+- 120ms per note with overlap, soft sine with attack + decay
+- Ready for integration with AchievementNotification
+
+**7. Spiritual Quiz Mini-Game (SpiritualQuiz.tsx)**
+- 10 multiple-choice questions about Tassawuf and story
+- 3 difficulty levels (easy/medium/hard) with badges
+- Animated slide-in panel from left
+- Progress dots, answer feedback, auto-advance
+- Results screen with score and encouraging message
+- Rejouer button
+
+#### Styling Improvements (Phase 7+8)
+
+**Phase 7 Styling:**
+- Ornamental manuscript double border on story pages
+- Page ambient glow with pulsing animation
+- Enhanced drop cap with gold shadow
+- VirtueMeter glow effect and hover gradient
+- Enhanced footer with decorative gradient line
+- Shimmer text gold effect for special headings
+- Arabesque separator utility
+- Focus mode CSS (hide chrome smoothly)
+
+**Phase 8 Styling:**
+- Choice button golden shimmer reveal animation on appearance
+- Ending title enhanced with shimmer-text-gold
+- Progress bar animated glow pulse
+- Chapter title refined spring animation
+- Star twinkle, glow pulse amber, panel corner ornaments
+- Smooth scrollbar styling for panels
+- Glass card hover lift effect
+- Dot pattern background utility
 
 ### Verification Results
 - ✅ `bun run lint` — Zero errors, zero warnings
-- ✅ Dev server compiles successfully (HTTP 200, 23KB+ page)
-- ✅ All 23 components exist and import correctly
-- ✅ Store persists all settings including achievements, volume, bookmarks
-- ✅ Ambient sound with volume control
-- ✅ Achievement system with toast notifications
-- ✅ Page turn sound on navigation
-- ✅ Real share functionality (clipboard)
-- ✅ Mobile touch improvements
+- ✅ Dev server: HTTP 200, 23KB page, no runtime errors
+- ✅ All 29 components exist and import correctly
+- ✅ All 4 hooks functional
+- ✅ Store persists all settings (TTS, focus mode, achievements, volume, bookmarks)
+- ✅ Map import collision bug fixed
 
 ### Risks & Next Steps
-1. **TTS narration**: Add text-to-speech for read-aloud mode using z-ai-web-dev-sdk
-2. **More illustrations**: Add images for bridge, mirrors, Nafs encounter, Zaki meeting (4 more)
-3. **Mobile gestures**: Swipe left/right for page navigation
-4. **Tome 2**: Expand with new chapters and spiritual concepts
-5. **Hidden 5th ending**: Special ending triggered by specific tag combinations
-6. **Performance**: Optimize particle animations for low-end devices
-7. **Glossary expansion**: Add Arabic script for each term
-8. **Sound design**: Add more sound effects (choice selection, achievement unlock, chapter transition)
-9. **Bookmark sync**: Cloud save for bookmarks across devices
+1. **AchievementSound integration**: Wire into AchievementNotification component
+2. **Swipe integration**: Connect useSwipeNavigation hook to page.tsx
+3. **TTS auto-play**: Auto-start narration on each page (store setting exists, needs wiring)
+4. **More illustrations**: Add AI images for bridge, mirrors, Nafs encounter, Zaki meeting
+5. **Tome 2**: Expand with new chapters and spiritual concepts
+6. **Hidden 5th ending**: Special ending triggered by specific tag combinations
+7. **Performance**: Optimize particle animations for low-end devices
+8. **Glossary expansion**: Add Arabic script for each term
+9. **Chapter transition sound**: Custom sound when entering new chapters
 10. **Accessibility**: Full screen reader support, ARIA live regions
+11. **Print/PDF**: Export journey as a formatted PDF document
 
 ---
 Task ID: 6c
@@ -259,3 +338,52 @@ Stage Summary:
 - Speed control: 0.5x to 1.25x
 - Paragraph highlighting during narration
 - Clean integration point for page.tsx
+
+---
+Task ID: 8d
+Agent: Phase 8 Styling Agent
+Task: Enhanced micro-interactions and visual polish
+
+Work Log:
+- Added shimmer reveal animation to ChoiceButtons
+- Enhanced ending title with shimmer-text-gold
+- Added progress-glow to ProgressBar fill
+- Enhanced chapter title entry animation
+- Added Phase 8 CSS (star twinkle, glow pulse, panel ornaments, smooth scrollbar, etc.)
+
+Stage Summary:
+- Choice buttons: initial golden shimmer sweep on appearance
+- Ending screen: enhanced gold shimmer title
+- Progress bar: glowing animated fill
+- 9 new CSS classes for micro-interactions and decorative effects
+
+---
+Task ID: 8a
+Agent: Sound Effects Agent
+Task: Added choice selection and achievement unlock sound effects
+
+Work Log:
+- Created ChoiceSound.tsx with dual-tone chime effect
+- Created AchievementSound.tsx with ascending arpeggio
+- Integrated into page.tsx via refs
+
+Stage Summary:
+- Choice sound: 880Hz + 1320Hz dual sine, 60ms each
+- Achievement sound: C5-E5-G5 arpeggio, 120ms per note
+- Both respect soundEnabled and soundVolume settings
+
+---
+Task ID: 8b
+Agent: Spiritual Quiz Agent
+Task: Created spiritual quiz mini-game panel
+
+Work Log:
+- Created SpiritualQuiz.tsx with 10 questions about Tassawuf
+- Added quiz button to page.tsx top bar
+- Added quiz CSS classes to globals.css
+
+Stage Summary:
+- 10 questions (easy/medium/hard) with explanations
+- Animated slide-in panel from left
+- Progress dots, difficulty badges, score screen
+- Child-friendly French language

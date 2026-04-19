@@ -148,14 +148,14 @@ export default function ChapterTitle({ chapter, title, onComplete }: ChapterTitl
 
             {/* Chapter title with spring animation */}
             <motion.h2
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
                 delay: 0.8,
                 duration: 1,
                 type: 'spring',
-                stiffness: 120,
-                damping: 14,
+                stiffness: 100,
+                damping: 15,
               }}
               className="font-serif text-3xl sm:text-4xl md:text-5xl text-amber-100 font-bold"
               style={{ textShadow: '0 0 30px rgba(212, 165, 116, 0.2), 0 2px 4px rgba(0,0,0,0.3)' }}

@@ -122,6 +122,24 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
             className={`group relative w-full text-left px-5 py-4 sm:px-6 sm:py-5 rounded-xl overflow-hidden transition-all duration-400 active:scale-[0.98]
               ${hoveredIndex === index ? 'glass-card gradient-border' : 'glass-card'}`}
           >
+            {/* Initial shimmer reveal animation */}
+            <motion.div
+              className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ delay: 1.2 + index * 0.3, duration: 1 }}
+            >
+              <motion.div
+                className="absolute inset-0"
+                initial={{ x: '-100%' }}
+                animate={{ x: '100%' }}
+                transition={{ delay: 0.8 + index * 0.2, duration: 0.8, ease: 'easeInOut' }}
+                style={{
+                  background: 'linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.1), transparent)',
+                }}
+              />
+            </motion.div>
+
             {/* Animated gradient shimmer sweep on hover */}
             {hoveredIndex === index && (
               <motion.div

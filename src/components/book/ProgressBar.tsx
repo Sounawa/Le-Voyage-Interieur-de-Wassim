@@ -51,7 +51,7 @@ export default function ProgressBar({ currentPageId, totalPages }: ProgressBarPr
       {/* Progress bar with shimmer */}
       <div className="h-1 w-full bg-black/30 backdrop-blur-sm relative overflow-hidden">
         <motion.div
-          className="h-full progress-bar-shimmer relative"
+          className="h-full progress-bar-shimmer progress-glow relative"
           initial={{ width: 0 }}
           animate={{ width: `${progress * 100}%` }}
           transition={{ duration: 1.2, ease: 'easeInOut' }}

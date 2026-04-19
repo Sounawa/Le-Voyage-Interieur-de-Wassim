@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Map, CheckCircle2, BookOpen, ChevronRight } from 'lucide-react';
+import { X, MapIcon, CheckCircle2, BookOpen, ChevronRight } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages } from '@/data/story-data';
 
@@ -126,7 +126,7 @@ export default function ChapterMap({ isOpen, onClose, onNavigate }: ChapterMapPr
               {/* ── Header ── */}
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3">
-                  <Map className="w-5 h-5 text-amber-500/70" />
+                  <MapIcon className="w-5 h-5 text-amber-500/70" />
                   <h2 className="font-serif text-lg text-amber-100 font-bold tracking-wide">
                     Carte du Voyage
                   </h2>
