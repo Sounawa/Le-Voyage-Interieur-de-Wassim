@@ -2,10 +2,10 @@
 
 import { AnimatePresence } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
-import { BookOpen, Moon, Scroll, Star } from 'lucide-react';
+import { BookOpen, Moon, Scroll, Settings, Star } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
-import type { Choice } from '@/lib/story-types';
+import type { Choice, MoodType } from '@/lib/story-types';
 import ParticleBackground from '@/components/book/ParticleBackground';
 import IslamicPattern from '@/components/book/IslamicPattern';
 import VignetteOverlay from '@/components/book/VignetteOverlay';
@@ -17,6 +17,9 @@ import StoryPageView from '@/components/book/StoryPageView';
 import ChoiceButtons from '@/components/book/ChoiceButtons';
 import EndingScreen from '@/components/book/EndingScreen';
 import ChoiceJournal from '@/components/book/ChoiceJournal';
+import BackButton from '@/components/book/BackButton';
+import SettingsPanel from '@/components/book/SettingsPanel';
+import VirtueMeter from '@/components/book/VirtueMeter';
 
 type AppView = 'cover' | 'reading' | 'chapter-transition' | 'ending';
 
@@ -31,6 +34,7 @@ export default function Home() {
   const [transitioningChapter, setTransitioningChapter] = useState<{ chapter: number; title: string } | null>(null);
   const [previousChapter, setPreviousChapter] = useState<number>(-1);
   const [journalOpen, setJournalOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const currentPage = storyPages[currentPageId];
 
@@ -89,6 +93,13 @@ export default function Home() {
     setTransitioningChapter(null);
   }, []);
 
+  const handleGoBack = useCallback(() => {
+    // The goBack action in the store already updates currentPageId.
+    // We need to set the view back to 'reading' if it was in chapter-transition.
+    setView('reading');
+    setTransitioningChapter(null);
+  }, []);
+
   useEffect(() => {
     if (currentPage?.isEnding && currentPage.endingType) {
       markEndingFound(currentPage.endingType);
@@ -97,23 +108,54 @@ export default function Home() {
     }
   }, [currentPageId, currentPage, markEndingFound]);
 
+  const currentMood: MoodType = currentPage?.mood || 'prologue';
+
   const getMoodClasses = () => {
-    if (!currentPage) return 'bg-[#0a0a0f]';
-    switch (currentPage.mood) {
-      case 'wonder': return 'bg-[#0a0a12]';
-      case 'darkness': return 'bg-[#080810]';
-      case 'wisdom': return 'bg-[#0a0a0e]';
-      case 'danger': return 'bg-[#0f0808]';
-      case 'peace': return 'bg-[#080a0a]';
-      case 'triumph': return 'bg-[#0c0a06]';
-      case 'ending': return 'bg-[#0a0a0f]';
-      default: return 'bg-[#0a0a0f]';
+    switch (currentMood) {
+      case 'wonder': return 'mood-wonder';
+      case 'darkness': return 'mood-darkness';
+      case 'wisdom': return 'mood-wisdom';
+      case 'danger': return 'mood-danger';
+      case 'peace': return 'mood-peace';
+      case 'triumph': return 'mood-triumph';
+      case 'prologue': return 'mood-prologue';
+      case 'ending': return 'mood-ending';
+      default: return 'mood-prologue';
     }
   };
 
-  const showJournalButton = view === 'reading' && !currentPage?.isEnding;
+  const getMoodOverlayStyle = (): React.CSSProperties => {
+    switch (currentMood) {
+      case 'wonder':
+        return { background: 'radial-gradient(ellipse at 50% 30%, rgba(180, 140, 40, 0.08) 0%, transparent 70%)' };
+      case 'darkness':
+        return { background: 'radial-gradient(ellipse at 50% 60%, rgba(40, 40, 120, 0.12) 0%, transparent 70%)' };
+      case 'wisdom':
+        return { background: 'radial-gradient(ellipse at 50% 40%, rgba(140, 160, 60, 0.08) 0%, transparent 70%)' };
+      case 'danger':
+        return { background: 'radial-gradient(ellipse at 50% 50%, rgba(160, 50, 20, 0.1) 0%, transparent 60%)' };
+      case 'peace':
+        return { background: 'radial-gradient(ellipse at 50% 40%, rgba(60, 160, 130, 0.08) 0%, transparent 70%)' };
+      case 'triumph':
+        return { background: 'radial-gradient(ellipse at 50% 30%, rgba(200, 160, 50, 0.12) 0%, transparent 60%)' };
+      case 'prologue':
+        return { background: 'radial-gradient(ellipse at 50% 50%, rgba(180, 150, 80, 0.06) 0%, transparent 70%)' };
+      case 'ending':
+        return { background: 'radial-gradient(ellipse at 50% 40%, rgba(220, 200, 160, 0.1) 0%, transparent 60%)' };
+      default:
+        return {};
+    }
+  };
 
-  // Only show footer during reading (not on cover or ending screens)
+  // Determine when to show buttons
+  const showReadingUI = view === 'reading' && !currentPage?.isEnding;
+  const isOnCover = view === 'cover';
+  const isOnChapterTransition = view === 'chapter-transition';
+  const isOnPrologueFirst = currentPageId === 'prologue' && view === 'reading';
+  const showBackButton = showReadingUI && !isOnPrologueFirst;
+  const showJournalButton = showReadingUI;
+  const showSettingsButton = showReadingUI;
+  const showVirtueMeter = showReadingUI;
   const showFooter = view === 'reading' || view === 'chapter-transition';
 
   return (
@@ -121,9 +163,10 @@ export default function Home() {
       <main className="flex-1 text-amber-100/90 transition-colors duration-1000">
         {/* Background layers */}
         <div className="fixed inset-0 -z-10">
-          <div className={`absolute inset-0 transition-colors duration-1000 ${getMoodClasses()}`} />
+          <div className={`absolute inset-0 ${getMoodClasses()}`} style={{ transition: 'background 1.5s ease' }} />
+          <div className="absolute inset-0 mood-overlay" style={{ ...getMoodOverlayStyle(), transition: 'background 1.5s ease' }} />
         </div>
-        <ParticleBackground />
+        <ParticleBackground mood={currentMood} />
         <IslamicPattern />
         <VignetteOverlay />
 
@@ -134,19 +177,38 @@ export default function Home() {
         {view !== 'cover' && view !== 'ending' && (
           <>
             <ProgressBar currentPageId={currentPageId} totalPages={Object.keys(storyPages).length} />
-            
-            {/* Journal button */}
-            {showJournalButton && (
-              <button
-                onClick={() => setJournalOpen(true)}
-                className="fixed top-14 right-4 z-30 p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
-                title="Journal de Souhayl"
-              >
-                <Scroll className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
-              </button>
-            )}
+
+            {/* Top bar buttons: back, journal, settings */}
+            <div className="fixed top-14 right-4 z-30 flex items-center gap-2">
+              {/* Settings gear button */}
+              {showSettingsButton && (
+                <button
+                  onClick={() => setSettingsOpen(true)}
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Paramètres"
+                  aria-label="Ouvrir les paramètres"
+                >
+                  <Settings className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
+
+              {/* Journal button */}
+              {showJournalButton && (
+                <button
+                  onClick={() => setJournalOpen(true)}
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Journal de Souhayl"
+                  aria-label="Ouvrir le journal"
+                >
+                  <Scroll className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
+            </div>
           </>
         )}
+
+        {/* Back button */}
+        {showBackButton && <BackButton onGoBack={handleGoBack} />}
 
         {/* Bismillah at chapter starts */}
         {view === 'reading' && currentPage?.isChapterStart && currentPage.chapter >= 1 && (
@@ -185,8 +247,14 @@ export default function Home() {
           )}
         </AnimatePresence>
 
+        {/* Virtue Meter */}
+        {showVirtueMeter && <VirtueMeter />}
+
         {/* Choice Journal sidebar */}
         <ChoiceJournal isOpen={journalOpen} onClose={() => setJournalOpen(false)} />
+
+        {/* Settings Panel */}
+        <SettingsPanel isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
       </main>
 
       {/* Sticky footer - only during reading */}

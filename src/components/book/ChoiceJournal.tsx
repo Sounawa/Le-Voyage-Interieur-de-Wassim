@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, X, ChevronRight } from 'lucide-react';
+import { BookOpen, X, ChevronRight, Share2 } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 
 interface ChoiceJournalProps {
@@ -117,7 +117,7 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-[#0d0c14]/95 backdrop-blur-md border-l border-amber-800/20 overflow-y-auto"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-[#0d0c14]/95 backdrop-blur-md border-l border-amber-800/20 overflow-y-auto animated-border-left islamic-bg-pattern"
           >
             {/* Header */}
             <div className="sticky top-0 z-10 bg-[#0d0c14]/90 backdrop-blur-md px-6 py-4 border-b border-amber-800/15 flex items-center justify-between">
@@ -133,19 +133,19 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
             <div className="p-6 space-y-6">
               {/* Stats */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10">
+                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10 hover:border-amber-700/20 transition-colors duration-300">
                   <p className="text-amber-500/50 text-xs font-serif mb-1">Pages visitées</p>
                   <p className="text-amber-100 text-2xl font-bold font-serif">{visitedPages.length}</p>
                 </div>
-                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10">
+                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10 hover:border-amber-700/20 transition-colors duration-300">
                   <p className="text-amber-500/50 text-xs font-serif mb-1">Choix effectués</p>
                   <p className="text-amber-100 text-2xl font-bold font-serif">{chosenTags.length}</p>
                 </div>
-                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10">
+                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10 hover:border-amber-700/20 transition-colors duration-300">
                   <p className="text-amber-500/50 text-xs font-serif mb-1">Chapitres</p>
                   <p className="text-amber-100 text-2xl font-bold font-serif">{chaptersCompleted.length}/4</p>
                 </div>
-                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10">
+                <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10 hover:border-amber-700/20 transition-colors duration-300">
                   <p className="text-amber-500/50 text-xs font-serif mb-1">Fins trouvées</p>
                   <p className="text-amber-100 text-2xl font-bold font-serif">{endingsFound.length}/4</p>
                 </div>
@@ -158,8 +158,12 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                   <div>
                     <p className="text-amber-300/40 text-xs mb-2 font-serif">Vertus développées</p>
                     <div className="flex flex-wrap gap-2">
-                      {virtues.map((v) => (
-                        <span key={v} className="px-2 py-1 text-xs bg-emerald-900/20 text-emerald-400/70 rounded-full border border-emerald-700/20 font-serif">
+                      {virtues.map((v, i) => (
+                        <span
+                          key={v}
+                          className="virtue-badge px-2.5 py-1 text-xs bg-emerald-900/20 text-emerald-400/70 rounded-full border border-emerald-700/20 font-serif transition-all duration-300 hover:bg-emerald-900/30 hover:border-emerald-600/30 hover:scale-105 hover:text-emerald-300/80"
+                          style={{ '--delay': `${i * 0.5}s` } as React.CSSProperties}
+                        >
                           ✦ {v}
                         </span>
                       ))}
@@ -168,8 +172,12 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                   <div>
                     <p className="text-amber-300/40 text-xs mb-2 font-serif">Défis à surmonter</p>
                     <div className="flex flex-wrap gap-2">
-                      {challenges.map((c) => (
-                        <span key={c} className="px-2 py-1 text-xs bg-orange-900/20 text-orange-400/70 rounded-full border border-orange-700/20 font-serif">
+                      {challenges.map((c, i) => (
+                        <span
+                          key={c}
+                          className="virtue-badge px-2.5 py-1 text-xs bg-orange-900/20 text-orange-400/70 rounded-full border border-orange-700/20 font-serif transition-all duration-300 hover:bg-orange-900/30 hover:border-orange-600/30 hover:scale-105 hover:text-orange-300/80"
+                          style={{ '--delay': `${(i + virtues.length) * 0.5}s` } as React.CSSProperties}
+                        >
                           ⚡ {c}
                         </span>
                       ))}
@@ -191,19 +199,19 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex items-start gap-3 group"
+                        className="flex items-start gap-3 group cursor-default"
                       >
                         <div className="flex flex-col items-center">
-                          <div className="w-8 h-8 rounded-full bg-amber-900/30 border border-amber-700/30 flex items-center justify-center text-sm shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-amber-900/30 border border-amber-700/30 flex items-center justify-center text-sm shrink-0 group-hover:bg-amber-800/40 group-hover:border-amber-600/40 transition-all duration-300 group-hover:scale-110">
                             {info.emoji}
                           </div>
                           {index < chosenTags.length - 1 && (
-                            <div className="w-px h-6 bg-amber-800/20 mt-1" />
+                            <div className="w-px h-6 bg-amber-800/20 mt-1 group-hover:bg-amber-700/30 transition-colors duration-300" />
                           )}
                         </div>
-                        <div className="pt-1">
-                          <p className="text-amber-100/80 text-sm font-serif">{info.label}</p>
-                          <p className="text-amber-500/40 text-xs font-serif">{info.chapter}</p>
+                        <div className="pt-1 group-hover:translate-x-1 transition-transform duration-300">
+                          <p className="text-amber-100/80 text-sm font-serif group-hover:text-amber-100 transition-colors duration-300">{info.label}</p>
+                          <p className="text-amber-500/40 text-xs font-serif group-hover:text-amber-500/60 transition-colors duration-300">{info.chapter}</p>
                         </div>
                       </motion.div>
                     );
@@ -224,7 +232,7 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                     {endingsFound.map((ending) => (
                       <div
                         key={ending}
-                        className="flex items-center gap-2 px-3 py-2 bg-amber-950/20 rounded-lg border border-amber-800/10"
+                        className="flex items-center gap-2 px-3 py-2 bg-amber-950/20 rounded-lg border border-amber-800/10 hover:border-amber-700/20 hover:bg-amber-950/30 transition-all duration-300"
                       >
                         <ChevronRight className="w-3 h-3 text-amber-500/50" />
                         <span className="text-amber-100/70 text-sm font-serif capitalize">
@@ -237,6 +245,20 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                     ))}
                   </div>
                 </div>
+              )}
+
+              {/* Share button (decorative) */}
+              {chosenTags.length > 0 && (
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="share-button w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-amber-950/20 border border-amber-800/15 text-amber-500/50 hover:text-amber-400/70 hover:border-amber-700/25 transition-all duration-300 font-serif text-sm"
+                  disabled
+                >
+                  <Share2 className="w-4 h-4" />
+                  <span>Partager le voyage</span>
+                </motion.button>
               )}
             </div>
           </motion.div>

@@ -60,16 +60,20 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
         </span>
       </motion.div>
 
-      {/* Choice cards */}
+      {/* Choice cards with glass-morphism */}
       <div className="space-y-3">
         {choices.map((choice, index) => (
           <motion.button
             key={choice.id}
             ref={(el) => { cardRefs.current[index] = el; }}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 + index * 0.2, duration: 0.5 }}
-            whileHover={{ scale: 1.02, x: 4 }}
+            initial={{ opacity: 0, y: 15, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.8 + index * 0.2, duration: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
+            whileHover={{
+              scale: 1.02,
+              x: 4,
+              transition: { duration: 0.25 },
+            }}
             whileTap={{ scale: 0.98 }}
             onClick={() => onChoose(choice)}
             onMouseEnter={() => setHoveredIndex(index)}
@@ -78,26 +82,16 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
               handleMouseLeave(index);
             }}
             onMouseMove={(e) => handleMouseMove(e, index)}
-            className="group relative w-full text-left px-6 py-5 rounded-lg transition-all duration-300 overflow-hidden"
-            style={{
-              border: hoveredIndex === index
-                ? '1px solid rgba(218, 165, 32, 0.5)'
-                : '1px solid rgba(120, 53, 15, 0.2)',
-              background: hoveredIndex === index
-                ? 'linear-gradient(135deg, rgba(120, 53, 15, 0.3), transparent)'
-                : 'linear-gradient(to right, rgba(41, 22, 10, 0.3), transparent)',
-            }}
+            className={`group relative w-full text-left px-6 py-5 rounded-xl overflow-hidden transition-all duration-400
+              ${hoveredIndex === index ? 'glass-card gradient-border' : 'glass-card'}`}
           >
-            {/* Animated gradient border shimmer on hover */}
+            {/* Animated gradient shimmer sweep on hover */}
             {hoveredIndex === index && (
               <motion.div
                 className="absolute inset-0 pointer-events-none"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                style={{
-                  background: 'linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.15), transparent)',
-                  backgroundSize: '200% 100%',
-                }}
+                exit={{ opacity: 0 }}
               >
                 <motion.div
                   className="absolute inset-0"
@@ -110,37 +104,48 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
                     ease: 'linear',
                   }}
                   style={{
-                    background: 'linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent)',
+                    background: 'linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.08), transparent)',
                     backgroundSize: '200% 100%',
                   }}
                 />
               </motion.div>
             )}
 
-            {/* Glow effect on hover */}
-            <div className="absolute inset-0 rounded-lg bg-amber-600/0 group-hover:bg-amber-600/5 transition-colors duration-300" />
+            {/* Inner glow effect */}
+            <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+              style={{
+                boxShadow: 'inset 0 1px 0 rgba(212, 165, 116, 0.08), inset 0 0 20px rgba(212, 165, 116, 0.03)',
+              }}
+            />
+
+            {/* Outer glow on hover */}
+            <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+              style={{
+                boxShadow: '0 0 20px rgba(212, 165, 116, 0.08), 0 0 40px rgba(212, 165, 116, 0.04)',
+              }}
+            />
 
             <div className="relative flex items-start gap-4">
               {/* Number indicator */}
-              <div className="shrink-0 w-7 h-7 rounded-full border border-amber-700/30 bg-amber-950/40 flex items-center justify-center mt-0.5">
-                <span className="text-amber-500/60 text-xs font-serif font-bold">
+              <div className="shrink-0 w-7 h-7 rounded-full border border-amber-700/30 bg-amber-950/40 flex items-center justify-center mt-0.5 group-hover:border-amber-500/50 group-hover:bg-amber-900/30 transition-all duration-300">
+                <span className="text-amber-500/60 text-xs font-serif font-bold group-hover:text-amber-400/80 transition-colors duration-300">
                   {index + 1}
                 </span>
               </div>
 
               {/* Emoji/icon */}
-              <span className="text-2xl mt-0.5 shrink-0">
+              <span className="text-2xl mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300">
                 {choice.emoji || ['🌙', '⚡', '✨'][index]}
               </span>
 
               {/* Text */}
-              <p className="font-serif text-amber-100/90 text-base leading-relaxed group-hover:text-amber-50 transition-colors">
+              <p className="font-serif text-amber-100/90 text-base leading-relaxed group-hover:text-amber-50 transition-colors duration-300">
                 {choice.text}
               </p>
             </div>
 
             {/* Bottom accent line */}
-            <div className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-amber-600/0 via-amber-500/30 to-amber-600/0 transition-all duration-300"
+            <div className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-amber-600/0 via-amber-500/30 to-amber-600/0 transition-all duration-400"
               style={{
                 opacity: hoveredIndex === index ? 1 : 0,
               }}

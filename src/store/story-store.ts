@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface StoryStore {
+  // Story state
   currentPageId: string;
   visitedPages: string[];
   chosenTags: string[];
@@ -10,15 +11,30 @@ interface StoryStore {
   startedAt: number;
   isComplete: boolean;
   hasStarted: boolean;
-  
+  history: string[];
+
+  // Settings (persisted separately from story state)
+  fontSize: 'sm' | 'md' | 'lg';
+  soundEnabled: boolean;
+  autoContinue: boolean;
+
+  // Story actions
   goToPage: (pageId: string, chapter?: number) => void;
   makeChoice: (choiceId: string, nextPage: string, tag?: string, chapter?: number) => void;
   markChapterComplete: (chapter: number) => void;
   markEndingFound: (endingType: string) => void;
   restart: () => void;
+  goBack: () => string | null;
+
+  // Settings actions
+  setFontSize: (size: 'sm' | 'md' | 'lg') => void;
+  setSoundEnabled: (enabled: boolean) => void;
+  setAutoContinue: (enabled: boolean) => void;
 }
 
-const initialState = {
+const MAX_HISTORY = 50;
+
+const storyInitialState = {
   currentPageId: 'prologue',
   visitedPages: ['prologue'] as string[],
   chosenTags: [] as string[],
@@ -27,15 +43,24 @@ const initialState = {
   startedAt: Date.now(),
   isComplete: false,
   hasStarted: false,
+  history: [] as string[],
+};
+
+const settingsInitialState = {
+  fontSize: 'md' as 'sm' | 'md' | 'lg',
+  soundEnabled: true,
+  autoContinue: false,
 };
 
 export const useStoryStore = create<StoryStore>()(
   persist(
     (set, get) => ({
-      ...initialState,
+      ...storyInitialState,
+      ...settingsInitialState,
 
       goToPage: (pageId, chapter) => {
         set((state) => {
+          const newHistory = [...state.history, state.currentPageId].slice(-MAX_HISTORY);
           const newVisited = [...new Set([...state.visitedPages, pageId])];
           const newChapters = chapter && !state.chaptersCompleted.includes(chapter)
             ? [...state.chaptersCompleted, chapter]
@@ -44,12 +69,14 @@ export const useStoryStore = create<StoryStore>()(
             currentPageId: pageId,
             visitedPages: newVisited,
             chaptersCompleted: newChapters,
+            history: newHistory,
           };
         });
       },
 
       makeChoice: (choiceId, nextPage, tag, chapter) => {
         set((state) => {
+          const newHistory = [...state.history, state.currentPageId].slice(-MAX_HISTORY);
           const newTags = tag ? [...state.chosenTags, tag] : state.chosenTags;
           const newVisited = [...new Set([...state.visitedPages, nextPage])];
           const newChapters = chapter && !state.chaptersCompleted.includes(chapter)
@@ -60,6 +87,7 @@ export const useStoryStore = create<StoryStore>()(
             visitedPages: newVisited,
             chosenTags: newTags,
             chaptersCompleted: newChapters,
+            history: newHistory,
           };
         });
       },
@@ -81,13 +109,29 @@ export const useStoryStore = create<StoryStore>()(
         }));
       },
 
+      goBack: () => {
+        const state = get();
+        if (state.history.length === 0) return null;
+        const newHistory = [...state.history];
+        const previousPageId = newHistory.pop()!;
+        set({
+          currentPageId: previousPageId,
+          history: newHistory,
+        });
+        return previousPageId;
+      },
+
       restart: () => {
         set({
-          ...initialState,
+          ...storyInitialState,
           startedAt: Date.now(),
           visitedPages: ['prologue'],
         });
       },
+
+      setFontSize: (size) => set({ fontSize: size }),
+      setSoundEnabled: (enabled) => set({ soundEnabled: enabled }),
+      setAutoContinue: (enabled) => set({ autoContinue: enabled }),
     }),
     {
       name: 'souhayl-journey-v1',

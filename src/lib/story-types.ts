@@ -1,3 +1,5 @@
+export type MoodType = 'prologue' | 'wonder' | 'darkness' | 'wisdom' | 'danger' | 'peace' | 'triumph' | 'ending';
+
 export interface Choice {
   id: string;
   text: string;
@@ -12,7 +14,7 @@ export interface StoryPage {
   chapterTitle: string;
   title?: string;
   paragraphs: string[];
-  mood: 'prologue' | 'wonder' | 'darkness' | 'wisdom' | 'danger' | 'peace' | 'triumph' | 'ending';
+  mood: MoodType;
   choices?: Choice[];
   next?: string;
   isChapterStart?: boolean;

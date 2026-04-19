@@ -1,8 +1,9 @@
 'use client';
 
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, Sparkles, Hand } from 'lucide-react';
+import { useStoryStore } from '@/store/story-store';
 import type { StoryPage } from '@/lib/story-types';
 import StoryIllustration from '@/components/book/StoryIllustration';
 
@@ -11,9 +12,23 @@ interface StoryPageViewProps {
   onContinue: () => void;
 }
 
+const fontSizeClasses: Record<string, string> = {
+  sm: 'text-sm sm:text-base',
+  md: 'text-base sm:text-lg',
+  lg: 'text-lg sm:text-xl',
+};
+
+const AUTO_CONTINUE_DELAY = 4000;
+
 export default function StoryPageView({ page, onContinue }: StoryPageViewProps) {
+  const fontSize = useStoryStore((s) => s.fontSize);
+  const autoContinue = useStoryStore((s) => s.autoContinue);
   const baseDelay = page.paragraphs.length * 0.15 + 0.3;
   const isLinear = !page.choices && !!page.next;
+  const autoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Font size class for paragraphs
+  const paragraphFontClass = fontSizeClasses[fontSize] || fontSizeClasses.md;
 
   // Keyboard listener for spacebar/enter to continue
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -27,6 +42,28 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
+
+  // Auto-continue timer
+  useEffect(() => {
+    if (autoTimerRef.current) {
+      clearTimeout(autoTimerRef.current);
+      autoTimerRef.current = null;
+    }
+
+    if (autoContinue && isLinear) {
+      // Wait for animations to complete, then start the auto-continue delay
+      const animDelay = (baseDelay + 1.5) * 1000;
+      autoTimerRef.current = setTimeout(() => {
+        onContinue();
+      }, animDelay + AUTO_CONTINUE_DELAY);
+    }
+
+    return () => {
+      if (autoTimerRef.current) {
+        clearTimeout(autoTimerRef.current);
+      }
+    };
+  }, [autoContinue, isLinear, onContinue, page.id]);
 
   // For linear pages, make the entire page clickable
   const handlePageClick = useCallback(() => {
@@ -56,6 +93,7 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="font-serif text-2xl sm:text-3xl text-amber-100 font-bold mb-8 text-center"
+            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
           >
             {page.title}
           </motion.h3>
@@ -69,7 +107,8 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.15, duration: 0.8 }}
-              className="font-serif text-base sm:text-lg text-amber-100/80 leading-relaxed text-justify sm:text-left"
+              className={`font-serif ${paragraphFontClass} text-amber-100/80 leading-relaxed text-justify sm:text-left`}
+              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
             >
               {paragraph}
             </motion.p>
@@ -142,18 +181,35 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
             </button>
 
             {/* Tap-to-continue hint with pulse animation */}
-            <motion.p
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="flex items-center gap-1.5 text-amber-600/40 text-[11px] font-serif select-none"
-            >
-              <Hand className="w-3 h-3" />
-              <span>Touchez n&apos;importe où pour continuer</span>
-            </motion.p>
+            {!autoContinue && (
+              <motion.p
+                animate={{ opacity: [0.3, 0.7, 0.3] }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                className="flex items-center gap-1.5 text-amber-600/40 text-[11px] font-serif select-none"
+              >
+                <Hand className="w-3 h-3" />
+                <span>Touchez n&apos;importe où pour continuer</span>
+              </motion.p>
+            )}
+
+            {/* Auto-continue indicator */}
+            {autoContinue && (
+              <motion.p
+                animate={{ opacity: [0.2, 0.5, 0.2] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                className="flex items-center gap-1.5 text-amber-600/30 text-[11px] font-serif select-none"
+              >
+                <span>📖 Lecture automatique...</span>
+              </motion.p>
+            )}
           </motion.div>
         )}
       </div>
