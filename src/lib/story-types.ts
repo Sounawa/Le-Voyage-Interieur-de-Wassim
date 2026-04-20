@@ -19,7 +19,7 @@ export interface StoryPage {
   next?: string;
   isChapterStart?: boolean;
   isEnding?: boolean;
-  endingType?: 'light' | 'wisdom' | 'shadow' | 'pure';
+  endingType?: 'light' | 'fraternal' | 'guardian' | 'dream';
   shaykhSpeaks?: string;
   zakiSpeaks?: string;
   illustrationPrompt?: string;
