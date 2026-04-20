@@ -3,30 +3,31 @@ import type { StoryPage } from '@/lib/story-types';
 export const storyPages: Record<string, StoryPage> = {
 
   // ═══════════════════════════════════════════
-  // PROLOGUE : LE GRENIER DE MÉMÉ
+  // PROLOGUE : LA CHAMBRE DE WASSIM
   // ═══════════════════════════════════════════
   prologue: {
     id: 'prologue',
     chapter: 0,
-    chapterTitle: 'Le Grenier de Mémé',
+    chapterTitle: 'La Chambre de Wassim',
     paragraphs: [
-      `Il pleuvait sur le petit village ce jeudi après-midi, et Nawfel était assis en haut de l'escalier, les genoux contre la poitrine, dans le grenier de Mémé Khadija. En bas, il entendait la voix de Souhayl — son grand frère — qui lisait dans son grand livre, assis près de la cheminée avec un air sérieux et important.`,
-      `Nawfel soupira. Souhayl avait toujours tout : il était plus grand, plus fort, plus intelligent. Mémé disait que Souhayl avait « le cœur d'un lion ». Et lui ? Il avait huit ans — bientôt neuf, se disait-il — mais il se sentait toujours trop petit, trop jeune, comme une ombre derrière son frère.`,
-      `Il se leva et commença à fouiller les vieilles boîtes poussiéreuses du grenier. Des robes anciennes, des albums photos jaunis, un coucou cassé... Et puis, tout au fond, sous un vieux plaid, il trouva un carnet en cuir. La couverture était ornée de motifs d'étoiles argentées qui brillaient faiblement dans la pénombre, comme si le carnet respirait.`,
+      `Wassim a six ans. Bientôt sept ! Il est le plus petit de la famille. Son grand frère Souhayl a dix ans. Et Nawfel, son autre frère, en a huit.`,
+      `Aujourd'hui, Wassim est dans sa chambre. Il dessine des couleurs sur une feuille. Du rouge, du jaune, du bleu, du vert. Il adore les couleurs !`,
+      `Soudain, il entend un petit bruit. « Chuuut... chuuut... » Ça vient de sous son lit !`,
     ],
     mood: 'prologue',
     next: 'prologue-2',
     isChapterStart: true,
+    illustrationPrompt: 'A cute 6-year-old boy with curly dark hair sitting on the floor of his colorful bedroom, drawing with crayons, toys scattered around, warm afternoon light, children book illustration style, bright and cheerful',
   },
 
   'prologue-2': {
     id: 'prologue-2',
     chapter: 0,
-    chapterTitle: 'Le Grenier de Mémé',
+    chapterTitle: 'La Chambre de Wassim',
     paragraphs: [
-      `Nawfel ouvrit le carnet avec précaution. Et soudain — une lumière argentée jaillit comme de l'eau, coulant entre ses doigts, inondant le grenier d'une lueur douce et froide. Les vieilles poutres de bois disparurent. Les boîtes Poussiéreuses fondirent. Le monde entier se dissout.`,
-      `Quand la lumière se calma, Nawfel se tenait debout au milieu d'une vaste prairie. L'herbe sous ses pieds était d'un argent brillant, et le ciel au-dessus de lui était d'un noir profond — sans une seule étoile. Pas même la lune. Juste l'obscurité.`,
-      `Et puis, une voix. Petite, fine, comme un écho lointain venant du sol. « Enfin... quelqu'un... » murmura-t-elle, à peine audible. Nawfel baissa les yeux.`,
+      `Wassim regarde sous son lit. Et là, il voit un livre ! Un livre de coloriage. Mais pas un livre normal. La couverture brille avec toutes les couleurs de l'arc-en-ciel !`,
+      `Le livre est chaud dans ses mains. Il vibre doucement, comme un petit cœur. Wassim l'ouvre avec précaution. Les pages sont toutes grises. Pas de couleurs. Même pas une seule !`,
+      `Mais au milieu du livre, il y a un mot écrit en lettres dorées : « Aide-nous, Wassim. »`,
     ],
     mood: 'wonder',
     next: 'prologue-3',
@@ -35,34 +36,45 @@ export const storyPages: Record<string, StoryPage> = {
   'prologue-3': {
     id: 'prologue-3',
     chapter: 0,
-    chapterTitle: 'Le Grenier de Mémé',
+    chapterTitle: 'La Chambre de Wassim',
     paragraphs: [
-      `Par terre, à ses pieds, une petite étoile tremblait. Elle n'était pas plus grande qu'une pomme, et sa lumière clignotait faiblement, comme une bougie sur le point de s'éteindre. Elle leva vers lui ce qui ressemblait à un petit visage — deux points de lumière pour les yeux, une courbe brillante pour la bouche.`,
-      `— « Je m'appelle Lumina, dit-elle d'une voix tremblante mais fière. Je suis une étoile tombée. Le Royaume des Étoiles a perdu sa lumière. Les enfants ont oublié de rêver, et sans rêves... les étoiles meurent. » Elle toussa un petit éclat de lumière. « Tu es Nawfel, n'est-ce pas ? Le Cœur d'Argent de la prophétie ? »`,
-      `Nawfel la regarda, incrédule. Lui ? Un héros de prophétie ? C'était plutôt le genre de chose qui arrivait à Souhayl, pas à lui. Mais Lumina le fixait avec ses yeux de lumière, attendant. Que devait-il faire ?`,
+      `Wassim touche les lettres dorées. Et POUF ! La lumière l'entoure. Il tourne comme dans une toupie magique. Sa chambre disparaît.`,
+      `Quand la lumière s'arrête, Wassim est debout dans un monde tout gris. Les arbres sont gris. Le ciel est gris. L'herbe est grisée. Même les fleurs sont grises !`,
+      `C'est un monde sans couleurs. Wassim regarde partout. Il n'y a pas un seul rouge, pas un seul jaune. Que du gris, du gris, du gris. Et c'est très, très triste.`,
+    ],
+    mood: 'wonder',
+    next: 'prologue-choice',
+  },
+
+  'prologue-choice': {
+    id: 'prologue-choice',
+    chapter: 0,
+    chapterTitle: 'La Chambre de Wassim',
+    paragraphs: [
+      `Wassim regarde ce monde gris. Il se sent tout petit. Mais il sait qu'il doit faire quelque chose. Les couleurs ont disparu, et il est le seul qui peut les retrouver !`,
     ],
     mood: 'wonder',
     choices: [
       {
-        id: 'pick-up',
-        text: 'Serrer Lumina contre lui — « Ne t\'inquiète pas ! Je vais t\'aider à retrouver la lumière ! »',
+        id: 'brave-hello',
+        text: '« Bonjour le monde gris ! Je suis Wassim et je vais vous aider ! »',
         nextPage: 'prologue-a1',
         tag: 'courage',
         emoji: '🌟',
       },
       {
-        id: 'ask-gently',
-        text: 'Demander doucement — « Comment puis-je aider ? Dis-moi tout. »',
+        id: 'curious-look',
+        text: 'Regarder partout avec de grands yeux émerveillés.',
         nextPage: 'prologue-a2',
-        tag: 'empathy',
-        emoji: '💙',
+        tag: 'curiosity',
+        emoji: '👀',
       },
       {
-        id: 'look-around',
-        text: 'Regarder autour avec émerveillement — « C\'est magnifique... Où sommes-nous ? »',
+        id: 'gentle-touch',
+        text: 'Toucher doucement une fleur grise pour la réchauffer.',
         nextPage: 'prologue-a3',
-        tag: 'curiosity',
-        emoji: '✨',
+        tag: 'kindness',
+        emoji: '🤲',
       },
     ],
   },
@@ -70,977 +82,1091 @@ export const storyPages: Record<string, StoryPage> = {
   'prologue-a1': {
     id: 'prologue-a1',
     chapter: 0,
-    chapterTitle: 'Le Grenier de Mémé',
+    chapterTitle: 'La Chambre de Wassim',
     paragraphs: [
-      `Nawfel ramassa Lumina dans ses deux mains. Elle était légère comme du coton et tiède comme un petit chat endormi. Et quand ses doigts se refermèrent autour d'elle, sa lumière devint plus forte — un doux halo argenté qui illuminait son visage.`,
-      `— « Oh ! murmura Lumina, surprise. Tu as le toucher, Nawfel. Pas la force brute — la douceur. C'est très rare. La plupart des héros essaient d'éteindre les étoiles en les serrant trop fort. Toi, tu les rallumes. » Elle pivota dans ses mains comme un petit soleil. « Viens. Je vais te montrer le chemin vers le Royaume. »`,
-      `Nawfel sourit. Pour la première fois de sa vie, quelqu'un disait qu'il avait quelque chose de spécial. Quelque chose que même Souhayl n'avait pas.`,
+      `Wassim crie « Bonjour ! » très fort. Sa voix fait trembler les arbres gris. Les oiseaux gris se posent sur les branches et le regardent. Ils sont curieux !`,
+      `— « Oh ! dit un petit oiseau gris. Quelqu'un qui parle ! Ça fait longtemps que personne n'a ri ici. » Wassim sourit. Il aime quand les animaux lui parlent.`,
+      `Le petit oiseau le regarde avec ses yeux ronds. « Tu es venu pour les couleurs, n'est-ce pas ? Suis-moi ! »`,
     ],
     mood: 'wonder',
-    zakiSpeaks: 'Tu sais, la plupart des héros pensent que sauver quelqu\'un, c\'est le porter jusqu\'au bout. Mais toi, tu as compris que c\'est juste le ramasser avec douceur. Intelligence ou chance ?',
     next: 'ch1-start',
   },
 
   'prologue-a2': {
     id: 'prologue-a2',
     chapter: 0,
-    chapterTitle: 'Le Grenier de Mémé',
+    chapterTitle: 'La Chambre de Wassim',
     paragraphs: [
-      `— « Comment puis-je aider ? » demanda Nawfel en s'accroupissant près de l'étoile. Ses yeux brillaient de curiosité et de sincérité. Pas de bravade, pas de promesses en l'air. Juste une question simple, posée avec le cœur.`,
-      `Lumina cligna de ses yeux lumineux, visiblement touchée. « Personne ne demande jamais comment, murmura-t-elle. Ils veulent juste sauver le monde en courant. Mais toi... » Elle s'illumina un peu plus. « Il y a quatre Fragments d'Étoile cachés dans quatre royaumes différents. Chacun est gardé par un Gardien. Si tu les réunis tous, le ciel retrouvera sa lumière. »`,
-      `— « Et si je n'y arrive pas ? » demanda Nawfel. Lumina sourit — un sourire fait d'éclats dorés. « C'est justement parce que tu poses cette question que tu vas y arriver, Cœur d'Argent. »`,
+      `Wassim ouvre grand ses yeux. Il regarde les arbres, les fleurs, le ciel. Même en gris, ce monde est joli. Les formes sont douces. Les nuages sont moelleux comme du coton.`,
+      `Il marche sur l'herbe grise. Elle est douce sous ses pieds. C'est comme marcher sur un tapis de nuage. « Waouh, » murmure-t-il.`,
+      `Et là, il voit quelque chose bouger. Quelque chose de brillant. Pas gris. Un tout petit éclat de lumière qui vole vers lui !`,
     ],
-    mood: 'peace',
+    mood: 'wonder',
     next: 'ch1-start',
   },
 
   'prologue-a3': {
     id: 'prologue-a3',
     chapter: 0,
-    chapterTitle: 'Le Grenier de Mémé',
+    chapterTitle: 'La Chambre de Wassim',
     paragraphs: [
-      `Nawfel tourna la tête dans tous les sens, les yeux écarquillés. La prairie argentée s'étendait à perte de vue, ondulant doucement comme un océan de soie. Au loin, des collines de cristal scintillaient, et des arbres aux feuilles translucides brillaient d'un éclat doux.`,
-      `— « C'est magnifique... » souffla-t-il. Lumina flotta jusqu'à son épaule et se posa comme un petit oiseau. « Curieux comme ton frère, dit-elle avec un petit rire. Mais plus doux. Souhayl aurait demandé 'où est le danger' en premier. Toi, tu vois la beauté d'abord. »`,
-      `Elle montra l'horizon du bout de sa queue lumineuse. « Le Royaume des Étoiles t'attend, Nawfel. Il est magnifique... et triste. Viens, je vais te tout montrer. »`,
+      `Wassim s'accroupit près d'une petite fleur grise. Il la touche doucement avec le doigt. « Pauvre petite fleur, » dit-il tout bas. « Tu dois avoir froid sans tes couleurs. »`,
+      `Et un petit miracle arrive. La fleur tremble. Un tout petit peu de rose apparaît sur un pétale. Juste un peu. Comme une joue qui rougit.`,
+      `La fleur se redresse et sourit. Oui, elle sourit ! « Merci, Wassim, » chuchote-t-elle. « Tu as un cœur doux. Suis le chemin des papillons ! »`,
     ],
     mood: 'wonder',
-    zakiSpeaks: 'Souhayl aurait demandé où est le danger. Toi, tu te demandes si les fleurs argentées sentent bon. Je ne sais pas si c\'est de la sagesse ou de la distraction, mais j\'adore.',
     next: 'ch1-start',
   },
 
   // ═══════════════════════════════════════════
-  // CHAPTER 1: LE ROYAUME DES ÉTOILES PERDUES
+  // CHAPTER 1: LE PAYS SANS COULEURS
   // ═══════════════════════════════════════════
   'ch1-start': {
     id: 'ch1-start',
     chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
+    chapterTitle: 'Le Pays Sans Couleurs',
     paragraphs: [
-      `Le Royaume des Étoiles aurait dû être le plus bel endroit du monde. Des sentiers d'argent serpentinaient entre des fontaines de cristal, des ponts de lumière enjambaient des rivières de poussière d'étoile, et des maisons sculptées dans la roche lunaire se dressaient comme des palais miniature.`,
-      `Mais il n'y avait aucune étoile dans le ciel. Aucune. Juste un noir immense et vide. Et le royaume était silencieux — pas un rire, pas un chant, pas une voix d'enfant qui rêve. Lumina expliqua tout en flottant à côté de Nawfel.`,
-      `— « Quatre Gardiens protégeaient autrefois quatre Fragments d'Étoile. Le Gardien du Labyrinthe, la Gardienne de la Forêt, le Gardien de l'Océan et le Gardien de la Montagne. Chacun a caché son fragment dans son royaume. Tu devras les retrouver tous les quatre. »`,
+      `Le Pays Sans Couleurs est grand et triste. Tout est gris. Les montagnes sont grises. Les rivières sont grises. Les maisons sont grises aussi.`,
+      `Les gens du pays marchent lentement. Ils ne sourient pas. Ils ne chantent pas. Sans couleurs, il n'y a pas de joie. Pas de rires. Pas de jeux.`,
+      `Mais Wassim n'est pas triste. Il est curieux. Et il est prêt pour l'aventure !`,
     ],
     mood: 'wonder',
-    next: 'ch1-bridge',
+    next: 'ch1-grey',
     isChapterStart: true,
-    illustrationPrompt: 'A vast magical kingdom made of silver and crystal with no stars in the dark sky, paths of starlight, crystal fountains, moonstone houses, a small boy walking with a tiny glowing star on his shoulder, fantasy children book illustration, silver and midnight blue tones',
+    illustrationPrompt: 'A vast grey world with grey mountains, grey rivers, grey trees, grey sky, a small boy standing in the middle looking curious and brave, soft muted tones, fantasy children book illustration',
   },
 
-  'ch1-bridge': {
-    id: 'ch1-bridge',
+  'ch1-grey': {
+    id: 'ch1-grey',
     chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
+    chapterTitle: 'Le Pays Sans Couleurs',
     paragraphs: [
-      `Le premier royaume n'était pas loin, mais pour y arriver, il fallait traverser le Pont de Cristal — un pont étroit et fragile qui enjambait un gouffre sans fond. En bas, une brume argentée tourbillonnait comme un dragon endormi, et Nawfel ne pouvait pas voir le fond.`,
-      `Le pont lui-même était fait de cristaux translucides qui résonnaient doucement quand le vent passait, comme des clochettes. Chaque pas de Nawfel faisait chanter les cristaux d'une note différente — un petit concerto sous ses pieds.`,
-      `Et puis, quand il arriva au milieu du pont, une voix profonde résonna depuis les cristaux eux-mêmes : « Voyageur... que faut-il pour traverser ? » Le pont tremblait légèrement, attendant sa réponse.`,
+      `Wassim marche sur le chemin gris. Ses pieds font « cric, crac » sur les petites pierres. Le vent souffle doucement, mais il n'apporte aucune odeur de fleurs.`,
+      `Tout au loin, il voit un pont. Le pont est fait de pierres grises. De l'autre côté, il y a une grande porte. La porte brille un tout petit peu. Comme si une couleur essayait de sortir.`,
+      `Wassim court vers le pont. Son cœur bat vite. Il est excité !`,
     ],
     mood: 'wonder',
-    next: 'ch1-bridge-choice',
+    next: 'ch1-papillon',
   },
 
-  'ch1-bridge-choice': {
-    id: 'ch1-bridge-choice',
+  'ch1-papillon': {
+    id: 'ch1-papillon',
     chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
+    chapterTitle: 'Le Pays Sans Couleurs',
     paragraphs: [
-      `La voix du pont vibrait dans l'air, patiente mais pressante. Les cristaux sous les pieds de Nawfel pulsait doucement, comme un cœur. Il devait répondre — et sa réponse déterminerait si le pont le laisserait passer ou le laisserait tomber.`,
-      `Lumina resta silencieuse. C'était son épreuve à lui.`,
+      `Sur le pont, quelqu'un l'attend. Quelqu'un de très petit. De très joli. C'est un papillon ! Mais un papillon spécial. Ses ailes ont des traces de couleurs. Un peu de bleu, un peu de rose.`,
+      `— « Bonjour, Wassim ! dit le papillon d'une voix douce comme une chanson. Je m'appelle Papillon. Je suis le dernier à avoir encore un peu de couleurs sur moi. »`,
+      `Le papillon vole autour de Wassim. Ses ailes laissent des petits trails de lumière. C'est magique !`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-papillon-talk',
+  },
+
+  'ch1-papillon-talk': {
+    id: 'ch1-papillon-talk',
+    chapter: 1,
+    chapterTitle: 'Le Pays Sans Couleurs',
+    paragraphs: [
+      `Papillon se pose sur le nez de Wassim. C'est drôle ! Wassim plisse les yeux et rigole.`,
+      `— « Écoute-moi bien, petit Wassim, dit Papillon. Il y a quatre royaumes de couleurs. Le Rouge, le Jaune, le Bleu et le Vert. Chaque royaume a perdu sa couleur magique. Tu dois les retrouver toutes ! »`,
+      `— « Toutes les quatre ? » demande Wassim. — « Oui ! dit Papillon. Et je serai avec toi pour t'aider. Ensemble, on est plus forts ! »`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-choice',
+  },
+
+  'ch1-choice': {
+    id: 'ch1-choice',
+    chapter: 1,
+    chapterTitle: 'Le Pays Sans Couleurs',
+    paragraphs: [
+      `Papillon montre le chemin avec son aile. Il y a quatre portes devant Wassim. Mais une seule est ouverte : la porte rouge. Les autres sont fermées avec de grosses chaînes grises.`,
+      `— « On commence par le Rouge, dit Papillon. Le Royaume Rouge a besoin de courage. Es-tu prêt, Wassim ? » Wassim serre les poings. Il est prêt !`,
     ],
     mood: 'wonder',
     choices: [
       {
-        id: 'bridge-strength',
-        text: '« De la force ! Un vrai héros n\'a besoin que de ça ! »',
-        nextPage: 'ch1-b1',
-        tag: 'boldness',
-        emoji: '💪',
+        id: 'lets-go',
+        text: '« On y va ! Je suis courageux ! »',
+        nextPage: 'ch1-c1',
+        tag: 'courage',
+        emoji: '❤️',
       },
       {
-        id: 'bridge-trust',
-        text: '« De la confiance. Il faut croire que l\'on peut traverser. »',
-        nextPage: 'ch1-b2',
-        tag: 'trust',
-        emoji: '🤝',
-      },
-      {
-        id: 'bridge-friendship',
-        text: '« De l\'amitié — Lumina est avec moi. Je ne suis pas seul. »',
-        nextPage: 'ch1-b3',
+        id: 'hold-hand',
+        text: '« Papillon, reste avec moi, d\'accord ? »',
+        nextPage: 'ch1-c2',
         tag: 'friendship',
-        emoji: '💛',
-      },
-    ],
-  },
-
-  'ch1-b1': {
-    id: 'ch1-b1',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Le pont trembla violemment. « La force seule ne suffit pas ! » gronda la voix. Les cristaux se fissurèrent sous les pieds de Nawfel, et il faillit perdre l'équilibre. Son cœur s'arrêta une seconde.`,
-      `Mais le pont ne s'effondra pas. Il se stabilisa, à moitié fissuré mais encore solide. Nawfel traversa en courant, le souffle court. Quand il arriva de l'autre côté, il s'effondra sur l'herbe argentée, le cœur battant.`,
-      `Lumina se posa sur son genou. « Il a raison, tu sais. La force, c'est bien. Mais c'est comme un marteau — ça peut construire ou détruire. Tout dépend de la main qui le tient. »`,
-    ],
-    mood: 'danger',
-    next: 'ch1-city',
-  },
-
-  'ch1-b2': {
-    id: 'ch1-b2',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Les cristaux du pont s'illuminèrent d'un éclat doré. « Bien dit, » murmura la voix, presque tendre. Le pont devint lisse et solide sous les pieds de Nawfel, et une douce lumière le guida jusqu'à l'autre rive.`,
-      `Chaque pas résonnait d'une note claire et pure, comme une mélodie ancienne. Nawfel traversa sans difficulté, le cœur léger. Il sentait la confiance du pont sous ses pieds — comme si le monde entier l'encourageait.`,
-      `Lumina sourit. « La confiance est plus rare que le courage, Nawfel. N'importe qui peut être courageux un instant. Mais faire confiance — au pont, au chemin, à soi-même — ça demande quelque chose de plus profond. »`,
-    ],
-    mood: 'peace',
-    next: 'ch1-city',
-  },
-
-  'ch1-b3': {
-    id: 'ch1-b3',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Les cristaux du pont firent une explosion d'étincelles. « L'amitié... oui, » souffla la voix, émue. Et le pont tout entier se transforma — les cristaux devinrent de l'or pur, brillant comme le soleil, et une douce chaleur monta dans les pieds de Nawfel.`,
-      `Il traversa sur un pont d'or massif, chaque pas laissant une empreinte lumineuse derrière lui. Et Lumina... Lumina pleurait. De petites larmes de lumière coulaient sur ses joues étoilées. « Tu... tu as mentionné moi ? dit-elle, la voix étranglée. Personne n'a jamais dit que j'étais importante. »`,
-      `— « Mais bien sûr que tu es importante, dit Nawfel simplement. Sans toi, je serais encore dans le grenier à chercher des boîtes poussiéreuses. » Lumina éclata de rire — un rire qui fit naître trois petites étoiles dans le ciel noir.`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-city',
-  },
-
-  'ch1-city': {
-    id: 'ch1-city',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `La Cité de Cristal s'élevait devant Nawfel comme un rêve de glace et de lumière. Des tours fines comme des aiguilles montaient vers le ciel vide, des dômes translucides capturent la moindre lueur, et des escaliers en colimaçon descendaient vers des jardins suspendus plein de fleurs luminescentes.`,
-      `C'était magnifique. Mais c'était silencieux. Terriblement silencieux. Et sur les toits des maisons, Nawfel vit des étoiles — des étoiles tombées, comme Lumina, assises en rond et immobiles, leurs lueurs réduites à un filet à peine visible. Elles avaient perdu leur éclat.`,
-      `Au centre de la ville, sur un trône de cristal, un vieux hibou attendait. Ses plumes étaient faites de cristaux, ses yeux de deux saphirs profonds, et sa voix résonnait comme un carillon ancien.`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-keeper',
-  },
-
-  'ch1-keeper': {
-    id: 'ch1-keeper',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `— « Je suis le Gardien des Étoiles, dit le hibou. Jadis, je veillais sur mille étoiles. Maintenant, je veille sur des cendres. » Il fixa Nawfel de ses yeux saphir. « Le premier Fragment est caché dans le Labyrinthe des Doutes, juste derrière la ville. »`,
-      `Il se pencha en avant, et ses plumes de cristal tintinnelèrent. « Mais je te préviens, petit voyageur : le Labyrinthe te montrera des choses que tu ne voudras pas voir. Tes pires doutes. Tes plus grandes peurs. Les pensées que tu caches même à toi-même. »`,
-      `Nawfel déglutit. Lumina serra contre son cou. Le hibou les regarda tous les deux, puis ajouta doucement : « Mémé Khadija disait toujours une chose... »`,
-    ],
-    mood: 'wisdom',
-    shaykhSpeaks: 'Mémé Khadija disait toujours : « Le doute est comme la pluie — inconfortable, mais il fait pousser les choses belles. Ne fuis pas l\'orage, Nawfel. Danse dedans. »',
-    next: 'ch1-maze',
-  },
-
-  'ch1-maze': {
-    id: 'ch1-maze',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Le Labyrinthe des Doutes était fait de murs de cristal qui reflétaient tout — le ciel, le sol, et surtout Nawfel. Mais les reflets n'étaient pas normaux. En regardant dans les murs, il se vit sous des formes différentes : un Nawfel minuscule, pas plus grand qu'une fourmi. Un Nawfel avec des lunettes épaisses et des livres empilés. Un Nawfel en larmes.`,
-      `Les murs murmuraient : « Trop petit... Trop jeune... Pas assez intelligent comme Souhayl... Toujours dans l'ombre... Tu n'es qu'un bébé... » Les mots venaient de partout, portés par le cristal, et ils s'enfonçaient dans la poitrine de Nawfel comme des aiguilles froides.`,
-      `Il essaya de avancer, mais chaque couloir ressemblait au précédent. Chaque mur reflétait une nouvelle version de lui — pire, plus triste, plus ridicule. Son cœur battait fort. Ses jambes tremblaient. Les murmures devenaient des voix, et les voix devenaient des cris.`,
-    ],
-    mood: 'darkness',
-    next: 'ch1-maze-choice',
-  },
-
-  'ch1-maze-choice': {
-    id: 'ch1-maze-choice',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Les reflets se mirent à bouger. Le Nawfel-minuscule pointa son doigt vers lui. Le Nawfel-pleureur se moqua. Les murs se rapprochèrent, les voix montèrent. Nawfel sentit la panique monter dans sa gorge comme de l'eau chaude. Il devait faire quelque chose — maintenant.`,
-    ],
-    mood: 'darkness',
-    choices: [
-      {
-        id: 'maze-yell',
-        text: 'Crier — « Je ne suis pas trop petit ! Laissez-moi passer ! »',
-        nextPage: 'ch1-m1',
-        tag: 'defiance',
-        emoji: '😤',
+        emoji: '🦋',
       },
       {
-        id: 'maze-close-eyes',
-        text: 'Fermer les yeux et écouter son cœur — ne plus regarder les murs.',
-        nextPage: 'ch1-m2',
-        tag: 'inner-peace',
-        emoji: '🧘',
-      },
-      {
-        id: 'maze-touch',
-        text: 'Tendre la main et toucher le reflet avec douceur.',
-        nextPage: 'ch1-m3',
-        tag: 'acceptance',
-        emoji: '🤲',
+        id: 'think-first',
+        text: '« Attends, je veux bien réfléchir d\'abord. »',
+        nextPage: 'ch1-c3',
+        tag: 'wisdom',
+        emoji: '🧠',
       },
     ],
   },
 
-  'ch1-m1': {
-    id: 'ch1-m1',
+  'ch1-c1': {
+    id: 'ch1-c1',
     chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
+    chapterTitle: 'Le Pays Sans Couleurs',
     paragraphs: [
-      `— « JE NE SUIS PAS TROP PETIT ! » hurla Nawfel. Sa voix fit vibrer les murs de cristal. Les reflets se brisèrent — un, deux, trois éclats — et le labyrinthe trembla comme dans un tremblement de terre. Pour un instant, les murmures s'arrêtèrent.`,
-      `Mais les reflets se reformèrent. Plus insistants. Plus méchants. « Tu cries parce que tu sais que c'est vrai, » murmurèrent-ils. Le labyrinthe se referma autour de Nawfel, les couloirs devenant de plus en plus étroits. Lumina essaya de le calmer.`,
-      `— « Le courage, oui, dit-elle doucement. Mais pas la colère. La colère te rend aussi petit que les murs le disent. Respire, Nawfel. » Il ferma les yeux. Respira. Et lentement, un couloir s'ouvrit devant lui, menant à une petite alcôve où brillait un éclat de lumière argentée — le premier Fragment.`,
-    ],
-    mood: 'danger',
-    next: 'ch1-fragment',
-  },
-
-  'ch1-m2': {
-    id: 'ch1-m2',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Nawfel ferma les yeux. Totalement. Les murs disparurent. Les reflets n'existaient plus. Il n'y avait que lui, debout dans le noir, et... son propre cœur. Le battement, fort et régulier, comme un tambour dans sa poitrine.`,
-      `Boum. Boum. Boum. Avec chaque battement, une couleur apparaissait derrière ses paupières — du rouge, puis de l'or, puis de l'argent. Son cœur ne doutait pas. Son cœur n'avait jamais douté. C'étaient les murs qui doutaient, pas lui.`,
-      `Quand il rouvrit les yeux, le labyrinthe avait disparu. Les murs de cristal étaient tombés en poussière d'argent, et devant lui, sur un piédestal de cristal, un petit fragment d'étoile pulsait doucement. « Ton cœur est plus fort que tes doutes, » murmura Lumina avec un sourire ému.`,
-    ],
-    mood: 'peace',
-    next: 'ch1-fragment',
-  },
-
-  'ch1-m3': {
-    id: 'ch1-m3',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Nawfel s'approcha lentement du mur et tendit la main. Ses doigts touchèrent la surface froide du cristal — et le reflet ne recula pas. Le Nawfel-triste le regarda, attendait. Nawfel posa sa paume contre la surface avec douceur, comme on caresse un visage.`,
-      `Le reflet sourit. Et murmura : « Tu t'aimes ? » La question flotta dans l'air comme une bulle de savon. Nawfel hésita. Puis, tout doucement : « Je... j'essaie. » Le sourire du reflet s'élargit. « Essayer, c'est déjà aimer. » Le mur se fissura, et derrière, le Fragment l'attendait.`,
-      `— « L'acceptation, dit Lumina d'une voix songeuse. C'est le courage le plus doux. Et le plus rare. » Nawfel prit le Fragment entre ses mains. Il était chaud et vivant.`,
-    ],
-    mood: 'wisdom',
-    next: 'ch1-fragment',
-  },
-
-  'ch1-fragment': {
-    id: 'ch1-fragment',
-    chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
-    paragraphs: [
-      `Le premier Fragment d'Étoile ! Un petit cristal pas plus grand qu'un pouce, qui pulsait d'une lumière argentée et tiède. Nawfel le tenait dans le creux de sa main, et il sentait quelque chose de magique — comme un mini-soleil qui ne brûlait pas, qui réchauffait sans faire mal.`,
-      `Lumina s'illumina d'un éclat plus vif. « Un sur quatre ! » chanta-t-elle en tournant autour de Nawfel comme un petit feu d'artifice. « Tu vois ? Je te l'avais dit — tu as le toucher ! » Le Fragment flotta hors de sa main et vint se loger au-dessus de son épaule gauche, orbitant doucement.`,
-      `Nawfel sentit quelque chose changer en lui. Pas de la force, pas de la magie — juste une certitude douce, comme une couverture chaude un soir d'hiver. Il était capable. Il était assez. C'était tout ce qu'il avait besoin de savoir.`,
+      `— « On y va ! » crie Wassim. Il court vers la porte rouge avec Papillon sur son épaule. Ses pieds font de l'étincelle sur le chemin gris.`,
+      `La porte rouge s'ouvre toute seule. Derrière, il y a un monde... rouge ! Enfin, presque rouge. C'est plutôt rouge-gris. Comme un monde de couleurs qui a perdu sa force.`,
+      `— « Bravo Wassim ! dit Papillon. Le courage, c'est quand on ose même si on a un peu peur. Et toi, tu oses ! »`,
     ],
     mood: 'triumph',
-    next: 'ch1-farewell',
+    next: 'ch1-ready',
   },
 
-  'ch1-farewell': {
-    id: 'ch1-farewell',
+  'ch1-c2': {
+    id: 'ch1-c2',
     chapter: 1,
-    chapterTitle: 'Le Royaume des Étoiles Perdues',
+    chapterTitle: 'Le Pays Sans Couleurs',
     paragraphs: [
-      `Le Gardien Hibou les attendait à la sortie de la ville, perchés sur un lampadaire de cristal. Il fit un petit signe de la tête — un salut silencieux mais respectueux. « Prochain arrêt : la Forêt des Murmures. Attention aux ombres qui parlent. Elles disent toujours des vérités déguisées en mensonges. »`,
-      `Nawfel et Lumina s'éloignèrent de la Cité de Cristal, suivant un sentier d'argent qui serpentait à travers des collines de verre. Derrière eux, les étoiles tombées sur les toits brillèrent un peu plus fort — comme si le Fragment récupéré leur avait redonné un peu d'espoir.`,
-      `Le chemin menait vers une obscurité grandissante. Des arbres immenses apparaissaient à l'horizon, leurs branches noires comme des doigts cherchant quelque chose dans le ciel vide. La Forêt des Murmures les attendait.`,
+      `— « Reste avec moi, Papillon, » dit Wassim doucement. Papillon vole et se pose sur son doigt. Ses ailes sont chaudes et douces.`,
+      `— « Bien sûr que je reste ! dit Papillon. On est amis maintenant. Les amis, ça ne s'abandonne jamais ! » Wassim sourit. Avoir un ami papillon, c'est le meilleur truc du monde !`,
+      `Ensemble, ils marchent vers la porte rouge. Elle s'ouvre doucement, comme pour les accueillir.`,
+    ],
+    mood: 'peace',
+    next: 'ch1-ready',
+  },
+
+  'ch1-c3': {
+    id: 'ch1-c3',
+    chapter: 1,
+    chapterTitle: 'Le Pays Sans Couleurs',
+    paragraphs: [
+      `Wassim s'arrête et réfléchit. Il regarde les quatre portes. La rouge. La jaune. La bleue. La verte. Il toque du doigt sur son menton, comme fait Nawfel quand il réfléchit.`,
+      `— « C'est bien de réfléchir, dit Papillon impressionné. Les gens courageux courent. Les gens sages regardent d'abord. Toi, tu regardes d'abord. C'est très bien ! »`,
+      `Wassim observe la porte rouge. Il voit une petite lumière rouge qui pulse doucement. « Elle nous attend, » dit-il. Et ils entrent ensemble.`,
+    ],
+    mood: 'wisdom',
+    next: 'ch1-ready',
+  },
+
+  'ch1-ready': {
+    id: 'ch1-ready',
+    chapter: 1,
+    chapterTitle: 'Le Pays Sans Couleurs',
+    paragraphs: [
+      `Wassim entre dans le premier royaume. Le monde change autour de lui. Le gris devient rouge. Enfin, presque rouge. C'est un rouge pâle, faible, comme une bougie qui s'éteint.`,
+      `Papillon vole au-dessus de sa tête. — « Bienvenue au Royaume Rouge, Wassim ! Ici, on apprend le courage. Et je crois que tu vas adorer ! »`,
+      `Wassim regarde autour de lui avec des yeux grands comme des assiettes. Il est prêt pour sa première aventure de couleurs !`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-leave',
+  },
+
+  'ch1-leave': {
+    id: 'ch1-leave',
+    chapter: 1,
+    chapterTitle: 'Le Pays Sans Couleurs',
+    paragraphs: [
+      `Le Royaume Rouge est magnifique, même sans toutes ses couleurs. Il y a des montagnes roses, des rivières rougeâtres, et des arbres avec des feuilles rouge-orange.`,
+      `Mais quelque chose ne va pas. Les animaux du royaume ont peur de tout. Ils se cachent. Ils tremblent. Ils ont oublié ce que c'est que d'être courageux.`,
+      `Wassim prend une grande inspiration. Comme dit Souhayl : « Le courage, ce n'est pas ne pas avoir peur. C'est avancer même quand on a peur. »`,
     ],
     mood: 'wonder',
     next: 'ch2-start',
-    illustrationPrompt: 'A crystal city at night with a boy and a small glowing star walking through silver streets, fallen stars sitting on rooftops like dim lights, no stars in the sky, silver and blue tones, fantasy illustration for children',
   },
 
   // ═══════════════════════════════════════════
-  // CHAPTER 2: LA FORÊT DES MURMURES
+  // CHAPTER 2: LE ROYAUME ROUGE
   // ═══════════════════════════════════════════
   'ch2-start': {
     id: 'ch2-start',
     chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
+    chapterTitle: 'Le Royaume Rouge',
     paragraphs: [
-      `La Forêt des Murmures n'était pas une forêt normale. Les arbres étaient immenses — plus hauts que les plus grands immeubles — et leurs feuilles n'étaient pas vertes mais d'un gris lumineux, comme de la cendre qui brille. Et chaque feuille murmurait.`,
-      `Pas des mots clairs — des chuchotements, des soupirs, des fragments de phrases qui flottaient dans l'air comme des papillons perdus. Nawfel sentait des centaines d'yeux invisibles posés sur lui. Sa nuque picotait. Lumina se blottit plus près de son cou.`,
-      `— « Les arbres murmurent les peurs de ceux qui entrent, chuchota Lumina. Ils ne sont pas méchants — ils sont comme des miroirs. Ils reflètent ce que tu as peur d'entendre. Ne les écoute pas trop. » Mais les murmures montaient déjà, comme une marée.`,
-    ],
-    mood: 'darkness',
-    next: 'ch2-whispers',
-    isChapterStart: true,
-  },
-
-  'ch2-whispers': {
-    id: 'ch2-whispers',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `Plus Nawfel avançait, plus les murmures devenaient clairs. Et ce qu'ils disaient lui glaça le sang. « Tu n'es pas assez grand... Souhayl est meilleur que toi... Tu n'arriveras jamais... Les grands ne t'écoutent pas... Tu es juste le petit frère... »`,
-      `Le pire, c'était la voix. C'était SA voix. La sienne. Les arbres ne parlaient pas avec des voix étrangères — ils utilisaient la propre voix de Nawfel, comme si son cœur avait des haut-parleurs secrets. Chaque mot lui était adressé par lui-même, à lui-même.`,
-      `Ses pas ralentirent. Les feuilles grises tremblaient autour de lui, et les murmures se transformaient en chants — une mélopée triste et monotone qui lui donnait envie de s'asseoir et de ne plus jamais se lever. Lumina tira doucement son col.`,
-    ],
-    mood: 'darkness',
-    next: 'ch2-choice-fear',
-  },
-
-  'ch2-choice-fear': {
-    id: 'ch2-choice-fear',
-    paragraphs: [
-      `Les murmures devenaient des cris. « Tu es trop petit ! Souhayl ferait mieux ! Tu n'es rien ! Rien du tout ! » Les feuilles tombaient autour de Nawfel comme des larmes grises. Le sol tremblait. Les arbres se penchaient vers lui comme des géants curieux.`,
-      `Lumina tremblait contre son épaule. « Nawfel... il faut faire quelque chose... » Sa lumière faiblissait. Les doutes de la forêt étaient si forts qu'ils commençaient même à affecter l'étoile.`,
-    ],
-    mood: 'darkness',
-    choices: [
-      {
-        id: 'run-away',
-        text: 'Couvrir ses oreilles et courir — fuir ces voix horribles !',
-        nextPage: 'ch2-f1',
-        tag: 'escape',
-        emoji: '🏃',
-      },
-      {
-        id: 'listen-patient',
-        text: 'S\'arrêter et écouter avec patience — peut-être que les arbres disent autre chose...',
-        nextPage: 'ch2-f2',
-        tag: 'patience',
-        emoji: '🧘',
-      },
-      {
-        id: 'talk-back',
-        text: 'Répondre aux arbres calmement — « Je sais que vous avez peur aussi. »',
-        nextPage: 'ch2-f3',
-        tag: 'bravery',
-        emoji: '🗣️',
-      },
-    ],
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-  },
-
-  'ch2-f1': {
-    id: 'ch2-f1',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `Nawfel courut. Il courut comme il n'avait jamais couru — les bras sur les oreilles, les yeux fermés, zigzaguant entre les troncs noirs. Les branches lui griffaient les joues, les racines lui faisaient trébucher, mais il ne s'arrêtait pas. Les murmures le suivaient, couraient avec lui.`,
-      `Il courut si longtemps qu'il finit par s'effondrer contre un arbre, haletant, les poumons brûlants. Les murmures s'étaient arrêtés. Le silence était total. Et dans ce silence, Nawfel entendit autre chose — un petit bruit, comme du verre qui pleure.`,
-      `Lumina se posa devant lui, sa lumière revenue mais faible. « Tu ne peux pas fuir tes peurs, Nawfel. Elles te connaissent mieux que ton ombre. Elles savent exactement où tu vas, parce qu'elles sont en toi. » Nawfel regarda autour de lui. Il était perdu. Mais quelque chose brillait au loin.`,
-    ],
-    mood: 'darkness',
-    next: 'ch2-ondine',
-  },
-
-  'ch2-f2': {
-    id: 'ch2-f2',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `Nawfel s'arrêta. Ferma les yeux. Et au lieu de courir, il écouta. Vraiment écouta. Les murmures étaient violents au début — « Trop petit ! Trop faible ! » — mais quand il ne réagit pas, quelque chose changea. Les voix devinrent plus douces. Plus tristes.`,
-      `« Personne ne nous écoute... Personne ne reste... » murmuraient les arbres. Leurs voix n'étaient plus méchantes — elles étaient blessées. Nawfel ouvrit les yeux et regarda les feuilles trembler. Et il comprit : les arbres ne se moquaient pas de lui. Ils avaient PEUR. Ils reflétaient ses peurs parce qu'ils étaient eux-mêmes des rêves d'enfants qui avaient eu peur.`,
-      `— « Vous aussi, vous avez peur ? » demanda-t-il doucement. Les feuilles cessèrent de trembler. Un silence étonné régna dans la forêt. Puis, tout doucement, un chemin s'ouvrit entre les arbres, comme si la forêt elle-même le remerciait.`,
-    ],
-    mood: 'wisdom',
-    next: 'ch2-ondine',
-  },
-
-  'ch2-f3': {
-    id: 'ch2-f3',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `Nawfel leva la tête et regarda les arbres droit dans leurs troncs noirs. « Je sais que vous avez peur, dit-il calmement. Moi aussi. » Sa voix était douce mais ferme, comme celle de Mémé Khadija quand elle racontait ses histoires. « Mais la peur ne nous rend pas plus petits. Elle nous rend plus humains. »`,
-      `Les murmures s'arrêtèrent. Un silence total régna dans la forêt. Puis, une voix d'arbre — plus douce que les autres — murmura : « Personne ne nous a jamais parlé comme ça... Personne n'a jamais admis avoir peur... » Les feuilles grises se mirent à briller d'un éclat doré, comme si le soleil venait de naître en elles.`,
-      `Un large chemin s'ouvrit devant Nawfel, bordé d'arbres qui inclinaient leurs branches en signe de respect. « Passe, voyageur, » chantaient les feuilles. « Passe, et que ta lumière chasse nos ombres. »`,
-    ],
-    mood: 'peace',
-    next: 'ch2-ondine',
-  },
-
-  'ch2-ondine': {
-    id: 'ch2-ondine',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `Au bord d'un petit ruisseau d'argent, une créature était assise sur une pierre. Elle avait la forme d'une larme — un corps translucide, doux et fluide, avec de grands yeux brillants comme des gouttes de pluie. Et elle pleurait. De vraies larmes — pas de la tristesse, mais des larmes de cristal qui tombaient dans le ruisseau en faisant des sons de carillon.`,
-      `— « Ne me regarde pas comme ça, » dit la créature sans lever les yeux. « Je suis perdue. Je ne retrouve plus mon chemin vers l'Océan. Je suis Ondine. Je suis un rêve... un rêve qui s'est égaré. » Sa voix était douce comme l'eau sur les galets.`,
-      `Nawfel s'agenouilla près d'elle. Elle était si petite, si fragile — comme une bulle de savon qui pourrait éclater à tout moment. Le ruisseau coulait derrière elle, et de l'autre côté, le chemin continuait. Mais Ondine ne pouvait pas traverser seule. Elle avait trop peur de l'eau.`,
-    ],
-    mood: 'darkness',
-    next: 'ch2-help-choice',
-  },
-
-  'ch2-help-choice': {
-    id: 'ch2-help-choice',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `Ondine regarda le ruisseau avec des yeux pleins de peur. « Il est trop large pour moi... Si je tombe, je me dissous dans l'eau. Je disparais. » Elle serra ses petites mains translucides. « Mais je dois traverser... L'Océan est de l'autre côté. C'est là que je dois aller. »`,
-      `Nawfel regarda le ruisseau. Il n'était pas si large — peut-être trois mètres — mais pour Ondine, c'était un océan. Comment pouvait-il l'aider ?`,
-    ],
-    mood: 'darkness',
-    choices: [
-      {
-        id: 'carry-her',
-        text: 'La porter sur son dos — « Monte ! Je te fais traverser ! »',
-        nextPage: 'ch2-h1',
-        tag: 'sacrifice',
-        emoji: '💪',
-      },
-      {
-        id: 'teach-swim',
-        text: 'Lui apprend à nager — « L\'eau n\'est pas ton ennemi, Ondine. Viens, je vais t\'apprendre. »',
-        nextPage: 'ch2-h2',
-        tag: 'teaching',
-        emoji: '🏊',
-      },
-      {
-        id: 'build-bridge',
-        text: 'Construire un pont avec des branches — utiliser son intelligence pour trouver une solution.',
-        nextPage: 'ch2-h3',
-        tag: 'creativity',
-        emoji: '🏗️',
-      },
-    ],
-  },
-
-  'ch2-h1': {
-    id: 'ch2-h1',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `— « Monte sur mon dos ! » dit Nawfel en s'accroupissant. Ondine hésita, puis se laissa glisser sur son dos. Elle était légère comme une plume, mais froide comme la glace. Nawfel entra dans le ruisseau — l'eau lui montait aux genoux, puis aux cuisses. C'était glacial.`,
-      `Le courant était fort. Il emportait les jambes de Nawfel, qui lutta pour rester debout. Ondine se serra contre lui, tremblant de tout son petit corps. Nawfel glissa sur une pierre — son cœur fit un bond — mais il se rattrapa. Pas à pas, il traversa, les dents serrées, les muscles brûlants.`,
-      `Quand il arriva de l'autre côté, il s'effondra sur l'herbe, trempé et tremblant. Ondine glissa de son dos et le regarda avec ses grands yeux brillants. « Tu as risqué ta vie pour moi... pourquoi ? » demanda-t-elle, incrédule. Nawfel sourit, essoufflé : « Parce que tu avais besoin d'aide. C'est tout. »`,
-    ],
-    mood: 'danger',
-    next: 'ch2-friendship',
-  },
-
-  'ch2-h2': {
-    id: 'ch2-h2',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `— « L'eau n'est pas ton ennemi, Ondine, » dit Nawfel doucement. Il s'assit au bord du ruisseau et trempa sa main dans l'eau. « Regarde. Elle est froide, oui. Mais elle ne mord pas. Elle caresse. » Il fit onduler l'eau entre ses doigts. « Tu veux essayer ? »`,
-      `Ondine approcha sa main tremblante de l'eau. La toucha. Retira. La toucha de nouveau. « C'est... c'est doux, » murmura-t-elle, surprise. Nawfel la guida pas à pas — d'abord le bout des doigts, puis la main, puis les pieds. Ils entrèrent ensemble dans le ruisseau, Nawfel tenant sa main. Et ils traversèrent.`,
-      `Quand ils atteignirent l'autre rive, Ondine regarda ses pieds mouillés et sourit. « Tu m'as donné quelque chose de plus précieux qu'un passage, dit-elle. Tu m'as donné du courage. Et ça, personne ne me l'avait jamais offert. »`,
-    ],
-    mood: 'peace',
-    next: 'ch2-friendship',
-  },
-
-  'ch2-h3': {
-    id: 'ch2-h3',
-    chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
-    paragraphs: [
-      `Nawfel regarda autour de lui et repéra des branches tombées, des pierres plates, des lianes. Son cerveau commença à travailler — comme quand il construisait des cabanes avec Souhayl. Il ramassa les branches, les posa sur les pierres du ruisseau, les fixa avec des lianes. C'était bancal, un peu de travers, mais ça tenait.`,
-      `— « Voilà ! » dit-il fier de lui. Le pont tremblait quand on marchait dessus, mais il soutenait le poids d'Ondine. Elle traversa prudemment, chaque pas faisant craquer les branches. De l'autre côté, elle se retourna, émerveillée. « Tu as utilisé ton intelligence ET ta gentillesse, dit Lumina avec admiration. Le combo parfait. »`,
-      `Nawfel traversa à son tour. Le pont tint. À peine. Mais il tint. « Ça n'a pas besoin d'être parfait, dit Nawfel en souriant. Ça a juste besoin de fonctionner. »`,
+      `Wassim marche dans le Royaume Rouge. Tout est d'un rouge doux. Les collines sont rouges. Les fleurs sont rouges. Le ciel est rose-rouge. C'est très joli !`,
+      `Mais les animaux sont tristes. De petits lapins rouges se cachent dans leurs trous. Des oiseaux rouges ne chantent plus. Ils ont oublié le courage.`,
+      `Wassim veut les aider. Comment peut-il leur redonner du courage ?`,
     ],
     mood: 'wonder',
-    next: 'ch2-friendship',
+    next: 'ch2-red-land',
+    isChapterStart: true,
+    illustrationPrompt: 'A magical red kingdom with soft red hills, red flowers, pink-red sky, small red rabbits hiding in holes, red birds sitting quietly on branches, a small boy walking with a butterfly companion, warm red tones, children fantasy illustration',
   },
 
-  'ch2-friendship': {
-    id: 'ch2-friendship',
+  'ch2-red-land': {
+    id: 'ch2-red-land',
     chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
+    chapterTitle: 'Le Royaume Rouge',
     paragraphs: [
-      `Nawfel et Ondine marchèrent côte à côte à travers la forêt. Les arbres ne murmuraient plus — ils chantaient doucement, une berceuse ancienne. Ondine raconta son histoire : elle était un rêve d'enfant — le rêve de nager dans un océan infini. Mais l'enfant avait grandi et avait oublié. Le rêve s'était perdu dans la Forêt des Murmures.`,
-      `— « Les rêves oubliés finissent ici, » dit Ondine tristement. « On attend, on attend... et puis on devient des arbres. Des murmures. On oublie qu'on était un rêve. » Nawfel sentit une grosse boule dans sa gorge. Il promit : « Je vais t'aider à retrouver ton chemin, Ondine. Je te le promets. »`,
-      `Lumina, qui flottait silencieusement depuis un moment, parla doucement.`,
+      `Wassim voit un petit renard rouge assis tout seul sur une pierre. Il pleure. Ses larmes sont rougeâtres et tombent sur la pierre en faisant « ploc, ploc ».`,
+      `— « Pourquoi tu pleures ? » demande Wassim en s'approchant doucement. Le renard le regarde avec de grands yeux mouillés.`,
+      `— « Parce que j'ai peur, dit le renard. J'ai peur de tout. Du noir. Du bruit. Des grands arbres. De tout ! » Wassim s'assoit à côté de lui. « Moi aussi, j'ai peur parfois, » dit-il.`,
     ],
     mood: 'peace',
-    zakiSpeaks: 'Tu sais, Nawfel, les grands frères comme Souhayl ont le courage du lion. Ils foncent, ils combattent, ils gagnent. Mais toi... tu as quelque chose de plus rare. La tendresse. Ne la perds jamais. Le monde en a cruellement besoin.',
+    next: 'ch2-red-animals',
+  },
+
+  'ch2-red-animals': {
+    id: 'ch2-red-animals',
+    chapter: 2,
+    chapterTitle: 'Le Royaume Rouge',
+    paragraphs: [
+      `Le renard regarde Wassim, surpris. « Toi aussi ? Mais tu es un héros ! Tu es venu pour sauver les couleurs ! »`,
+      `— « Un héros qui a peur, oui, dit Wassim avec un sourire. Même Souhayl, mon grand frère, a peur parfois. Il a peur des araignées ! » Le renard rigole. C'est la première fois qu'il rit depuis longtemps.`,
+      `D'autres animaux s'approchent. Les lapins sortent de leurs trous. Les oiseaux descendent des branches. Ils veulent écouter Wassim.`,
+    ],
+    mood: 'wonder',
+    next: 'ch2-courage-test',
+    zakiSpeaks: 'Wassim a raison ! Même les plus grands héros ont peur. Souhayl a peur des araignées. Nawfel a peur du noir. Et moi, j\'ai peur des... eh bien, je suis un papillon. Je n\'ai peur de rien ! Enfin, presque rien.',
+  },
+
+  'ch2-courage-test': {
+    id: 'ch2-courage-test',
+    chapter: 2,
+    chapterTitle: 'Le Royaume Rouge',
+    paragraphs: [
+      `Un gros cerf rouge s'avance. Il est le chef des animaux. « Wassim, dit-il. Pour retrouver le rouge magique, tu dois passer un test de courage. Tu vois cette grande montagne là-bas ? »`,
+      `Wassim regarde. La montagne est très haute. Et au sommet, il y a un grand cristal rouge qui brille. C'est le cristal du courage !`,
+      `— « Tu dois grimper jusqu'en haut, dit le cerf. Le chemin est difficile. Mais je sais que tu peux le faire. »`,
+    ],
+    mood: 'wonder',
+    next: 'ch2-choice',
+  },
+
+  'ch2-choice': {
+    id: 'ch2-choice',
+    chapter: 2,
+    chapterTitle: 'Le Royaume Rouge',
+    paragraphs: [
+      `Wassim regarde la montagne. Elle est haute, oui. Mais il a Papillon avec lui. Et tous les animaux le regardent avec espoir. Wassim doit choisir comment grimper.`,
+    ],
+    mood: 'wonder',
+    choices: [
+      {
+        id: 'climb-fast',
+        text: 'Grimper vite, comme un petit singe courageux !',
+        nextPage: 'ch2-c1',
+        tag: 'boldness',
+        emoji: '🧗',
+      },
+      {
+        id: 'climb-slow',
+        text: 'Grimper doucement, un pas après l\'autre.',
+        nextPage: 'ch2-c2',
+        tag: 'patience',
+        emoji: '🐌',
+      },
+      {
+        id: 'climb-together',
+        text: 'Inviter les animaux à grimper avec lui.',
+        nextPage: 'ch2-c3',
+        tag: 'together',
+        emoji: '🤝',
+      },
+    ],
+  },
+
+  'ch2-c1': {
+    id: 'ch2-c1',
+    chapter: 2,
+    chapterTitle: 'Le Royaume Rouge',
+    paragraphs: [
+      `Wassim grimpe très vite ! Ses pieds sautent de roche en roche. Il est rapide comme le vent ! Les animaux en bas le regardent avec admiration.`,
+      `Mais au milieu de la montagne, il glisse. « Aïe ! » Ses mains se cramponnent à une petite pierre. Il a un peu peur. Mais il ne lâche pas !`,
+      `— « Courage, Wassim ! » crie Papillon. Le petit renard crie aussi : « Tu peux le faire ! » Wassim reprend sa grimpe. Et il arrive au sommet, haletant mais fier !`,
+    ],
+    mood: 'triumph',
+    next: 'ch2-fragment',
+  },
+
+  'ch2-c2': {
+    id: 'ch2-c2',
+    chapter: 2,
+    chapterTitle: 'Le Royaume Rouge',
+    paragraphs: [
+      `Wassim grimpe doucement. Un pas, puis un autre. Il regarde bien où il met ses pieds. Comme lui a appris Nawfel : « Ne te dépêche pas. Regarde avant de sauter. »`,
+      `C'est plus lent. Mais c'est plus sûr. Wassim ne glisse pas. Il ne trébuche pas. Il avance comme une petite tortule courageuse. Doucement, mais sûrement.`,
+      `Quand il arrive en haut, Papillon dit : « Tu sais quoi, Wassim ? Aller doucement, c'est une forme de courage aussi. C'est le courage d'être patient. »`,
+    ],
+    mood: 'peace',
+    next: 'ch2-fragment',
+  },
+
+  'ch2-c3': {
+    id: 'ch2-c3',
+    chapter: 2,
+    chapterTitle: 'Le Royaume Rouge',
+    paragraphs: [
+      `— « Qui veut monter avec moi ? » demande Wassim. Le petit renard lève la patte. Les lapins font des sauts de joie. Même les oiseaux veulent venir !`,
+      `Ils grimpent ensemble. Wassim aide le renard sur les grosses pierres. Les lapins se passent de patte en patte. Les oiseaux portent des messages en haut. C'est l'aventure la plus belle !`,
+      `Quand ils arrivent tous au sommet, tout le monde applaudit. — « Ensemble, on est plus forts ! » dit Wassim. Et le cristal rouge brille de mille feux !`,
+    ],
+    mood: 'triumph',
     next: 'ch2-fragment',
   },
 
   'ch2-fragment': {
     id: 'ch2-fragment',
     chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
+    chapterTitle: 'Le Royaume Rouge',
     paragraphs: [
-      `Au cœur de la forêt se dressait un arbre — le plus vieux, le plus immense de tous. Son tronc était large comme une maison, et ses racines plongeaient profondément dans la terre comme des doigts anciens. Et au centre du tronc, Nawfel vit quelque chose briller — une lumière douce et bleue.`,
-      `— « C'est mon arbre, murmura Ondine. Mon cœur de rêve. Le Fragment est là-dedans. » Elle approcha de l'arbre et posa sa main sur le tronc. L'écorce pulsa doucement, comme un cœur. Et Ondine comprit : elle devait choisir de donner.`,
-      `— « Un rêve partagé brille deux fois plus fort, » dit Ondine en souriant. Elle referma les yeux, et l'arbre s'illumina de l'intérieur. Le deuxième Fragment d'Étoile émergea doucement du tronc, flottant vers Nawfel comme une bulle de lumière bleue. « Prends-le, Nawfel. Et n'oublie pas de rêver. »`,
+      `Le cristal rouge est magnifique ! Il pulse de lumière rouge. Wassim le touche et le cristal explose de couleurs rouges ! Des étincelles rouges volent partout !`,
+      `Le rouge magique revient dans le royaume ! Les fleurs redeviennent rouge vif. Les arbres brillent de rouge. Le ciel prend une belle couleur rose !`,
+      `— « La première couleur ! » crie Papillon en tournant comme une toupie. « Bravo, Wassim ! Tu as trouvé le rouge ! »`,
     ],
     mood: 'triumph',
-    next: 'ch2-goodbye',
+    next: 'ch2-alive',
   },
 
-  'ch2-goodbye': {
-    id: 'ch2-goodbye',
+  'ch2-alive': {
+    id: 'ch2-alive',
     chapter: 2,
-    chapterTitle: 'La Forêt des Murmures',
+    chapterTitle: 'Le Royaume Rouge',
     paragraphs: [
-      `Ondine se mit à briller. Pas d'un éclat faible — d'un éclat immense, bleu et argenté, qui illuminait toute la forêt. Son corps translucide commença à flotter, s'élevant doucement vers le ciel noir. « Merci, Nawfel, » dit-elle, sa voix devenant un chant. « Je vais retrouver l'Océan. Peut-être qu'on se retrouvera ? »`,
-      `Elle devint de plus en plus petite, de plus en plus lumineuse, jusqu'à n'être plus qu'un point dans le ciel. Puis, comme une étoile, elle se fixa dans l'obscurité. Une nouvelle étoile. Deux étoiles maintenant brillaient dans le ciel du Royaume — le Fragment que Nawfel portait et Ondine, devenue rêve-réalisé.`,
-      `— « Deux sur quatre ! » chantonna Lumina en faisant une pirouette. Nawfel regarda la nouvelle étoile et sourit. Il avait sauvé un rêve. Pas avec de la force. Avec de la gentillesse. Et c'était la plus belle chose qu'il ait jamais faite.`,
+      `Le Royaume Rouge est de nouveau vivant ! Les lapins rouges sautent partout. Les oiseaux rouges chantent des chansons joyeuses. Le petit renard danse !`,
+      `— « Merci, Wassim ! » dit le renard. « Tu m'as appris que le courage, c'est d'accepter sa peur. Merci ! » Il donne à Wassim un petit bisou sur la joue.`,
+      `Wassim rougit. Littéralement ! Son visage devient tout rouge. Tout le monde rigole. C'est trop drôle !`,
     ],
-    mood: 'peace',
+    mood: 'triumph',
+    next: 'ch2-next',
+  },
+
+  'ch2-next': {
+    id: 'ch2-next',
+    chapter: 2,
+    chapterTitle: 'Le Royaume Rouge',
+    paragraphs: [
+      `Papillon vole vers Wassim. — « Une couleur retrouvée ! Il en reste trois. Le Jaune, le Bleu et le Vert ! Tu veux continuer, Wassim ? »`,
+      `Wassim regarde sa petite main. Un petit point rouge brille au creux de sa paume. Le cristal rouge lui a donné un peu de sa magie !`,
+      `— « Bien sûr que je continue ! » dit-il. « Allons trouver le jaune ! » Et ils partent ensemble vers la porte jaune qui brille au loin.`,
+    ],
+    mood: 'wonder',
     next: 'ch3-start',
   },
 
   // ═══════════════════════════════════════════
-  // CHAPTER 3: L'OCÉAN DES LARMES
+  // CHAPTER 3: LE ROYAUME JAUNE
   // ═══════════════════════════════════════════
   'ch3-start': {
     id: 'ch3-start',
     chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
+    chapterTitle: 'Le Royaume Jaune',
     paragraphs: [
-      `L'Océan des Larmes n'était pas fait d'eau salée. Il était fait de larmes cristallisées — des millions de gouttes transparentes, bleues et argentées, qui s'étendaient à perte de vue. Chaque larme brillait faiblement, et en regardant dedans, on pouvait voir des images floues — des visages, des sourires, des pleurs.`,
-      `Chaque larme était la tristesse de quelqu'un. Un enfant qui avait perdu son jouet. Un adulte qui regrettait un mot trop dur. Un vieillard qui pensait à un ami disparu. Toutes les larmes du monde, accumulées ici, formaient cet océan immense et silencieux.`,
-      `Le rivage était fait de galets lisses et translucides, comme des bonbons de verre. Nawfel marchait pieds nus dessus, et chaque galet résonnait doucement sous ses pas, comme un xylophone géant. L'air sentait la pluie et le sel.`,
+      `La porte jaune s'ouvre ! Et Wassim entre dans un monde de soleil. Tout est jaune ici ! Les plages sont jaunes. Les arbres sont jaunes. Même l'eau est jaune !`,
+      `Mais le soleil est faible. Il brille à peine. Comme une ampoule qui manque d'énergie. Les habitants du royaume ne sourient plus. Ils ont oublié comment rire.`,
+      `— « Ici, c'est le royaume de la joie ! » dit Papillon. « On doit leur redonner le sourire ! »`,
     ],
-    mood: 'darkness',
-    next: 'ch3-shore',
+    mood: 'wonder',
+    next: 'ch3-yellow-land',
     isChapterStart: true,
+    illustrationPrompt: 'A magical yellow kingdom with pale yellow beaches, yellow palm trees, weak pale sun in the sky, yellow water, sad-looking creatures sitting around, a small boy with a butterfly walking on golden sand, warm yellow tones, children fantasy illustration',
   },
 
-  'ch3-shore': {
-    id: 'ch3-shore',
+  'ch3-yellow-land': {
+    id: 'ch3-yellow-land',
     chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
+    chapterTitle: 'Le Royaume Jaune',
     paragraphs: [
-      `Assis sur un rocher de cristal, un vieil homme aux cheveux blancs comme la neige et aux yeux grands comme des miroirs collectait des larmes dans de petits pots en verre. Il en avait des centaines, alignés devant lui, chacun avec une étiquette écrite d'une écriture fine et tremblante.`,
-      `— « Chaque larme a une histoire, » dit-il sans lever les yeux. Sa voix était grave et douce, comme le bruit des vagues. « Veux-tu en entendre une ? » Il tendit un pot à Nawfel. À l'intérieur, une larme dorée flottait, et Nawfel y vit l'image d'un petit garçon qui pleurait parce qu'il s'était disputé avec son frère.`,
-      `Nawfel déglutit. Le garçon dans la larme lui ressemblait étrangement. « Le Fragment d'Étoile est quelque part dans cet océan, » dit Lumina doucement. « Au fond. Tout au fond. » Le vieil homme leva enfin les yeux. « Le fond, oui. Mais le fond est gardé. »`,
+      `Wassim marche sur le sable jaune. Il fait chaud, mais c'est un bon chaud. Comme un bisou de soleil. Des petits crabes jaunes marchent lentement, tristes.`,
+      `Un dauphin jaune saute dans l'eau jaune. Mais il ne fait pas de gaîté. Il saute juste pour avancer. Pas pour jouer. C'est très triste à voir.`,
+      `— « Ils ont oublié de jouer, » dit Papillon. « Sans joie, les dauphins ne sautent plus pour s'amuser. Tu sais quoi faire, Wassim ? »`,
     ],
-    mood: 'wisdom',
-    next: 'ch3-choice-dive',
+    mood: 'wonder',
+    next: 'ch3-yellow-games',
   },
 
-  'ch3-choice-dive': {
-    id: 'ch3-choice-dive',
+  'ch3-yellow-games': {
+    id: 'ch3-yellow-games',
     chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
+    chapterTitle: 'Le Royaume Jaune',
     paragraphs: [
-      `L'océan s'étendait devant Nawfel, vaste et profond. Les larmes cristallisées ondoient doucement, et au loin, une lueur bleue pulsait sous la surface — le Fragment, peut-être. Le vieil homme regardait Nawfel avec patience. « Le chemin jusqu'au fond n'est pas facile, petit. Que veux-tu faire ? »`,
+      `Wassim a une idée ! Il court vers le dauphin jaune. — « Hé ! On joue à attraper ? » Le dauphin le regarde, surpris.`,
+      `— « Jouer ? dit le dauphin. C'est quoi, jouer ? Ça fait longtemps que je n'ai pas joué... » Wassim rigole. — « C'est facile ! Tu essaies de m'attraper, et moi je cours ! »`,
+      `Wassim commence à courir sur la plage. Il fait des zigzags. Il rit. Le rire de Wassim est comme de la musique. C'est contagieux !`,
     ],
-    mood: 'darkness',
+    mood: 'wonder',
+    next: 'ch3-laugh-test',
+  },
+
+  'ch3-laugh-test': {
+    id: 'ch3-laugh-test',
+    chapter: 3,
+    chapterTitle: 'Le Royaume Jaune',
+    paragraphs: [
+      `Les crabes jaunes regardent Wassim courir. D'abord ils ne bougent pas. Mais puis, un petit crabe fait un pas. Puis deux. Et il commence à courir après Wassim !`,
+      `Le dauphin jaune saute hors de l'eau. Il fait un grand saut périlleux ! SPLASH ! Tout le monde est trempé ! Wassim rit si fort qu'il tombe dans le sable.`,
+      `Mais le soleil est toujours faible. Il faut plus de joie pour le réveiller. Wassim doit faire quelque chose de vraiment, vraiment drôle !`,
+    ],
+    mood: 'wonder',
+    next: 'ch3-choice',
+  },
+
+  'ch3-choice': {
+    id: 'ch3-choice',
+    chapter: 3,
+    chapterTitle: 'Le Royaume Jaune',
+    paragraphs: [
+      `Le soleil faible brille au-dessus d'eux. Wassim doit le réveiller avec beaucoup de joie. Comment peut-il faire rire tout le monde ?`,
+    ],
+    mood: 'wonder',
     choices: [
       {
-        id: 'dive-immediately',
-        text: 'Plonger immédiatement — « J\'y vais ! Pas le temps d\'attendre ! »',
-        nextPage: 'ch3-d1',
-        tag: 'impulsiveness',
-        emoji: '🏊',
+        id: 'funny-dance',
+        text: 'Faire une danse très drôle et rigolote !',
+        nextPage: 'ch3-c1',
+        tag: 'joy',
+        emoji: '💃',
       },
       {
-        id: 'ask-advice',
-        text: 'Demander conseil au vieil homme — « Que dois-je savoir avant de plonger ? »',
-        nextPage: 'ch3-d2',
-        tag: 'wisdom',
-        emoji: '🧓',
+        id: 'tell-joke',
+        text: 'Raconter la blague la plus drôle qu\'il connaît.',
+        nextPage: 'ch3-c2',
+        tag: 'humor',
+        emoji: '😂',
       },
       {
-        id: 'explore-shore',
-        text: 'Explorer le rivage d\'abord — chercher des indices avant de se lancer.',
-        nextPage: 'ch3-d3',
-        tag: 'caution',
-        emoji: '🔍',
+        id: 'make-faces',
+        text: 'Faire des têtes très amusantes comme Nawfel.',
+        nextPage: 'ch3-c3',
+        tag: 'playful',
+        emoji: '🤪',
       },
     ],
   },
 
-  'ch3-d1': {
-    id: 'ch3-d1',
+  'ch3-c1': {
+    id: 'ch3-c1',
     chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
+    chapterTitle: 'Le Royaume Jaune',
     paragraphs: [
-      `Nawfel ne perdit pas une seconde. Il courut et plongea dans l'océan de larmes. L'eau — ou plutôt les larmes — l'engloutit. C'était froid. Terriblement froid. Et lourd. Chaque mouvement était comme nager dans du miel glacé. Les larmes le tiraient vers le bas, comme si toutes les tristesses du monde voulaient le garder avec elles.`,
-      `Il lutta. Ses bras brûlaient. Ses poumons criaient. Mais il continua à descendre, entraîné par la lumière bleue au fond. Des images passèrent devant ses yeux — des enfants qui pleurent, des parents séparés, des amis perdus. La tristesse de tout le monde le traversait comme un vent glacial.`,
-      `Et puis, il l'atteignit. Une grotte sous-marine, éclairée par une lueur bleue. À l'intérieur, quelque chose d'immense dormait. Nawfel s'approcha, le cœur battant, et il vit : un géant fait d'eau sombre et de larmes anciennes.`,
+      `Wassim se lève et commence à danser. Il fait une danse trop drôle ! Il sautille comme un kangourou. Il tourne comme une toupie. Il fait des pas bizarres avec ses bras en l'air !`,
+      `Les crabes écarquillent leurs petits yeux. Le dauphin souffle de l'eau par son éventail. C'est hilarant ! Tout le monde se met à rire. HA HA HA !`,
+      `Le soleil entend les rires. Il grandit, grandit, GRANDIT ! Il devient tout jaune et brillant ! Le Royaume Jaune est de nouveau ensoleillé !`,
     ],
-    mood: 'danger',
-    next: 'ch3-underwater',
+    mood: 'triumph',
+    next: 'ch3-fragment',
   },
 
-  'ch3-d2': {
-    id: 'ch3-d2',
+  'ch3-c2': {
+    id: 'ch3-c2',
     chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
+    chapterTitle: 'Le Royaume Jaune',
     paragraphs: [
-      `— « Que dois-je savoir ? » demanda Nawfel. Le vieil homme sourit — un sourire triste et plein de sagesse. Il prit un pot de larmes et le tint contre la lumière. « Le fond est gardé par le Géant du Regret. Il est énorme, il est sombre, et il a l'air terrifiant. Mais écoute bien, Nawfel : il n'est pas méchant. Il est triste. »`,
-      `Il reposa le pot. « Le Regret n'est pas un ennemi. C'est un rêve qu'on a abandonné. N'oublie pas ça quand tu le verras. » Nawfel hocha la tête. Les mots du vieil homme résonnaient en lui comme une mélodie.`,
-      `— « Mémé disait quelque chose de semblable... » murmura Nawfel.`,
+      `— « Oh oh oh ! dit Wassim. C'est l'histoire d'un poisson rouge qui va à l'école... et qui oublie tout en trois secondes ! » Il fait une pause dramatique. « Le maître dit : 'Quel est ton nom ?' Le poisson répond : 'C'est quoi, un nom ?' »`,
+      `Tout le monde éclate de rire ! Le dauphin rit tellement qu'il fait des bulles. Les crabes tapent leurs pinces ensemble. Même Papillon rigole en volant en zigzag !`,
+      `Le soleil réveille avec un grand « BONJOUR ! ». Il rayonne de joie. Il est si content d'entendre des rires ! La lumière jaune envahit tout le royaume !`,
     ],
-    mood: 'wisdom',
-    shaykhSpeaks: 'Mémé Khadija disait : « Celui qui fait pleurer quelqu\'un porte ses larmes dans son propre cœur. Et celui qui console un cœur brisé porte une étoile dans le sien. »',
-    next: 'ch3-underwater',
+    mood: 'triumph',
+    next: 'ch3-fragment',
   },
 
-  'ch3-d3': {
-    id: 'ch3-d3',
+  'ch3-c3': {
+    id: 'ch3-c3',
     chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
+    chapterTitle: 'Le Royaume Jaune',
     paragraphs: [
-      `Nawfel marcha le long du rivage, ramassant des coquillages translucides. Chaque coquillage contenait un souvenir — une image miniature, comme un film en miniature. Il en ouvrit un : un petit garçon jouait au football avec son grand frère dans une cour poussiéreuse. Ils riaient. Ils se disputaient. Ils se faisaient un câlin.`,
-      `Nawfel sourit — c'était lui et Souhayl. Il rangea le coquillage dans sa poche. Un autre coquillage montrait Mémé Khadija qui racontait une histoire, ses mains dansant dans l'air. Un autre encore montrait le premier jour d'école de Nawfel — ses chaussures neuves, son cartable trop grand. Des moments simples. Des moments précieux.`,
-      `Il sentit son cœur se remplir de chaleur. Ces souvenirs n'étaient pas des larmes de tristesse — c'étaient des larmes de tendresse. Nawfel regarda l'océan. « D'accord, dit-il. Maintenant, je suis prêt. » Et il plongea.`,
+      `Wassim gonfle ses joues. Il croise ses yeux. Il met son nez en l'air. Il fait la même chose que Nawfel quand il veut faire rire tout le monde à table. Maman dit toujours « arrêtez » mais elle rigole aussi !`,
+      `Les crabes jaunes ne peuvent plus s'arrêter de rire. Le dauphin jaune fait un salto arrière de rire. Les petits oiseaux jaunes tombent des branches en riant trop fort !`,
+      `Le soleil entend tout ce joyeux bazar et se réveille en beauté ! Il envoie des rayons dorés partout. Le monde jaune est de nouveau plein de soleil et de bonheur !`,
     ],
-    mood: 'peace',
-    next: 'ch3-underwater',
-  },
-
-  'ch3-underwater': {
-    id: 'ch3-underwater',
-    chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
-    paragraphs: [
-      `Le monde sous-marin était époustouflant. Des coraux faits de larmes séchées formaient des jardins multicolores. Des poissons de lumière nageaient entre les algues bleues. Des méduses translucides flottaient comme des lanternes. C'était beau — tristement beau — comme un musée de toutes les émotions du monde.`,
-      `Et au centre de tout ça, dormant sur un lit de larmes anciennes, un être immense. Le Géant du Regret. Il était fait d'eau sombre — pas de l'eau noire, mais d'un bleu profond, comme le ciel juste avant la nuit. Son corps était formé de vieilles larmes, de regrets accumulés, de rêves non tenus. Il était grand comme une montagne.`,
-      `Nawfel nagea vers lui, deux Fragments d'Étoile orbitant autour de lui comme de petits gardiens. Et puis, un œil s'ouvrit. Un œil immense, profond comme un océan dans un océan. Le Géant s'éveilla.`,
-    ],
-    mood: 'darkness',
-    next: 'ch3-giant',
-  },
-
-  'ch3-giant': {
-    id: 'ch3-giant',
-    chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
-    paragraphs: [
-      `Le Géant se redressa. L'eau trembla autour de lui. Ses yeux — deux puits de tristesse sans fond — se posèrent sur Nawfel. Il ne bougea pas pour l'attaquer. Il ne cria pas. Il resta là, immense et immobile, comme une montagne sous la mer.`,
-      `— « Pourquoi es-tu venu, petit ? » Sa voix résonnait dans l'eau, grave et lente, comme le murmure d'une baleine. « Personne ne vient ici volontairement. L'Océan des Larmes est le dernier endroit où l'on veut aller. Qu'est-ce qui t'amène au fond de ma solitude ? »`,
-      `Nawfel regarda le Géant. Derrière sa taille immense et son air sombre, il vit autre chose — une fatigue immense. Comme si le Géant n'avait pas dormi depuis des siècles. Comme s'il portait le poids de tous les regrets du monde sur ses épaules.`,
-    ],
-    mood: 'darkness',
-    next: 'ch3-giant-choice',
-  },
-
-  'ch3-giant-choice': {
-    id: 'ch3-giant-choice',
-    chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
-    paragraphs: [
-      `Le Géant bloquait le chemin vers la grotte où brillait le troisième Fragment. Il ne le faisait pas exprès — c'était juste qu'il était si grand qu'il remplissait tout l'espace. Nawfel devait trouver un moyen de passer. Mais comment affronter quelque chose d'aussi immense ?`,
-      `Lumina tremblait contre son épaule. Le Géant attendait, patient et triste.`,
-    ],
-    mood: 'darkness',
-    choices: [
-      {
-        id: 'fight-giant',
-        text: 'Essayer de se frayer un passage par la force — le pousser, le contourner.',
-        nextPage: 'ch3-g1',
-        tag: 'combat',
-        emoji: '⚔️',
-      },
-      {
-        id: 'hug-giant',
-        text: 'Lui faire un câlin — serrer ses bras autour de sa jambe géante.',
-        nextPage: 'ch3-g2',
-        tag: 'compassion',
-        emoji: '🤗',
-      },
-      {
-        id: 'listen-giant',
-        text: 'L\'écouter — « Je suis là pour t\'écouter. Raconte-moi ton histoire. »',
-        nextPage: 'ch3-g3',
-        tag: 'listening',
-        emoji: '👂',
-      },
-    ],
-  },
-
-  'ch3-g1': {
-    id: 'ch3-g1',
-    chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
-    paragraphs: [
-      `Nawfel essaya de pousser le Géant. Il planta ses pieds dans le sable marin et poussa de toutes ses forces. Le Géant ne bougea pas. Pas d'un millimètre. C'était comme essayer de déplacer une planète. Nawfel rebondit et tomba à la renverse dans les algues.`,
-      `— « La force ne guérit pas les blessures, petit, » dit doucement le Géant. « Je suis fait de tristesse accumulée. Tu ne peux pas me déplacer comme un meuble. » Il baissa les yeux vers Nawfel, et Nawfel vit quelque chose d'étonnant — de la tendresse. Le Géant n'était pas en colère contre lui. Il était juste triste que Nawfel ait cru que la force était la solution.`,
-      `— « Il y a un autre chemin vers le Fragment, » ajouta le Géant en s'effaçant légèrement. « Mais d'abord... reste un peu. Parle-moi. »`,
-    ],
-    mood: 'danger',
-    next: 'ch3-giant-story',
-  },
-
-  'ch3-g2': {
-    id: 'ch3-g2',
-    chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
-    paragraphs: [
-      `Nawfel s'approcha de la jambe du Géant — elle était large comme un tronc d'arbre, froide et humide. Il ouvrit les bras et serra. De toutes ses forces. Ses bras ne faisaient pas le tour — la jambe était trop grosse — mais il serrait quand même.`,
-      `Le Géant se figea. Pas de colère. Pas de surprise. De la confusion. Personne — jamais — ne lui avait fait un câlin. Depuis des siècles, depuis des millénaires, personne n'avait touché le Géant du Regret avec tendresse. Une larme tomba de son œil immense — et cette larme ne coula pas. Elle remonta. Elle devint une étoile.`,
-      `— « Qu... qu'est-ce que tu fais ? » murmura le Géant, sa voix tremblant pour la première fois. « Personne ne... je ne comprends pas... » Nawfel serrait plus fort. « C'est un câlin, dit-il simplement. Tout le monde en a besoin. Même les géants. »`,
-    ],
-    mood: 'peace',
-    next: 'ch3-giant-story',
-  },
-
-  'ch3-g3': {
-    id: 'ch3-g3',
-    chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
-    paragraphs: [
-      `— « Je suis là pour t'écouter, » dit Nawfel en s'asseyant devant le Géant, comme un enfant s'assoit devant un conteur. « Raconte-moi ton histoire. Je ne suis pas pressé. » Le Géant le regarda, étonné. Un silence long et profond s'installa entre eux.`,
-      `Et puis le Géant parla. D'une voix grave et lente, il raconta : « J'étais un rêve. Le rêve d'un enfant qui voulait être aimé. Chaque nuit, l'enfant me rêvait — je grandissais, je devenais fort, je le protégeais. » Sa voix se brisa. « Et puis l'enfant a grandi. Il a oublié de rêver. Et moi... je suis devenu du Regret. »`,
-      `Nawfel sentit les larmes monter. Pas de tristesse — de compassion. « Ce n'est pas ta faute, dit-il doucement. Les gens ne choisissent pas d'oublier. La vie leur prend leurs rêves. Mais toi, tu es toujours là. Tu n'as pas disparu. Et ça, c'est déjà quelque chose de beau. »`,
-    ],
-    mood: 'wisdom',
-    next: 'ch3-giant-story',
-  },
-
-  'ch3-giant-story': {
-    id: 'ch3-giant-story',
-    chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
-    paragraphs: [
-      `Le Géant baissa la tête. Ses épaules immenses tremblèrent — pas de colère, pas de douleur — mais quelque chose de plus doux. De plus fragile. Comme un enfant qui pleure après avoir compris quelque chose d'important. « Peut-être... peut-être que j'ai tort d'être en colère contre les enfants qui m'ont oublié... » murmura-t-il.`,
-      `Il ouvrit ses mains immenses — des paumes larges comme des lacs — et au centre, enveloppé dans un cocon de vieux rêves et de larmes séchées, le troisième Fragment d'Étoile brillait d'une lumière bleue et dorée. « Prends-le, dit le Géant. Et oublie-moi pas. »`,
-      `Lumina, qui avait observé en silence, parla d'une voix douce mais ferme.`,
-    ],
-    mood: 'peace',
-    zakiSpeaks: 'Nawfel... le Géant n\'était pas un ennemi. C\'était un rêve abandonné. Comme beaucoup de choses dans ce monde. Les rêves oubliés, les promesses non tenues, les câlins donnés puis retirés. La différence, c\'est toi — tu n\'abandonnes personne. Rappelle-toi ça toujours.',
+    mood: 'triumph',
     next: 'ch3-fragment',
   },
 
   'ch3-fragment': {
     id: 'ch3-fragment',
     chapter: 3,
-    chapterTitle: "L'Océan des Larmes",
+    chapterTitle: 'Le Royaume Jaune',
     paragraphs: [
-      `Le troisième Fragment ! Nawfel le prit dans ses mains, et les trois Fragments orbitèrent autour de lui — argenté, bleu, doré — comme un petit système solaire personnel. Le Géant du Regret commença à rétrécir. Pas de douleur — juste une transformation douce. Son corps immense se réduisit, se simplifia, devint plus lisse, plus fluide.`,
-      `Et quand il eut fini de rétrécir, le Géant n'était plus un géant. C'était une petite baleine bleue — toute ronde, toute douce, avec des yeux gentils et un sourire perpétuel. Elle fit un petit clic joyeux et nagea en cercles autour de Nawfel, le remerciant à sa façon.`,
-      `— « Trois sur quatre ! » chanta Lumina. La petite baleine fit un dernier clic, puis nagea vers le large, sa traînée lumineuse marquant l'eau comme un sillage d'étoiles. Nawfel regarda l'océan et sourit. Même la tristesse, au fond, n'était qu'un rêve qui attendait d'être aimé.`,
+      `Un cristal jaune tombe du ciel. Il atterrit dans les mains de Wassim. Il est chaud comme le soleil ! Et il brille d'une lumière dorée magnifique !`,
+      `Wassim ferme les yeux et serre le cristal contre lui. Deux couleurs maintenant ! Le rouge et le jaune ! Il les sent vibrer dans ses mains. C'est magique !`,
+      `— « De couleurs retrouvées sur quatre ! » chante Papillon en faisant une danse de la victoire dans les airs.`,
     ],
     mood: 'triumph',
+    next: 'ch3-sunshine',
+  },
+
+  'ch3-sunshine': {
+    id: 'ch3-sunshine',
+    chapter: 3,
+    chapterTitle: 'Le Royaume Jaune',
+    paragraphs: [
+      `Le Royaume Jaune est joyeux ! Les dauphins font des courses dans l'eau dorée. Les crabes jouent à cache-cache dans le sable. Les oiseaux chantent des chansons joyeuses !`,
+      `— « Merci, Wassim ! » dit le dauphin en lui faisant un grand splash amical. « Tu nous as rappelé que rire, c'est la meilleure chose du monde ! »`,
+      `Le soleil brille fort au-dessus de Wassim. Il lui fait un clin d'œil. Oui, le soleil lui fait un clin d'œil !`,
+    ],
+    mood: 'triumph',
+    next: 'ch3-next',
+    shaykhSpeaks: 'Le Prophète (paix sur lui) disait : « Souris à ton frère, c\'est une aumône. » Wassim, tu as donné beaucoup de sourires aujourd\'hui. Et chaque sourire est un cadeau.',
+  },
+
+  'ch3-next': {
+    id: 'ch3-next',
+    chapter: 3,
+    chapterTitle: 'Le Royaume Jaune',
+    paragraphs: [
+      `Papillon tourne autour de Wassim, tout content. — « Le rouge et le jaune ! Il reste le bleu et le vert ! Tu es incroyable, Wassim ! »`,
+      `Wassim regarde ses mains. Le point rouge et le point jaune brillent ensemble. « On dirait du orange, » dit-il en riant. Papillon rit aussi.`,
+      `— « Allez, dit Papillon. Le Royaume Bleu nous attend. C'est le royaume des rêves et du calme. Prêt pour un peu de sieste magique ? »`,
+    ],
+    mood: 'peace',
     next: 'ch4-start',
-    illustrationPrompt: 'An underwater scene with a boy holding glowing stars, a gentle giant dissolving into a small blue whale, bioluminescent ocean with coral made of dried tears, colorful fish of light, dreamlike children book illustration',
   },
 
   // ═══════════════════════════════════════════
-  // CHAPTER 4: LA MONTAGNE DES VRAIS RÊVES
+  // CHAPTER 4: LE ROYAUME BLEU
   // ═══════════════════════════════════════════
   'ch4-start': {
     id: 'ch4-start',
     chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
+    chapterTitle: 'Le Royaume Bleu',
     paragraphs: [
-      `La Montagne des Vrais Rêves se dressait devant Nawfel comme un géant endormi. Elle était immense — le sommet disparaissait dans les nuages — et elle brillait de l'intérieur. Pas d'un éclat doré ou argenté, mais d'une lueur chaude et multicolore, comme si des milliers de rêves brillaient à l'intérieur de la roche.`,
-      `Le sentier qui montait était raide et sinueux, pavé de pierres luminescentes. Et tout en haut, dans le ciel noir, Nawfel pouvait voir un petit point brillant — là où la Grande Étoile devrait se trouver. Quatre-vingt-dix-neuf pour cent du ciel étaient vides. Mais ce petit point brillait, comme une promesse.`,
-      `— « C'est la dernière étape, dit Lumina. Le dernier Fragment... est au sommet. » Sa voix était plus douce que d'habitude, comme si elle savait quelque chose qu'elle n'avait pas encore dit.`,
+      `La porte bleue s'ouvre doucement. Et Wassim entre dans un monde de rêves. Tout est bleu ici. Le ciel est bleu. L'eau est bleue. Les nuages sont bleus aussi !`,
+      `C'est très calme. Très doux. Les étoiles brillent même en plein jour. C'est le royaume du repos et des beaux rêves. Wassim a envie de bailler !`,
+      `Mais quelque chose ne va pas. Les étoiles s'éteignent une par une. Les gens du royaume ne dorment plus. Ils ne rêvent plus. C'est un problème !`,
     ],
-    mood: 'wonder',
-    next: 'ch4-climb',
+    mood: 'peace',
+    next: 'ch4-blue-land',
     isChapterStart: true,
+    illustrationPrompt: 'A dreamy blue kingdom with floating clouds, blue water streams, pale blue stars fading in the sky, sleeping creatures on soft blue grass, a small boy with a butterfly walking quietly through a blue dreamscape, calm blue and silver tones, children fantasy illustration',
   },
 
-  'ch4-climb': {
-    id: 'ch4-climb',
+  'ch4-blue-land': {
+    id: 'ch4-blue-land',
     chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
+    chapterTitle: 'Le Royaume Bleu',
     paragraphs: [
-      `Nawfel commença à grimper. Chaque pas révélait un nouveau souvenir — pas les siens, ou peut-être les siens, enfouis si profondément qu'il les avait oubliés. Sur une marche, il vit Souhayl qui lui apprenait à faire du vélo — « Vas-y, Nawfel, je te tiens ! » Sur une autre, Mémé Khadija qui préparait des cookies et lui en glissait un avant le dîner.`,
-      `Plus haut, il revit son premier jour d'école — ses chaussures neuves, son cœur battant, et Souhayl qui lui avait dit : « Ne t'inquiète pas, frérot. Le matin, je serai là. » Et il y était. Toujours. Souhayl n'était pas parfait, pensait Nawfel pour la première fois. Mais il était là.`,
-      `Les rêves oubliés remontaient avec chaque pas. Des rêves d'enfance — devenir astronaute, inventer une machine à faire pleuvoir des étoiles, apprendre à parler avec les animaux. Des rêves bizarres, amusants, merveilleux. Chacun d'eux brillait dans la montagne, illuminant le sentier.`,
+      `Wassim marche doucement sur l'herbe bleue. Elle est douce comme un tapis. Des petits nuages flottent près du sol. Wassim peut les toucher avec la main. Ils sont moelleux !`,
+      `Une petite licorne bleue dort sur un nuage. Elle a des yeux cernés. Elle est fatiguée. — « Je n'arrive plus à dormir, » dit la licorne d'une voix endormie. « Sans sommeil, pas de rêves. Sans rêves, les étoiles meurent. »`,
+      `Wassim pose sa main sur la tête de la licorne. Elle est douce et chaude.`,
     ],
-    mood: 'wonder',
-    next: 'ch4-shadow',
+    mood: 'peace',
+    next: 'ch4-blue-clouds',
   },
 
-  'ch4-shadow': {
-    id: 'ch4-shadow',
+  'ch4-blue-clouds': {
+    id: 'ch4-blue-clouds',
     chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
+    chapterTitle: 'Le Royaume Bleu',
     paragraphs: [
-      `Nawfel était à mi-chemin du sommet quand l'obscurité tomba. Pas la nuit — quelque chose de plus dense. Quelque chose de vivant. Une forme noire se matérialisa devant lui, bloquant le sentier. Elle n'avait pas de visage, pas de corps fixe — elle bougeait et ondulait comme de la fumée noire, et deux points rouges brillaient où auraient dû être ses yeux.`,
-      `— « Tu ne passeras pas ! » gronda l'Ombre des Rêves Oubliés. Sa voix était un mélange de mille voix — des voix d'enfants, de adultes, de personnes oubliées. « Les rêves appartiennent au passé ! Personne n'y croit plus ! Les enfants d'aujourd'hui ne rêvent plus — ils regardent des écrans ! Les étoiles sont mortes ! FINI ! »`,
-      `L'Ombre grandit, dévorant la lumière de la montagne. Les rêves enchâssés dans la roche s'éteignaient un par un. Nawfel recula d'un pas. Ses trois Fragments tremblaient autour de lui. L'Ombre était terrifiante — pas parce qu'elle était méchante, mais parce qu'elle disait des choses qui sonnaient vrai.`,
+      `La licorne montre le ciel. Plusieurs étoiles bleues clignotent faiblement. Elles ont presque disparu. — « C'est triste, dit-elle. Chaque étoile est un rêve d'un enfant. Si les étoiles meurent, les enfants ne rêvent plus. »`,
+      `Wassim pense à ses propres rêves. Il rêve souvent de voler. Comme un oiseau. Ou comme Super-Man ! Et il rêve de manger un immense gâteau au chocolat. Mmmm !`,
+      `— « Il faut chanter une berceuse, dit la licorne. Une berceuse magique. Ça réveillera les étoiles et ramènera les rêves. »`,
     ],
-    mood: 'danger',
-    next: 'ch4-shadow-choice',
+    mood: 'peace',
+    next: 'ch4-dream-test',
   },
 
-  'ch4-shadow-choice': {
-    id: 'ch4-shadow-choice',
+  'ch4-dream-test': {
+    id: 'ch4-dream-test',
     chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
+    chapterTitle: 'Le Royaume Bleu',
     paragraphs: [
-      `L'Ombre des Rêves Oubliés planait au-dessus de Nawfel, immense et menaçante. Les trois Fragments orbitaient autour de lui, leur lumière vacillant face à l'obscurité de l'Ombre. Lumina se blottit contre son cou, tremblant. « Nawfel... » murmura-t-elle. Il devait faire un choix. Le dernier. Le plus important.`,
+      `Wassim doit chanter une berceuse. Mais pas n'importe laquelle. Une berceuse qui vient du cœur. Une chanson douce et vraie. Comme les chansons que Maman chante le soir.`,
+      `Papillon se pose sur son épaule. « Chante avec ton cœur, Wassim. Les notes parfaites, ça n'existe pas. Seules les notes vraies comptent. »`,
+      `Wassim prend une grande inspiration. Il ferme les yeux. Que va-t-il chanter ?`,
     ],
-    mood: 'danger',
+    mood: 'peace',
+    next: 'ch4-choice',
+  },
+
+  'ch4-choice': {
+    id: 'ch4-choice',
+    chapter: 4,
+    chapterTitle: 'Le Royaume Bleu',
+    paragraphs: [
+      `Tous les animaux bleus sont autour de Wassim. La licorne, les petits poissons bleus, les oiseaux bleus, les papillons de nuit. Ils attendent la chanson.`,
+    ],
+    mood: 'peace',
     choices: [
       {
-        id: 'use-fragments',
-        text: 'Utiliser les 3 fragments comme arme — les lancer contre l\'Ombre avec toute sa force !',
-        nextPage: 'ch4-s1',
-        tag: 'power',
-        emoji: '⚡',
+        id: 'sing-mama',
+        text: 'Chanter la chanson de Maman qu\'il connaît par cœur.',
+        nextPage: 'ch4-c1',
+        tag: 'love',
+        emoji: '💜',
       },
       {
-        id: 'share-light',
-        text: 'Partager la lumière avec l\'Ombre — tendre les fragments vers elle, doucement.',
-        nextPage: 'ch4-s2',
+        id: 'hum-softly',
+        text: 'Humer une mélodie douce et calme.',
+        nextPage: 'ch4-c2',
+        tag: 'calm',
+        emoji: '🎵',
+      },
+      {
+        id: 'sing-brothers',
+        text: 'Inventer une chanson sur ses frères.',
+        nextPage: 'ch4-c3',
+        tag: 'fraternal',
+        emoji: '👨‍👦',
+      },
+    ],
+  },
+
+  'ch4-c1': {
+    id: 'ch4-c1',
+    chapter: 4,
+    chapterTitle: 'Le Royaume Bleu',
+    paragraphs: [
+      `Wassim ferme les yeux et chante doucement la chanson de Maman. C'est la chanson qu'elle chante chaque soir avant de dormir. Sa voix est petite mais belle. Comme un murmure dans le vent.`,
+      `La licorne ferme les yeux. Les poissons bleus s'arrêtent de nager. Tout le monde écoute. La mélodie flotte dans l'air comme un nuage de douceur.`,
+      `Et les étoiles se réveillent ! Une par une, elles brillent de plus en plus fort. BLEU ! BLEU ! BLEU ! Le ciel s'illumine de mille étoiles bleues !`,
+    ],
+    mood: 'triumph',
+    next: 'ch4-fragment',
+  },
+
+  'ch4-c2': {
+    id: 'ch4-c2',
+    chapter: 4,
+    chapterTitle: 'Le Royaume Bleu',
+    paragraphs: [
+      `Wassim n'a pas de paroles. Alors il humme. « Huummm... huummm... huummm... » Une mélodie simple et douce. Comme le vent dans les arbres. Comme l'eau qui coule.`,
+      `C'est la plus belle berceuse du monde. Parce qu'elle est simple. Parce qu'elle est vraie. Les animaux bleus s'endorment doucement en l'écoutant. Ils font de beaux rêves.`,
+      `Les étoiles bleues explosent de lumière ! Elles dansent dans le ciel ! Le Royaume Bleu est de nouveau plein de rêves et de douceur !`,
+    ],
+    mood: 'triumph',
+    next: 'ch4-fragment',
+  },
+
+  'ch4-c3': {
+    id: 'ch4-c3',
+    chapter: 4,
+    chapterTitle: 'Le Royaume Bleu',
+    paragraphs: [
+      `Wassim invente une chanson sur le tard. — « Souhayl est grand comme une montagne. Nawfel est drôle comme un clown. Et moi, Wassim, je suis petit. Mais j'ai un grand cœur ! » Il rit en chantant.`,
+      `La licorne sourit. « C'est la chanson la plus belle, dit-elle. Parce qu'elle parle d'amour. L'amour de sa famille, c'est le plus beau des rêves. »`,
+      `Les étoiles entendissent les paroles de la chanson. Elles brillent de mille feux bleus ! Le ciel bleu est magnifique ! Wassim a chanté avec son cœur, et les étoiles l'ont entendu !`,
+    ],
+    mood: 'triumph',
+    next: 'ch4-fragment',
+  },
+
+  'ch4-fragment': {
+    id: 'ch4-fragment',
+    chapter: 4,
+    chapterTitle: 'Le Royaume Bleu',
+    paragraphs: [
+      `Un cristal bleu tombe du ciel. Il descend lentement, doucement, comme une plume. Wassim le rattrape dans ses mains. Il est frais comme l'eau et doux comme un rêve.`,
+      `Maintenant, Wassim a trois couleurs ! Le rouge, le jaune et le bleu ! Ses mains brillent comme un feu d'artifice miniature ! C'est magnifique !`,
+      `La licorne endormie sourit dans son sommeil. Elle fait un beau rêve grâce à la berceuse de Wassim.`,
+    ],
+    mood: 'triumph',
+    next: 'ch4-stars',
+  },
+
+  'ch4-stars': {
+    id: 'ch4-stars',
+    chapter: 4,
+    chapterTitle: 'Le Royaume Bleu',
+    paragraphs: [
+      `Le ciel bleu est plein d'étoiles. Elles scintillent et dansent. Les enfants du monde entier font de beaux rêves grâce à Wassim. Il le sait. Il le sent dans son cœur.`,
+      `— « Merci, Wassim, » murmure la licorne sans ouvrir les yeux. « Tu m'as redonné le sommeil. Et le sommeil, c'est le meilleur cadeau. »`,
+      `Papillon bat doucement ses ailes. — « Shhh... ne la réveille pas. Elle dort. Et c'est parfait comme ça. »`,
+    ],
+    mood: 'peace',
+    next: 'ch4-next',
+  },
+
+  'ch4-next': {
+    id: 'ch4-next',
+    chapter: 4,
+    chapterTitle: 'Le Royaume Bleu',
+    paragraphs: [
+      `Wassim quitte le Royaume Bleu doucement. Il marche sur la pointe des pieds pour ne pas réveiller personne. Même Papillon chuchote !`,
+      `— « Il reste une seule couleur, dit Papillon tout bas. Le Vert. Le royaume de la nature et de la gentillesse. Tu es prêt, petit héros ? »`,
+      `Wassim regarde ses trois points de couleur sur sa main. Rouge, jaune, bleu. Il lui manque le vert. Et il est déterminé à le trouver !`,
+    ],
+    mood: 'wonder',
+    next: 'ch5-start',
+  },
+
+  // ═══════════════════════════════════════════
+  // CHAPTER 5: LE ROYAUME VERT
+  // ═══════════════════════════════════════════
+  'ch5-start': {
+    id: 'ch5-start',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `La porte verte s'ouvre ! Et Wassim entre dans la forêt la plus belle du monde. Enfin, elle DEVRAIT être la plus belle. Mais les arbres sont gris-vert. Les fleurs sont fanées. La terre est sèche.`,
+      `C'est le Royaume Vert. Le royaume de la nature. Mais sans le vert, la nature meurt. Les feuilles tombent. Les rivières sèchent. Les animaux ont faim et soif.`,
+      `Wassim regarde tout ça et son cœur se serre. Il veut aider. Il doit aider !`,
+    ],
+    mood: 'wonder',
+    next: 'ch5-green-land',
+    isChapterStart: true,
+    illustrationPrompt: 'A magical green forest kingdom but faded and grey-green, drooping trees, dry river bed, thirsty animals, wilted flowers, a small boy with a butterfly looking sad but determined, soft green and brown tones, children fantasy illustration',
+  },
+
+  'ch5-green-land': {
+    id: 'ch5-green-land',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `Wassim marche dans la forêt. Ses pas font « crrouch, crrouch » sur les feuilles mortes. Les arbres penchent la tête, tristes. Ils ont soif. Ils ont faim de lumière.`,
+      `Un petit écureuil vert (enfin, gris-vert) descend d'un arbre. Il a les yeux brillants de faim. — « S'il te plaît, dit l'écureuil. J'ai mangé la dernière noix hier. Il n'y en a plus. »`,
+      `Wassim cherche dans ses poches. Il n'a rien à manger. Mais il a une idée !`,
+    ],
+    mood: 'wonder',
+    next: 'ch5-green-animals',
+  },
+
+  'ch5-green-animals': {
+    id: 'ch5-green-animals',
+    paragraphs: [
+      `Partout dans la forêt, les animaux ont besoin d'aide. Une petite biche a soif. Un lapin a froid. Un vieux hibou ne trouve plus de graines. Tout le monde souffre.`,
+      `Mais au milieu de la forêt, il y a un arbre. Un arbre très, très vieux. Le plus vieux de toute la forêt. Ses branches sont toutes sèches. Ses feuilles sont tombées. Mais son tronc pulse doucement.`,
+      `— « C'est l'Arbre de Vie, murmure Papillon. C'est lui qui donne la vie à toute la forêt. Il est malade. Il faut le soigner. »`,
+    ],
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    mood: 'wonder',
+    next: 'ch5-animal-choice',
+  },
+
+  'ch5-animal-choice': {
+    id: 'ch5-animal-choice',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `Wassim s'approche de l'Arbre de Vie. Il est si grand ! Wassim doit lever très haut la tête pour voir le sommet. L'arbre gronde doucement. Il a besoin d'aide. Comment Wassim peut-il le soigner ?`,
+    ],
+    mood: 'wonder',
+    choices: [
+      {
+        id: 'hug-tree',
+        text: 'Faire un gros câlin à l\'arbre.',
+        nextPage: 'ch5-s1',
+        tag: 'love',
+        emoji: '🌳',
+      },
+      {
+        id: 'sing-tree',
+        text: 'Chanter une chanson douce pour l\'arbre.',
+        nextPage: 'ch5-s2',
+        tag: 'care',
+        emoji: '🎶',
+      },
+      {
+        id: 'water-tree',
+        text: 'Donner un peu de son eau magique à l\'arbre.',
+        nextPage: 'ch5-s3',
         tag: 'generosity',
-        emoji: '🌅',
-      },
-      {
-        id: 'help-shadow',
-        text: 'Proposer d\'aider l\'Ombre — « Et si toi aussi, tu avais perdu ta lumière ? »',
-        nextPage: 'ch4-s3',
-        tag: 'kindness',
-        emoji: '💝',
+        emoji: '💧',
       },
     ],
   },
 
-  'ch4-s1': {
-    id: 'ch4-s1',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
+  'ch5-s1': {
+    id: 'ch5-s1',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
     paragraphs: [
-      `Nawfel rassembla les trois Fragments et les lança vers l'Ombre. Ils explosèrent en trois faisceaux de lumière — argenté, bleu, doré — qui percèrent l'obscurité comme des épées. L'Ombre hurla et recula, se recroquevillant sur elle-même, réduite à une tache noire tremblante.`,
-      `Mais quelque chose n'allait pas. La lumière blessait l'Ombre — vraiment blessait. Elle se tordait, elle criait — pas de colère, mais de douleur. Et Nawfel sentit quelque chose de froid dans sa poitrine. Est-ce que sauver le monde devait faire mal à quelqu'un ? Est-ce que la lumière devait détruire l'obscurité ?`,
-      `Il hésita. Les Fragment retournèrent vers lui, leur éclat diminué. L'Ombre resta là, tremblante, réduite mais pas vaincue. Et Nawfel comprit : utiliser la lumière comme arme, c'était devenir comme l'Ombre. Il devait trouver un autre chemin.`,
+      `Wassim ouvre ses bras et fait le plus grand câlin du monde à l'Arbre de Vie. Il serre le tronc très fort. — « Je suis là, dit-il. Je suis avec toi. »`,
+      `L'arbre tremble. Pas de peur. De joie. Il y a si longtemps que personne ne lui a fait de câlin ! Les branches sèches bougent doucement. Pas beaucoup. Mais assez pour montrer qu'il a entendu.`,
+      `— « Tu es gentil, petit garçon, » murmure l'arbre d'une voix grave et douce. « Ta gentillesse est comme de l'eau pour moi. Elle me donne des forces. »`,
     ],
-    mood: 'danger',
-    next: 'ch4-summit',
+    mood: 'peace',
+    next: 'ch5-kindness-test',
   },
 
-  'ch4-s2': {
-    id: 'ch4-s2',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
+  'ch5-s2': {
+    id: 'ch5-s2',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
     paragraphs: [
-      `Nawfel s'approcha de l'Ombre, les Fragments dans ses mains ouvertes. « Voilà, dit-il. Prends un peu de lumière. » L'Ombre recula d'abord, méfiante — elle n'avait jamais reçu de lumière, seulement en avait été privée. Mais Nawfel insista, doucement, patiemment.`,
-      `L'Ombre tendit un bout de vapeur noire et toucha la lumière. Et quelque chose d'extraordinaire se produisit. L'endroit où l'ombre toucha la lumière devint violet — pas noir, pas blanc, mais un mélange magnifique des deux. L'Ombre poussa un petit cri de surprise.`,
-      `— « Qu... qu'est-ce que c'est ? Ça fait... chaud ? » Sa voix n'était plus un grondement — c'était une petite voix perdue, comme celle d'un enfant qui découvre le soleil pour la première fois. L'Ombre recula, puis revint, puis recula encore, fascinée et terrifiée.`,
+      `Wassim chante la plus douce des chansons. Pas une chanson qu'il connaît. Une chanson qu'il invente, là, tout de suite. Avec des mots simples. « Arbre, arbre, magnifique arbre. Tu es si grand. Tu es si fort. »`,
+      `Les feuilles mortes au sol tremblent. Elles bougent ! L'une d'elles vole et se pose sur une branche. Elle devient verte ! Juste une petite feuille, mais verte !`,
+      `L'arbre soupire de soulagement. « Ta chanson est douce comme la pluie de printemps, dit-il. Merci, petit chanteur. »`,
+    ],
+    mood: 'peace',
+    next: 'ch5-kindness-test',
+  },
+
+  'ch5-s3': {
+    id: 'ch5-s3',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `Wassim regarde ses mains. Les trois couleurs y brillent. Rouge, jaune, bleu. Il les pose sur l'arbre et dit : « Prends un peu de ma magie. J'en ai assez pour toi. »`,
+      `Les couleurs coulent de ses mains dans le tronc de l'arbre. L'arbre se redresse ! Ses branches bougent ! Ses racines tremblent dans la terre ! Mais les couleurs de Wassim faiblissent un peu.`,
+      `— « Tu m'as donné ta magie ? » dit l'arbre étonné. « Personne n'a jamais fait ça. Tu es le plus gentil des enfants, Wassim. »`,
+    ],
+    mood: 'peace',
+    next: 'ch5-kindness-test',
+    shaykhSpeaks: 'Le prophète Muhammad (paix sur lui) a dit : « Quiconque est gentil envers les créatures de Dieu, Dieu est gentil envers lui. » Wassim, tu es gentil avec tout le monde. Même avec les arbres !',
+  },
+
+  'ch5-kindness-test': {
+    id: 'ch5-kindness-test',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `L'Arbre de Vie sourit. Ses branches s'ouvrent et, tout en haut, un cristal vert brille. Le dernier cristal ! Le cristal de la gentillesse !`,
+      `— « Tu l'as mérité, dit l'arbre. Tu as été gentil avec moi. Maintenant, je vais te confier un dernier défi. Regarde autour de toi. Tous ces animaux ont besoin d'aide. »`,
+      `Wassim regarde. L'écureuil a faim. La biche a soif. Le lapin a froid. Il y a beaucoup à faire. Comment peut-il aider tout le monde ?`,
     ],
     mood: 'wonder',
-    next: 'ch4-summit',
+    next: 'ch5-choice',
   },
 
-  'ch4-s3': {
-    id: 'ch4-s3',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
+  'ch5-choice': {
+    id: 'ch5-choice',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
     paragraphs: [
-      `— « Et si toi aussi, tu avais perdu ta lumière ? » demanda Nawfel calmement. L'Ombre se figea. Les deux points rouges qui lui servaient d'yeux clignotèrent. « Qu'est-ce que tu... ? » — « Est-ce que tu te souviens d'avoir été autre chose qu'une ombre ? »`,
-      `Le silence dura une éternité. Puis l'Ombre murmura : « Je... je ne me souviens plus. » Sa voix n'était plus menaçante — elle était perdue. Confuse. Comme un rêve qui a oublié ce qu'il rêvait.`,
-      `— « Moi non plus, je ne me souvenais pas, dit Nawfel doucement. Avant aujourd'hui, j'avais oublié mes rêves. Mais j'ai trouvé les étoiles en aidant les autres. Peut-être que tu as juste besoin que quelqu'un t'aide à te souvenir de ce que tu étais avant d'être une ombre. »`,
-    ],
-    mood: 'wisdom',
-    next: 'ch4-summit',
-  },
-
-  'ch4-summit': {
-    id: 'ch4-summit',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
-    paragraphs: [
-      `Nawfel atteignit le sommet. La Montagne des Vrais Rêves s'aplatissait en un plateau circulaire, et au centre, un piédestal de cristal attendait. Nawfel s'approcha, le cœur battant. Mais le piédestal était vide. Il n'y avait pas de quatrième Fragment. Pas d'étoile à récupérer.`,
-      `— « Où est le dernier Fragment ? » demanda Nawfel, déçu. Lumina flotta jusqu'à lui, sa lumière douce et triste. « Nawfel... il n'y a pas de quatrième Fragment. Il n'y en a jamais eu quatre. La Grande Étoile... » Elle hésita. « La Grande Étoile, c'était toi. Depuis le début. Ton cœur pur. Ta douceur. Ta tendresse. C'est ça, la vraie étoile. »`,
-      `Nawfel regarda ses mains. Et il comprit. Chaque acte de gentillesse, chaque moment de patience, chaque câlin donné — tout ça avait nourri une lumière en lui. La lumière la plus puissante du monde n'était pas un cristal ou un fragment. C'était un cœur d'enfant qui se souciait des autres.`,
-    ],
-    mood: 'wonder',
-    shaykhSpeaks: 'Mémé Khadija disait toujours : « La lumière la plus puissante n\'est pas celle qui éclaire la pièce la plus grande. C\'est celle qui brille dans la poitrine d\'un enfant qui se soucie des autres. »',
-    next: 'ch4-final-choice',
-  },
-
-  'ch4-final-choice': {
-    id: 'ch4-final-choice',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
-    paragraphs: [
-      `Nawfel sentait la lumière dans sa poitrine — chaude, vivante, immense. Les trois Fragments orbitaient autour de lui, et la Grande Étoile — son propre cœur — commençait à briller si fort qu'elle illuminait le sommet entier de la montagne. Le ciel au-dessus tremblait, comme si les ténèbres elles-mêmes reculaient.`,
-      `Lumina flottait devant lui, ses yeux brillants de larmes de lumière. « C'est le moment, Nawfel. Tu peux utiliser cette lumière pour accomplir un vœu. Un seul. Choisis bien. »`,
+      `Tous les animaux regardent Wassim. L'écureuil, la biche, le lapin, le hibou. Ils espèrent. Wassim veut les aider tous. Mais il doit trouver la meilleure façon.`,
     ],
     mood: 'wonder',
     choices: [
       {
-        id: 'restore-sky',
-        text: 'Remettre toutes les étoiles dans le ciel — « Le ciel doit briller pour tout le monde. »',
-        nextPage: 'ending-light',
-        tag: 'selflessness',
-        emoji: '🌌',
+        id: 'share-all',
+        text: 'Partager tout ce qu\'il a avec chacun.',
+        nextPage: 'ch5-c1',
+        tag: 'generosity',
+        emoji: '💚',
       },
       {
-        id: 'keep-star',
-        text: 'Garder une étoile pour lui — « Je veux me souvenir de ce voyage pour toujours. »',
-        nextPage: 'ending-fraternal',
-        tag: 'memory',
-        emoji: '💫',
+        id: 'teach-help',
+        text: 'Apprendre aux animaux à s\'aider entre eux.',
+        nextPage: 'ch5-c2',
+        tag: 'wisdom',
+        emoji: '🤝',
       },
       {
-        id: 'give-lumina',
-        text: 'Donner l\'étoile à Lumina — « Tu as guidé tout le chemin. C\'est à toi. »',
-        nextPage: 'ending-guardian',
-        tag: 'gratitude',
-        emoji: '⭐',
-      },
-      {
-        id: 'share-world',
-        text: 'Partager les étoiles avec le monde réel — « Les enfants du vrai monde ont besoin de rêver aussi. »',
-        nextPage: 'ending-dream',
-        tag: 'sharing',
-        emoji: '🌍',
+        id: 'plant-seeds',
+        text: 'Planter des graines avec les animaux pour l\'avenir.',
+        nextPage: 'ch5-c3',
+        tag: 'nature',
+        emoji: '🌱',
       },
     ],
   },
 
-  // ═══════════════════════════════════════════
-  // ENDINGS
-  // ═══════════════════════════════════════════
-  'ending-light': {
-    id: 'ending-light',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
-    title: 'Fin — La Lumière du Ciel',
+  'ch5-c1': {
+    id: 'ch5-c1',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
     paragraphs: [
-      `— « Le ciel doit briller pour tout le monde, » dit Nawfel. Et il ouvrit son cœur — littéralement. La lumière jaillit de sa poitrine comme une fontaine d'or et d'argent, montèrent dans le ciel noir, et explosèrent. Des millions d'étoiles apparurent. Pas une, pas dix — des millions. Le ciel entier se mit à briller comme un bijou.`,
-      `Le Royaume des Étoiles se transforma. Les couleurs revinrent — le rouge des fleurs, le vert de l'herbe, le bleu des rivières. La musique revint — le chant des oiseaux, le rire des enfants, la mélodie des fontaines. Lumina monta lentement vers le ciel, sa lumière grandissant, grandissant, jusqu'à devenir l'une des étoiles les plus brillantes du ciel nouveau.`,
-      `— « Tu es la plus belle étoile de toutes, Nawfel, » dit-elle avant de disparaître dans les cieux. Et Nawfel se réveilla. Dans le grenier de Mémé. Le carnet était ouvert sur ses genoux, et il brillait doucement. Par la fenêtre, à travers la pluie, il pouvait voir le ciel. Et dans le ciel, de nouvelles étoiles — plus brillantes, plus nombreuses qu'avant.`,
+      `Wassim regarde ses couleurs magiques. Rouge, jaune, bleu. Il souffle sur ses mains et les couleurs se dispersent dans la forêt. Chaque animal reçoit un peu de magie !`,
+      `L'écureuil trouve plein de noix. La biche trouve un ruisseau d'eau claire. Le lapin trouve un nid chaud. Le hibou trouve des graines. Tout le monde est heureux !`,
+      `Les couleurs de Wassim faiblissent. Mais son cœur est plein de joie. Donner, c'est la plus belle chose du monde !`,
+    ],
+    mood: 'triumph',
+    next: 'ch5-fragment',
+  },
+
+  'ch5-c2': {
+    id: 'ch5-c2',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `— « Écoutez-moi ! » dit Wassim. Les animaux se rassemblent. « Si on s'aide entre nous, personne n'aura besoin d'être triste ! » L'écureuil peut grimper aux arbres pour trouver des noix. La biche peut sentir l'eau. Le lapin peut creuser des terres chaudes.`,
+      `Les animaux se regardent. Puis ils sourient. Ils commencent à s'entraider ! L'écureuil jette des noix au hibou. La biche montre le chemin de l'eau au lapin. C'est beau à voir !`,
+      `— « Ensemble, on est plus forts ! » dit Wassim. Et le cristal vert brille au sommet de l'arbre !`,
+    ],
+    mood: 'triumph',
+    next: 'ch5-fragment',
+  },
+
+  'ch5-c3': {
+    id: 'ch5-c3',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `Wassim ramasse des graines par terre. Il montre aux animaux comment les planter. « Vous mettez la graine dans la terre. Vous arrosez. Et vous attendez avec patience. »`,
+      `Tous les animaux plantent des graines ensemble. L'écureuil, la biche, le lapin, le hibou. Ils travaillent comme une grande équipe. Et sous leurs pattes, de petites pousses vertes commencent à sortir !`,
+      `— « C'est pour plus tard, dit Wassim. Aujourd'hui on plante. Demain on récolte. C'est comme ça que la nature fonctionne ! » L'Arbre de Vie est fier de lui.`,
+    ],
+    mood: 'triumph',
+    next: 'ch5-fragment',
+  },
+
+  'ch5-fragment': {
+    id: 'ch5-fragment',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `Le cristal vert tombe doucement de l'arbre. Il vole vers Wassim et se pose dans ses mains. Il est frais comme la rosée du matin. Il sent bon la terre mouillée.`,
+      `Quatre couleurs ! Rouge, jaune, bleu, VERT ! Wassim a les quatre couleurs ! Ses mains brillent comme un arc-en-ciel miniature ! C'est la chose la plus magique qu'il ait jamais vue !`,
+      `La forêt s'éveille autour de lui. Les feuilles poussent sur les arbres. Les fleurs s'ouvrent. La rivière coule. Tout est vert et vivant !`,
+    ],
+    mood: 'triumph',
+    next: 'ch5-flowers',
+  },
+
+  'ch5-flowers': {
+    id: 'ch5-flowers',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `Le Royaume Vert est magnifique ! Les arbres dansent dans le vent. Les fleurs chantent. Les papillons volent partout. Les animaux jouent et rient !`,
+      `— « Merci, Wassim ! » crient tous les animaux ensemble. « Tu as sauvé notre forêt ! Tu es le meilleur ! » L'écureuil fait un salut. La biche s'incline. Le hibou applaudit avec ses ailes.`,
+      `L'Arbre de Vie secoue ses branches. Des feuilles vertes volent dans l'air comme des confettis. C'est la fête dans la forêt !`,
+    ],
+    mood: 'triumph',
+    next: 'ch5-next',
+  },
+
+  'ch5-next': {
+    id: 'ch5-next',
+    chapter: 5,
+    chapterTitle: 'Le Royaume Vert',
+    paragraphs: [
+      `Papillon vole autour de Wassim, tout excité. Ses ailes brillent de toutes les couleurs maintenant ! Rouge, jaune, bleu, vert ! Il est le plus beau papillon du monde !`,
+      `— « Tu as les quatre couleurs, Wassim ! dit Papillon. Tu es le seul qui pouvait les retrouver. Parce que tu es courageux, joyeux, calme et gentil. Tu as tout ! »`,
+      `Wassim sourit. Il est fier. Lui, le petit frère. Lui, le plus petit. Il a fait quelque chose de grand. Quelque chose que même Souhayl et Nawfel n'ont jamais fait.`,
+    ],
+    mood: 'wonder',
+    next: 'ending-gather',
+  },
+
+  // ═══════════════════════════════════════════
+  // ENDING : LES COULEURS RETROUVÉES
+  // ═══════════════════════════════════════════
+  'ending-gather': {
+    id: 'ending-gather',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
+    paragraphs: [
+      `Wassim est de retour au Pays Sans Couleurs. Mais cette fois, il a les quatre couleurs dans ses mains. Et les quatre royaumes sont derrière lui, vivants et joyeux.`,
+      `Tous les habitants sont là. Les animaux rouges, jaunes, bleus et verts. Le renard, le dauphin, la licorne, l'écureuil. Même les gens gris du pays sont venus !`,
+      `Papillon vole au-dessus de tout le monde. — « C'est le moment ! dit-il. Wassim va ramener les couleurs dans le monde ! »`,
+    ],
+    mood: 'wonder',
+    next: 'ending-magic',
+  },
+
+  'ending-magic': {
+    id: 'ending-magic',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
+    paragraphs: [
+      `Wassim lève ses mains en l'air. Les quatre couleurs brillent. Rouge. Jaune. Bleu. Vert. Elles tournent, tournent, tournent dans les airs !`,
+      `Les couleurs se mélangent. Elles font des spirales magiques. Des traînées de lumière. Des étoiles qui dansent. C'est le plus beau spectacle du monde !`,
+      `Et maintenant, Wassim doit choisir. Que faire avec toute cette magie ?`,
+    ],
+    mood: 'triumph',
+    next: 'ending-choice',
+  },
+
+  'ending-choice': {
+    id: 'ending-choice',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
+    paragraphs: [
+      `Les quatre couleurs flottent devant Wassim. Elles attendent. Tout le monde attend. Que va faire Wassim avec cette magie merveilleuse ?`,
+    ],
+    mood: 'wonder',
+    choices: [
+      {
+        id: 'rainbow',
+        text: 'Faire le plus beau arc-en-ciel du monde !',
+        nextPage: 'ending-rainbow',
+        tag: 'wonder',
+        emoji: '🌈',
+      },
+      {
+        id: 'share',
+        text: 'Partager les couleurs avec Souhayl et Nawfel !',
+        nextPage: 'ending-fraternal',
+        tag: 'love',
+        emoji: '💛',
+      },
+      {
+        id: 'create',
+        text: 'Créer quelque chose de magique et de nouveau...',
+        nextPage: 'ending-create-choice',
+        tag: 'creativity',
+        emoji: '🎨',
+      },
+    ],
+  },
+
+  'ending-rainbow': {
+    id: 'ending-rainbow',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
+    paragraphs: [
+      `Wassim souffle sur les couleurs. POUF ! Un immense arc-en-ciel apparaît dans le ciel ! Rouge, orange, jaune, vert, bleu, violet ! Tous les couleurs du monde !`,
+      `L'arc-en-ciel traverse tout le ciel. Il est si grand qu'on peut le voir de partout. Les gens gris regardent en haut et sourient. Pour la première fois depuis très longtemps, ils sourient !`,
+      `Les couleurs coulent de l'arc-en-ciel comme de la pluie légère. Elles touchent le sol, les arbres, les maisons. Le monde entier se colore ! Le Pays Sans Couleurs n'existe plus. Maintenant, c'est le Pays de Toutes les Couleurs !`,
     ],
     mood: 'ending',
     isEnding: true,
-    endingType: 'light',
+    endingType: 'rainbow',
+    illustrationPrompt: 'A magnificent rainbow arching across a colorful magical sky, a small boy standing in the middle with arms raised, colors raining down on a grey world turning colorful, animals and creatures celebrating, joyful and triumphant atmosphere, children book illustration, vivid rainbow colors',
   },
 
   'ending-fraternal': {
     id: 'ending-fraternal',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
-    title: 'Fin — La Lumière Fraternelle',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
     paragraphs: [
-      `— « Je veux garder une étoile pour moi, » dit Nawfel. Une petite étoile sortit de la lumière et vint se loger dans sa main — tiède, douce, à lui. Et le reste de la lumière monta au ciel, créant des milliers d'étoiles nouvelles. Le ciel brilla. Mais Nawfel garda la sienne, serrée contre sa poitrine.`,
-      `Il se réveilla dans le grenier et descendit l'escalier en courant. Souhayl était en bas, son grand livre fermé sur ses genoux. Nawfel s'arrêta devant lui, les yeux brillants. « Souhayl ! J'ai vécu une aventure incroyable ! J'ai sauvé des étoiles ! J'ai rencontré un géant et une créature faite de larmes ! »`,
-      `Souhayl le regarda. Et lentement, un sourire apparut sur son visage — un sourire qui ressemblait à celui d'un garçon de dix ans qui a aussi vécu quelque chose de magique. « Moi aussi, frérot, dit-il doucement. Moi aussi. » Et entre les deux frères, l'étoile que Nawfel gardait brilla d'un éclat chaud et tendre — comme un secret partagé, une lumière fraternelle que rien ne pourrait jamais éteindre.`,
+      `Wassim pense à ses frères. Souhayl et Nawfel. Il leur manque. Il veut partager cette magie avec eux. Il souffle sur les couleurs et les envoie dans sa chambre !`,
+      `Les couleurs traversent le livre magique et arrivent dans la vraie chambre de Wassim. Elles peignent les murs. Elles colorent les jouets. Elles rendent tout beau !`,
+      `Souhayl et Nawfel entrent dans la chambre. « Waouh ! » dit Souhayl. « C'est magnifique ! » dit Nawfel. Wassim leur raconte toute l'aventure. Et ses frères l'écoutent avec de grands yeux émerveillés. Parce que Wassim, le petit frère, est un vrai héros !`,
     ],
     mood: 'ending',
     isEnding: true,
-    endingType: 'fraternal',
+    endingType: 'sharing',
+    illustrationPrompt: 'A boys bedroom filling with magical colors flowing from a glowing book, three brothers hugging and laughing together, colorful toys and walls, warm family atmosphere, children book illustration, warm and loving colors',
+  },
+
+  'ending-create-choice': {
+    id: 'ending-create-choice',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
+    paragraphs: [
+      `Les couleurs tournent devant Wassim. Il peut créer quelque chose de nouveau. Quelque chose que personne n'a jamais vu. Mais quoi ? Wassim réfléchit très fort.`,
+    ],
+    mood: 'wonder',
+    choices: [
+      {
+        id: 'guardian',
+        text: 'Devenir le Gardien des Couleurs, pour protéger les couleurs à jamais.',
+        nextPage: 'ending-guardian',
+        tag: 'guardian',
+        emoji: '🦋',
+      },
+      {
+        id: 'artist',
+        text: 'Ramener les couleurs dans le monde réel pour peindre la joie partout.',
+        nextPage: 'ending-dream',
+        tag: 'artist',
+        emoji: '🖌️',
+      },
+    ],
   },
 
   'ending-guardian': {
     id: 'ending-guardian',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
-    title: 'Fin — Le Gardien des Étoiles',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
     paragraphs: [
-      `— « C'est à toi, Lumina, » dit Nawfel en tendant la lumière vers l'étoile. « Tu as guidé tout le chemin. Sans toi, j'étais juste un petit garçon dans un grenier. » Lumina le regarda, stupéfaite. Ses yeux de lumière se remplirent de larmes — de vraies larmes, cette fois, pas des larmes de cristal.`,
-      `— « Nawfel... personne n'a jamais... » Elle ne put finir. La lumière la toucha et la transforma. Elle grandit, grandit, devint immense et brillante — l'étoile la plus éclatante de tout le ciel. L'Étoile du Nord. « Je serai toujours là, Nawfel. Chaque nuit, regarde le ciel. Je serai la plus brillante. Juste pour toi. »`,
-      `Et Nawfel devint le Gardien du Royaume des Étoiles. Chaque nuit, quand il dormait, il visitait le royaume — marchant dans les prairies argentées, bavardant avec le Gardien Hibou, jouant avec la petite baleine bleue. Et chaque enfant qui rêvait pouvait voir son étoile à lui — petite, modeste, mais incroyablement tenace — briller dans le ciel aux côtés de Lumina. Le petit frère. Le Gardien. L'étoile qui n'abandonne jamais.`,
+      `Wassim souffle sur les couleurs et elles se posent sur lui. Sur ses bras, sur ses vêtements, dans ses cheveux. Des traces de rouge, de jaune, de bleu et de vert. Comme un tatouage magique !`,
+      `— « Tu es le Gardien des Couleurs, dit Papillon avec une voix solennelle. Chaque fois que quelqu'un aura besoin de couleurs, tu seras là. Chaque fois qu'un enfant sera triste, tu lui donneras un peu de magie. »`,
+      `Wassim sourit. Il rentre chez lui. Et depuis ce jour, quand il dessine, ses dessins sont magiques. Quand il peint, ses tableaux brillent. Parce que Wassim est le Gardien des Couleurs. Le plus petit des frères. Et le plus magique !`,
     ],
     mood: 'ending',
     isEnding: true,
     endingType: 'guardian',
+    illustrationPrompt: 'A small boy glowing with magical colors on his skin and clothes, a protective aura of rainbow light around him, a butterfly companion on his shoulder, standing confidently as a guardian, magical and heroic children book illustration, colorful and warm',
   },
 
   'ending-dream': {
     id: 'ending-dream',
-    chapter: 4,
-    chapterTitle: 'La Montagne des Vrais Rêves',
-    title: 'Fin — Les Rêves Partagés',
+    chapter: 6,
+    chapterTitle: 'Les Couleurs Retrouvées',
     paragraphs: [
-      `— « Les enfants du vrai monde ont besoin de rêver aussi, » dit Nawfel. Et il fit son vœu — non pas pour lui, pas pour le royaume, mais pour tous les enfants du monde. La lumière monta au ciel du royaume, créant des étoiles. Mais en même temps, quelque chose d'autre se produisit. Le carnet dans le grenier s'illumina.`,
-      `Des étoiles en sortirent — pas une, pas deux — des centaines d'étoiles miniatures qui s'envolèrent par la fenêtre du grenier, traversèrent la pluie, et montèrent dans le vrai ciel. Partout dans le monde, des enfants qui dormaient ce soir-là firent des rêves un peu plus brillants. Un peu plus beaux. Un peu plus courageux.`,
-      `Et quand Mémé Khadija monta au grenier le lendemain matin, elle trouva Nawfel endormi sur un vieux plaid, le carnet ouvert sur sa poitrine. Son visage était baigné d'une douce lueur argentée. Mémé Khadija sourit — un sourire qui savait. Elle couvrit Nawfel d'une couverture, lui embrassa le front, et murmura : « dors bien, mon petit Cœur d'Argent. » Et dans le ciel de ce matin, les étoiles brillaient encore.`,
+      `Wassim prend les couleurs dans ses mains. Il les mélange comme de la peinture. Et il commence à créer ! Il peint un soleil rouge. Des nuages jaunes. Une mer bleue. Des arbres verts. Un monde entier de couleurs !`,
+      `Les couleurs sortent du livre et vont dans le monde réel. Elles peignent les rues. Elles colorent les écoles. Elles rendent tout plus joli, plus joyeux, plus vivant !`,
+      `Wassim rentre chez lui avec son livre de coloriage. Mais ce n'est plus un livre normal. C'est un livre magique. Chaque fois qu'il ouvre une page et dessine, son dessin prend vie ! Wassim sourit. Il est le Petit Artiste. Et son pinceau, c'est son cœur !`,
     ],
     mood: 'ending',
     isEnding: true,
-    endingType: 'dream',
+    endingType: 'artist',
+    illustrationPrompt: 'A small boy painting on a magical book, colorful paint swirling out of the pages and filling the real world with colors, houses and trees becoming colorful, a paintbrush in his hand glowing with rainbow light, dreamy and magical children book illustration, all colors of the rainbow',
   },
 };
 

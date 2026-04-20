@@ -172,7 +172,7 @@ function ShareJourneyButton({ visitedCount, choicesCount, chaptersCount, endings
     }
 
     const text = [
-      `📖 Le Voyage Intérieur de Nawfel — Mon Voyage`,
+      `📖 Le Voyage Intérieur de Wassim — Mon Voyage`,
       ``,
       `✦ Pages visitées: ${visitedCount}/${TOTAL_PAGES}`,
       `✦ Choix effectués: ${choicesCount}`,
@@ -199,7 +199,7 @@ function ShareJourneyButton({ visitedCount, choicesCount, chaptersCount, endings
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 }}
       onClick={handleShare}
-      className="share-button w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-sky-950/20 border border-sky-800/15 text-sky-500/50 hover:text-sky-400/70 hover:border-sky-700/25 transition-all duration-300 font-serif text-sm cursor-pointer"
+      className="share-button w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-purple-950/20 border border-purple-800/15 text-purple-500/50 hover:text-purple-400/70 hover:border-purple-700/25 transition-all duration-300 font-serif text-sm cursor-pointer"
     >
       <Share2 className="w-4 h-4" />
       <span>{copied ? '✓ Copié !' : 'Partager le voyage'}</span>
@@ -265,16 +265,16 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-[#0d0c14]/95 backdrop-blur-md border-l border-sky-800/20 overflow-y-auto animated-border-left islamic-bg-pattern"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-[#0d0c14]/95 backdrop-blur-md border-l border-purple-800/20 overflow-y-auto animated-border-left islamic-bg-pattern"
           >
             {/* Header */}
-            <div className="sticky top-0 z-10 bg-[#0d0c14]/90 backdrop-blur-md px-6 py-4 border-b border-sky-800/15 flex items-center justify-between">
+            <div className="sticky top-0 z-10 bg-[#0d0c14]/90 backdrop-blur-md px-6 py-4 border-b border-purple-800/15 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <BookOpen className="w-5 h-5 text-sky-500/70" />
-                <h2 className="font-serif text-lg text-sky-100 font-bold">Journal de Nawfel</h2>
+                <BookOpen className="w-5 h-5 text-purple-500/70" />
+                <h2 className="font-serif text-lg text-purple-100 font-bold">Journal de Wassim</h2>
               </div>
-              <button onClick={onClose} className="p-2 rounded-lg hover:bg-sky-900/20 transition-colors">
-                <X className="w-4 h-4 text-sky-200/50" />
+              <button onClick={onClose} className="p-2 rounded-lg hover:bg-purple-900/20 transition-colors">
+                <X className="w-4 h-4 text-purple-200/50" />
               </button>
             </div>
 
@@ -286,82 +286,82 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                 transition={{ delay: 0.1 }}
                 className="space-y-3"
               >
-                <h3 className="text-sky-500/60 text-xs uppercase tracking-wider font-serif flex items-center gap-2">
+                <h3 className="text-purple-500/60 text-xs uppercase tracking-wider font-serif flex items-center gap-2">
                   <span>📊</span> Statistiques de lecture
                 </h3>
-                <div className="bg-sky-950/15 rounded-xl border border-sky-800/10 p-4 space-y-3">
+                <div className="bg-purple-950/15 rounded-xl border border-purple-800/10 p-4 space-y-3">
                   {/* Reading time estimate */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-sky-500/40" />
-                      <span className="text-sky-200/50 text-xs font-serif">Temps de lecture estimé</span>
+                      <Clock className="w-3.5 h-3.5 text-purple-500/40" />
+                      <span className="text-purple-200/50 text-xs font-serif">Temps de lecture estimé</span>
                     </div>
-                    <span className="text-sky-100 text-sm font-serif font-bold">{formatReadingTime(estimatedReadingTime)}</span>
+                    <span className="text-purple-100 text-sm font-serif font-bold">{formatReadingTime(estimatedReadingTime)}</span>
                   </div>
                   {/* Reading speed */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Gauge className="w-3.5 h-3.5 text-sky-500/40" />
-                      <span className="text-sky-200/50 text-xs font-serif">Vitesse de lecture</span>
+                      <Gauge className="w-3.5 h-3.5 text-purple-500/40" />
+                      <span className="text-purple-200/50 text-xs font-serif">Vitesse de lecture</span>
                     </div>
-                    <span className="text-sky-100 text-sm font-serif font-bold">
+                    <span className="text-purple-100 text-sm font-serif font-bold">
                       {readingSpeed !== null ? `${readingSpeed} p/min` : '—'}
                     </span>
                   </div>
                   {/* Exploration percentage */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Compass className="w-3.5 h-3.5 text-sky-500/40" />
-                      <span className="text-sky-200/50 text-xs font-serif">Exploration</span>
+                      <Compass className="w-3.5 h-3.5 text-purple-500/40" />
+                      <span className="text-purple-200/50 text-xs font-serif">Exploration</span>
                     </div>
-                    <span className="text-sky-100 text-sm font-serif font-bold">{explorationPct}%</span>
+                    <span className="text-purple-100 text-sm font-serif font-bold">{explorationPct}%</span>
                   </div>
                   {/* Exploration progress bar */}
-                  <div className="w-full h-1.5 bg-sky-950/30 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-purple-950/30 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${explorationPct}%` }}
                       transition={{ duration: 0.8, ease: 'easeOut' }}
-                      className="h-full bg-gradient-to-r from-sky-700/60 to-sky-500/80 rounded-full"
+                      className="h-full bg-gradient-to-r from-purple-700/60 to-purple-500/80 rounded-full"
                     />
                   </div>
                   {/* Current streak */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Flame className="w-3.5 h-3.5 text-sky-500/40" />
-                      <span className="text-sky-200/50 text-xs font-serif">Pages consécutives</span>
+                      <Flame className="w-3.5 h-3.5 text-purple-500/40" />
+                      <span className="text-purple-200/50 text-xs font-serif">Pages consécutives</span>
                     </div>
-                    <span className="text-sky-100 text-sm font-serif font-bold">{currentStreak}</span>
+                    <span className="text-purple-100 text-sm font-serif font-bold">{currentStreak}</span>
                   </div>
                 </div>
               </motion.div>
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-sky-950/20 rounded-lg p-3 border border-sky-800/10 hover:border-sky-700/20 transition-colors duration-300">
-                  <p className="text-sky-500/50 text-xs font-serif mb-1">Pages visitées</p>
-                  <p className="text-sky-100 text-2xl font-bold font-serif">{visitedPages.length}</p>
+                <div className="bg-purple-950/20 rounded-lg p-3 border border-purple-800/10 hover:border-purple-700/20 transition-colors duration-300">
+                  <p className="text-purple-500/50 text-xs font-serif mb-1">Pages visitées</p>
+                  <p className="text-purple-100 text-2xl font-bold font-serif">{visitedPages.length}</p>
                 </div>
-                <div className="bg-sky-950/20 rounded-lg p-3 border border-sky-800/10 hover:border-sky-700/20 transition-colors duration-300">
-                  <p className="text-sky-500/50 text-xs font-serif mb-1">Choix effectués</p>
-                  <p className="text-sky-100 text-2xl font-bold font-serif">{chosenTags.length}</p>
+                <div className="bg-purple-950/20 rounded-lg p-3 border border-purple-800/10 hover:border-purple-700/20 transition-colors duration-300">
+                  <p className="text-purple-500/50 text-xs font-serif mb-1">Choix effectués</p>
+                  <p className="text-purple-100 text-2xl font-bold font-serif">{chosenTags.length}</p>
                 </div>
-                <div className="bg-sky-950/20 rounded-lg p-3 border border-sky-800/10 hover:border-sky-700/20 transition-colors duration-300">
-                  <p className="text-sky-500/50 text-xs font-serif mb-1">Chapitres</p>
-                  <p className="text-sky-100 text-2xl font-bold font-serif">{chaptersCompleted.length}/4</p>
+                <div className="bg-purple-950/20 rounded-lg p-3 border border-purple-800/10 hover:border-purple-700/20 transition-colors duration-300">
+                  <p className="text-purple-500/50 text-xs font-serif mb-1">Chapitres</p>
+                  <p className="text-purple-100 text-2xl font-bold font-serif">{chaptersCompleted.length}/4</p>
                 </div>
-                <div className="bg-sky-950/20 rounded-lg p-3 border border-sky-800/10 hover:border-sky-700/20 transition-colors duration-300">
-                  <p className="text-sky-500/50 text-xs font-serif mb-1">Fins trouvées</p>
-                  <p className="text-sky-100 text-2xl font-bold font-serif">{endingsFound.length}/4</p>
+                <div className="bg-purple-950/20 rounded-lg p-3 border border-purple-800/10 hover:border-purple-700/20 transition-colors duration-300">
+                  <p className="text-purple-500/50 text-xs font-serif mb-1">Fins trouvées</p>
+                  <p className="text-purple-100 text-2xl font-bold font-serif">{endingsFound.length}/4</p>
                 </div>
               </div>
 
               {/* Virtue Profile */}
               {chosenTags.length > 0 && (
                 <div className="space-y-3">
-                  <h3 className="text-sky-500/60 text-xs uppercase tracking-wider font-serif">Profil spirituel</h3>
+                  <h3 className="text-purple-500/60 text-xs uppercase tracking-wider font-serif">Profil spirituel</h3>
                   <div>
-                    <p className="text-sky-300/40 text-xs mb-2 font-serif">Vertus développées</p>
+                    <p className="text-purple-300/40 text-xs mb-2 font-serif">Vertus développées</p>
                     <div className="flex flex-wrap gap-2">
                       {virtues.map((v, i) => (
                         <span
@@ -375,7 +375,7 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                     </div>
                   </div>
                   <div>
-                    <p className="text-sky-300/40 text-xs mb-2 font-serif">Défis à surmonter</p>
+                    <p className="text-purple-300/40 text-xs mb-2 font-serif">Défis à surmonter</p>
                     <div className="flex flex-wrap gap-2">
                       {challenges.map((c, i) => (
                         <span
@@ -393,7 +393,7 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
 
               {/* Choices Timeline */}
               <div className="space-y-3">
-                <h3 className="text-sky-500/60 text-xs uppercase tracking-wider font-serif">Chronologie des choix</h3>
+                <h3 className="text-purple-500/60 text-xs uppercase tracking-wider font-serif">Chronologie des choix</h3>
                 <div className="space-y-3">
                   {chosenTags.map((tag, index) => {
                     const info = tagLabels[tag];
@@ -407,22 +407,22 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                         className="flex items-start gap-3 group cursor-default"
                       >
                         <div className="flex flex-col items-center">
-                          <div className="w-8 h-8 rounded-full bg-sky-900/30 border border-sky-700/30 flex items-center justify-center text-sm shrink-0 group-hover:bg-sky-800/40 group-hover:border-sky-600/40 transition-all duration-300 group-hover:scale-110">
+                          <div className="w-8 h-8 rounded-full bg-purple-900/30 border border-purple-700/30 flex items-center justify-center text-sm shrink-0 group-hover:bg-purple-800/40 group-hover:border-purple-600/40 transition-all duration-300 group-hover:scale-110">
                             {info.emoji}
                           </div>
                           {index < chosenTags.length - 1 && (
-                            <div className="w-px h-6 bg-sky-800/20 mt-1 group-hover:bg-sky-700/30 transition-colors duration-300" />
+                            <div className="w-px h-6 bg-purple-800/20 mt-1 group-hover:bg-purple-700/30 transition-colors duration-300" />
                           )}
                         </div>
                         <div className="pt-1 group-hover:translate-x-1 transition-transform duration-300">
-                          <p className="text-sky-100/80 text-sm font-serif group-hover:text-sky-100 transition-colors duration-300">{info.label}</p>
-                          <p className="text-sky-500/40 text-xs font-serif group-hover:text-sky-500/60 transition-colors duration-300">{info.chapter}</p>
+                          <p className="text-purple-100/80 text-sm font-serif group-hover:text-purple-100 transition-colors duration-300">{info.label}</p>
+                          <p className="text-purple-500/40 text-xs font-serif group-hover:text-purple-500/60 transition-colors duration-300">{info.chapter}</p>
                         </div>
                       </motion.div>
                     );
                   })}
                   {chosenTags.length === 0 && (
-                    <p className="text-sky-200/30 text-sm font-serif italic">
+                    <p className="text-purple-200/30 text-sm font-serif italic">
                       Aucun choix encore effectué...
                     </p>
                   )}
@@ -432,15 +432,15 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
               {/* Endings Gallery */}
               {endingsFound.length > 0 && (
                 <div className="space-y-3">
-                  <h3 className="text-sky-500/60 text-xs uppercase tracking-wider font-serif">Fins découvertes</h3>
+                  <h3 className="text-purple-500/60 text-xs uppercase tracking-wider font-serif">Fins découvertes</h3>
                   <div className="space-y-2">
                     {endingsFound.map((ending) => (
                       <div
                         key={ending}
-                        className="flex items-center gap-2 px-3 py-2 bg-sky-950/20 rounded-lg border border-sky-800/10 hover:border-sky-700/20 hover:bg-sky-950/30 transition-all duration-300"
+                        className="flex items-center gap-2 px-3 py-2 bg-purple-950/20 rounded-lg border border-purple-800/10 hover:border-purple-700/20 hover:bg-purple-950/30 transition-all duration-300"
                       >
-                        <ChevronRight className="w-3 h-3 text-sky-500/50" />
-                        <span className="text-sky-100/70 text-sm font-serif capitalize">
+                        <ChevronRight className="w-3 h-3 text-purple-500/50" />
+                        <span className="text-purple-100/70 text-sm font-serif capitalize">
                           {ending === 'light' && '🌟 La Lumière de l\'Âme'}
                           {ending === 'wisdom' && '📖 La Sagesse du Chemin'}
                           {ending === 'shadow' && '🌙 L\'Ombre Révélée'}

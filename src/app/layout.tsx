@@ -23,8 +23,8 @@ const amiri = Amiri({
 });
 
 export const metadata: Metadata = {
-  title: "Le Voyage Intérieur de Nawfel — Tome 1 : Les Étoiles du Cœur",
-  description: "Un livre interactif immersif. Nawfel, 8 ans, découvre le Royaume des Étoiles et pénètre dans son monde intérieur pour affronter son ego et cheminer vers Allah.",
+  title: "Le Voyage Intérieur de Wassim — Tome 1 : Le Pays des Couleurs Perdues",
+  description: "Un livre interactif magique pour enfants. Wassim, 6 ans, part à la découverte du Pays des Couleurs Perdues pour ramener la joie et les couleurs dans le monde.",
   keywords: ["Tassawuf", "Soufi", "livre interactif", "spiritualité", "Islam", "jeunesse"],
   icons: {
     icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
@@ -42,8 +42,8 @@ export default function RootLayout({
         className={`${playfair.variable} ${inter.variable} ${amiri.variable} antialiased`}
         style={{
           fontFamily: 'var(--font-serif), Georgia, "Times New Roman", serif',
-          backgroundColor: '#070b16',
-          color: '#e2e8f0',
+          backgroundColor: '#1a1033',
+          color: '#faf5ff',
           overflowX: 'hidden',
         }}
       >

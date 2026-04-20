@@ -26,10 +26,10 @@ const quizQuestions: QuizQuestion[] = [
     difficulty: 'easy',
   },
   {
-    question: "Comment s'appelle la petite étoile qui guide Nawfel ?",
-    options: ["Nafs", "Lumina", "Ondine", "Waswās"],
+    question: "Comment s'appelle la créature qui aide Wassim dans le Pays des Couleurs ?",
+    options: ["Nafs", "Papillon", "Ondine", "Waswās"],
     correct: 1,
-    explanation: "Lumina est une petite étoile tombée qui guide Nawfel dans le Royaume des Étoiles.",
+    explanation: "Papillon est une créature magique qui aide Wassim à retrouver les couleurs perdues.",
     difficulty: 'easy',
   },
   {
@@ -47,11 +47,11 @@ const quizQuestions: QuizQuestion[] = [
     difficulty: 'easy',
   },
   {
-    question: "Dans quel pays l'histoire de Nawfel se déroule-t-elle ?",
-    options: ["L'Égypte", "La Turquie", "Le Maroc", "L'Arabie Saoudite"],
-    correct: 2,
-    explanation: "L'histoire se déroule au Maroc, un pays riche en spiritualité soufie.",
-    difficulty: 'medium',
+    question: "Où se déroule l'histoire de Wassim ?",
+    options: ["Le Royaume des Étoiles", "Le Pays des Couleurs Perdues", "La Forêt des Murmures", "La Montagne des Rêves"],
+    correct: 1,
+    explanation: "L'histoire se déroule dans le Pays des Couleurs Perdues, un monde magique rempli de couleurs.",
+    difficulty: 'easy',
   },
   {
     question: "Qu'est-ce que « Tawakkul » ?",
@@ -64,7 +64,7 @@ const quizQuestions: QuizQuestion[] = [
     question: "Combien de fins différentes peut-on découvrir ?",
     options: ["2", "3", "4", "5"],
     correct: 2,
-    explanation: "Il y a 4 fins : La Lumière de l'Âme, La Sagesse du Chemin, L'Ombre Révélée, et Le Miroir Pur.",
+    explanation: "Il y a 4 fins : L'Arc-en-Ciel Magique, Le Partage des Couleurs, Le Gardien des Couleurs, et Le Petit Artiste.",
     difficulty: 'easy',
   },
   {
@@ -82,10 +82,10 @@ const quizQuestions: QuizQuestion[] = [
     difficulty: 'hard',
   },
   {
-    question: "Comment s'appelle la créature que Nawfel rencontre dans la Forêt des Murmures ?",
+    question: "Comment s'appelle la créature que Wassim rencontre dans la Forêt des Murmures ?",
     options: ["Waswās", "Zaki", "Ondine", "Nafs"],
     correct: 2,
-    explanation: "Ondine est une créature mystérieuse qui vit dans la Forêt des Murmures et aide Nawfel.",
+    explanation: "Ondine est une créature mystérieuse qui vit dans la Forêt des Murmures et aide Wassim.",
     difficulty: 'medium',
   },
 ];

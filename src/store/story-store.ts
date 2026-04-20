@@ -419,7 +419,7 @@ export const useStoryStore = create<StoryStore>()(
       _clearPendingUnlock: () => set({ _pendingUnlock: null }),
     }),
     {
-      name: 'nawfel-journey-v1',
+      name: 'wassim-journey-v1',
     }
   )
 );
