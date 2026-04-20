@@ -9,15 +9,15 @@ interface BookCoverProps {
   onStart: () => void;
 }
 
-// Ending type metadata for Nawfel's story
+// Ending type metadata
 const ENDING_META: Record<string, { emoji: string; title: string }> = {
-  light: { emoji: '🌌', title: 'La Lumière' },
-  fraternal: { emoji: '💫', title: 'Le Fraternel' },
-  guardian: { emoji: '⭐', title: 'Le Gardien' },
-  dream: { emoji: '🌍', title: 'Le Rêve' },
+  light: { emoji: '🌅', title: 'La Lumière' },
+  wisdom: { emoji: '📜', title: 'La Sagesse' },
+  shadow: { emoji: '🌑', title: 'L\'Ombre' },
+  pure: { emoji: '💎', title: 'La Pureté' },
 };
 
-// Floating star particle component (blue/silver tinted)
+// Floating star particle component
 function FloatingStar({ delay, size, x, duration }: { delay: number; size: number; x: number; duration: number }) {
   return (
     <motion.div
@@ -27,7 +27,7 @@ function FloatingStar({ delay, size, x, duration }: { delay: number; size: numbe
         height: size,
         left: `${x}%`,
         bottom: '-5%',
-        background: 'radial-gradient(circle, rgba(147, 197, 253, 0.6) 0%, rgba(147, 197, 253, 0) 70%)',
+        background: 'radial-gradient(circle, rgba(218, 165, 32, 0.6) 0%, rgba(218, 165, 32, 0) 70%)',
       }}
       initial={{ opacity: 0, y: 0 }}
       animate={{
@@ -188,7 +188,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
     ]);
   }, [endingsFound]);
 
-  // Subtle animated star field using canvas (blue-tinted stars)
+  // Subtle animated star field using canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -231,7 +231,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(147, 197, 253, ${alpha})`;
+        ctx.fillStyle = `rgba(218, 165, 32, ${alpha})`;
         ctx.fill();
       });
 
@@ -275,16 +275,16 @@ export default function BookCover({ onStart }: BookCoverProps) {
         <FloatingStar key={particle.id} {...particle} />
       ))}
 
-      {/* Decorative geometric pattern background (blue-tinted) */}
+      {/* Decorative geometric pattern background */}
       <div className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a574' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* 1. Breathing/pulsing central glow (sky-blue) */}
+      {/* 1. Breathing/pulsing central glow */}
       <motion.div
-        className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-sky-900/15 rounded-full blur-[120px]"
+        className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-amber-900/15 rounded-full blur-[120px]"
         animate={{
           scale: [1, 1.18, 1],
           opacity: [0.25, 0.45, 0.25],
@@ -305,21 +305,21 @@ export default function BookCover({ onStart }: BookCoverProps) {
         className="cover-tilt-inner relative z-10 text-center px-6 max-w-lg mx-auto"
         style={tiltStyle}
       >
-        {/* 3. Islamic geometric ornament — top (sky-blue) */}
+        {/* 3. Islamic geometric ornament — top */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 1, ease: 'easeOut' }}
           className="flex items-center justify-center gap-4 mb-8"
         >
-          <div className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-sky-600/40" />
-          <IslamicOctagram size={36} className="text-sky-600/50" />
-          <div className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-sky-600/40" />
+          <div className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-amber-600/40" />
+          <IslamicOctagram size={36} className="text-amber-600/50" />
+          <div className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-amber-600/40" />
         </motion.div>
 
         {/* 5. Title with parallax/float on mouse move */}
         <div className="relative inline-block">
-          {/* Floating sparkles around title (silver/blue) */}
+          {/* Floating sparkles around title */}
           {titleSparkles.map((s) => (
             <span
               key={s.id}
@@ -329,7 +329,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
                 top: `${s.y}%`,
                 '--delay': `${s.delay}s`,
                 '--duration': `${s.duration}s`,
-                color: 'rgba(147, 197, 253, 0.6)',
+                color: 'rgba(218, 165, 32, 0.6)',
               } as React.CSSProperties}
             >
               ✦
@@ -340,15 +340,15 @@ export default function BookCover({ onStart }: BookCoverProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
             style={{
-              textShadow: '0 0 40px rgba(147, 197, 253, 0.3)',
+              textShadow: '0 0 40px rgba(212, 165, 116, 0.3)',
               x: titleX,
               y: titleY,
             }}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-sky-100 mb-4 leading-tight will-change-transform"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-amber-100 mb-4 leading-tight will-change-transform"
           >
             Le Voyage Intérieur
             <br />
-            <span className="text-sky-400">de Nawfel</span>
+            <span className="text-amber-400">de Souhayl</span>
           </motion.h1>
         </div>
 
@@ -357,12 +357,12 @@ export default function BookCover({ onStart }: BookCoverProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="text-sky-300/60 font-serif text-lg sm:text-xl italic mb-1"
+          className="text-amber-300/60 font-serif text-lg sm:text-xl italic mb-1"
         >
-          Tome 1 : Les Étoiles du Cœur
+          Tome 1 : L&apos;Éveil
         </motion.p>
 
-        {/* 6. Animated shimmer gradient line under subtitle (silver/blue) */}
+        {/* 6. Animated shimmer gradient line under subtitle */}
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
@@ -373,7 +373,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
           <motion.div
             className="h-px w-full"
             style={{
-              background: 'linear-gradient(90deg, transparent, #7dd3fc 30%, #38bdf8 50%, #7dd3fc 70%, transparent)',
+              background: 'linear-gradient(90deg, transparent, #d4a574 30%, #fbbf24 50%, #d4a574 70%, transparent)',
               backgroundSize: '200% 100%',
             }}
             animate={{
@@ -391,21 +391,21 @@ export default function BookCover({ onStart }: BookCoverProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3, duration: 1 }}
-          className="text-sky-200/40 text-sm mb-12"
+          className="text-amber-200/40 text-sm mb-12"
         >
-          Une histoire magique interactive
+          Une histoire spirituelle interactive
         </motion.p>
 
-        {/* Ornamental divider (sky-blue) */}
+        {/* Ornamental divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}
           className="flex items-center justify-center gap-4 mb-12"
         >
-          <div className="h-px w-24 bg-gradient-to-r from-transparent to-sky-700/40" />
-          <div className="w-2 h-2 bg-sky-700/40 rotate-45" />
-          <div className="h-px w-24 bg-gradient-to-l from-transparent to-sky-700/40" />
+          <div className="h-px w-24 bg-gradient-to-r from-transparent to-amber-700/40" />
+          <div className="w-2 h-2 bg-amber-700/40 rotate-45" />
+          <div className="h-px w-24 bg-gradient-to-l from-transparent to-amber-700/40" />
         </motion.div>
 
         {/* Description */}
@@ -413,12 +413,12 @@ export default function BookCover({ onStart }: BookCoverProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.7, duration: 1 }}
-          className="text-sky-100/50 text-sm leading-relaxed mb-10 max-w-sm mx-auto font-serif"
+          className="text-amber-100/50 text-sm leading-relaxed mb-10 max-w-sm mx-auto font-serif"
         >
-          Nawfel a huit ans. Il rêve de comprendre le monde des étoiles,
-          le royaume invisible qui brille au-delà du voile de la nuit.
-          Pour cela, il devra pénétrer dans son monde intérieur
-          et affronter son plus grand ennemi : son propre ego.
+          Souhayl a dix ans. Il rêve de comprendre le Tassawuf, 
+          le chemin de la purification du cœur. Pour cela, il devra 
+          pénétrer dans son monde intérieur et affronter son plus 
+          grand ennemi : son propre ego.
         </motion.p>
 
         {/* 2. Start / Resume / Restart buttons */}
@@ -430,7 +430,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleStart}
-            className="breathing-glow group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-sky-800 to-sky-700 hover:from-sky-700 hover:to-sky-600 text-sky-100 font-serif text-lg rounded-lg transition-all duration-300 overflow-hidden"
+            className="breathing-glow group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-amber-100 font-serif text-lg rounded-lg transition-all duration-300 overflow-hidden"
           >
             {/* Shimmer sweep overlay */}
             <motion.div
@@ -450,11 +450,11 @@ export default function BookCover({ onStart }: BookCoverProps) {
               }}
             />
             {/* Soft outer glow border */}
-            <div className="absolute inset-0 rounded-lg border border-sky-500/20" />
+            <div className="absolute inset-0 rounded-lg border border-amber-500/20" />
             <div
               className="absolute inset-[-1px] rounded-lg pointer-events-none"
               style={{
-                boxShadow: '0 0 12px rgba(14, 165, 233, 0.1), inset 0 0 12px rgba(14, 165, 233, 0.05)',
+                boxShadow: '0 0 12px rgba(217, 119, 6, 0.1), inset 0 0 12px rgba(217, 119, 6, 0.05)',
               }}
             />
             <BookOpen className="w-5 h-5 relative z-10" />
@@ -471,7 +471,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleStart}
-              className="breathing-glow group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-sky-800 to-sky-700 hover:from-sky-700 hover:to-sky-600 text-sky-100 font-serif text-lg rounded-lg transition-all duration-300 overflow-hidden"
+              className="breathing-glow group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-amber-100 font-serif text-lg rounded-lg transition-all duration-300 overflow-hidden"
             >
               {/* Shimmer sweep overlay */}
               <motion.div
@@ -490,11 +490,11 @@ export default function BookCover({ onStart }: BookCoverProps) {
                   repeatDelay: 1.5,
                 }}
               />
-              <div className="absolute inset-0 rounded-lg border border-sky-500/20" />
+              <div className="absolute inset-0 rounded-lg border border-amber-500/20" />
               <div
                 className="absolute inset-[-1px] rounded-lg pointer-events-none"
                 style={{
-                  boxShadow: '0 0 12px rgba(14, 165, 233, 0.1), inset 0 0 12px rgba(14, 165, 233, 0.05)',
+                  boxShadow: '0 0 12px rgba(217, 119, 6, 0.1), inset 0 0 12px rgba(217, 119, 6, 0.05)',
                 }}
               />
               <Play className="w-5 h-5 relative z-10" />
@@ -511,9 +511,9 @@ export default function BookCover({ onStart }: BookCoverProps) {
               onClick={handleRestart}
               className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-serif text-sm transition-all duration-300 overflow-hidden backdrop-blur-md"
               style={{
-                background: 'rgba(56, 130, 200, 0.1)',
-                border: '1px solid rgba(14, 165, 233, 0.15)',
-                color: 'rgba(125, 211, 252, 0.55)',
+                background: 'rgba(120, 80, 40, 0.1)',
+                border: '1px solid rgba(217, 119, 6, 0.15)',
+                color: 'rgba(251, 191, 36, 0.55)',
               }}
             >
               <RotateCcw className="w-3.5 h-3.5 relative z-10" />
@@ -530,7 +530,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
             transition={{ delay: 2.3, duration: 0.8 }}
             className="mt-8"
           >
-            <p className="text-sky-400/50 text-xs mb-3 font-serif flex items-center justify-center gap-1.5">
+            <p className="text-amber-400/50 text-xs mb-3 font-serif flex items-center justify-center gap-1.5">
               <Star className="w-3 h-3" />
               Fins découvertes : {endingsFound.length}/4
             </p>
@@ -551,7 +551,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
                       stiffness: 200,
                       damping: 15,
                     }}
-                    className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-sky-700/30 bg-sky-950/40"
+                    className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-700/30 bg-amber-950/40"
                   >
                     {/* Sparkle effects per badge */}
                     {sparkles.map((sparkle, si) => (
@@ -562,14 +562,14 @@ export default function BookCover({ onStart }: BookCoverProps) {
                         y={sparkle.y}
                       />
                     ))}
-                    {/* Subtle pulse glow on badge (sky-blue) */}
+                    {/* Subtle pulse glow on badge */}
                     <motion.div
                       className="absolute inset-0 rounded-full pointer-events-none"
                       animate={{
                         boxShadow: [
-                          '0 0 0px rgba(14, 165, 233, 0)',
-                          '0 0 8px rgba(14, 165, 233, 0.15)',
-                          '0 0 0px rgba(14, 165, 233, 0)',
+                          '0 0 0px rgba(217, 119, 6, 0)',
+                          '0 0 8px rgba(217, 119, 6, 0.15)',
+                          '0 0 0px rgba(217, 119, 6, 0)',
                         ],
                       }}
                       transition={{
@@ -580,7 +580,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
                       }}
                     />
                     <span className="text-sm">{meta.emoji}</span>
-                    <span className="text-sky-300/70 text-[11px] font-serif">{meta.title}</span>
+                    <span className="text-amber-300/70 text-[11px] font-serif">{meta.title}</span>
                   </motion.div>
                 );
               })}
@@ -588,16 +588,16 @@ export default function BookCover({ onStart }: BookCoverProps) {
           </motion.div>
         )}
 
-        {/* 3. Islamic geometric ornament — bottom (sky-blue) */}
+        {/* 3. Islamic geometric ornament — bottom */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 1 }}
           className="mt-12 flex items-center justify-center gap-4"
         >
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-sky-800/30" />
-          <IslamicOctagram size={24} className="text-sky-800/30" />
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-sky-800/30" />
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-amber-800/30" />
+          <IslamicOctagram size={24} className="text-amber-800/30" />
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-amber-800/30" />
         </motion.div>
       </motion.div>
     </div>

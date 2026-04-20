@@ -26,10 +26,10 @@ const quizQuestions: QuizQuestion[] = [
     difficulty: 'easy',
   },
   {
-    question: "Comment s'appelle la petite étoile qui guide Nawfel ?",
-    options: ["Nafs", "Lumina", "Ondine", "Waswās"],
+    question: "Comment s'appelle le petit renard qui accompagne Souhayl ?",
+    options: ["Moulay", "Zaki", "Nafs", "Waswās"],
     correct: 1,
-    explanation: "Lumina est une petite étoile tombée qui guide Nawfel dans le Royaume des Étoiles.",
+    explanation: "Zaki est un renard de sagesse qui guide Souhayl dans son voyage intérieur.",
     difficulty: 'easy',
   },
   {
@@ -47,7 +47,7 @@ const quizQuestions: QuizQuestion[] = [
     difficulty: 'easy',
   },
   {
-    question: "Dans quel pays l'histoire de Nawfel se déroule-t-elle ?",
+    question: "Dans quel pays l'histoire de Souhayl se déroule-t-elle ?",
     options: ["L'Égypte", "La Turquie", "Le Maroc", "L'Arabie Saoudite"],
     correct: 2,
     explanation: "L'histoire se déroule au Maroc, un pays riche en spiritualité soufie.",
@@ -82,10 +82,10 @@ const quizQuestions: QuizQuestion[] = [
     difficulty: 'hard',
   },
   {
-    question: "Comment s'appelle la créature que Nawfel rencontre dans la Forêt des Murmures ?",
-    options: ["Waswās", "Zaki", "Ondine", "Nafs"],
+    question: "Comment s'appelle le monstre des doutes qui murmure à Souhayl ?",
+    options: ["Zaki", "Nafs", "Waswās", "Moulay"],
     correct: 2,
-    explanation: "Ondine est une créature mystérieuse qui vit dans la Forêt des Murmures et aide Nawfel.",
+    explanation: "Waswās est le murmureur, celui qui insuffle les doutes dans le cœur du croyant.",
     difficulty: 'medium',
   },
 ];

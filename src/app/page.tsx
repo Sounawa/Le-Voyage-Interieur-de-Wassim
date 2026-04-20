@@ -251,28 +251,28 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       {/* Loading / Splash Screen */}
       {!isAppReady && (
-        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#070b16]">
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a0f]">
           {/* Rotating Islamic octagram */}
           <svg className="loading-octagram" width="64" height="64" viewBox="0 0 100 100" fill="none">
             <polygon
               points="50,2 61.8,22.7 88.9,22.7 67.7,38.2 76.4,60.2 50,47.5 23.6,60.2 32.3,38.2 11.1,22.7 38.2,22.7"
-              stroke="rgba(147, 197, 253, 0.6)"
+              stroke="rgba(212, 165, 116, 0.6)"
               strokeWidth="1.5"
               fill="none"
             />
             <polygon
               points="50,15 57.3,28.6 73.6,28.6 61.2,38.2 65.9,52.3 50,43.5 34.1,52.3 38.8,38.2 26.4,28.6 42.7,28.6"
-              stroke="rgba(147, 197, 253, 0.3)"
+              stroke="rgba(212, 165, 116, 0.3)"
               strokeWidth="1"
               fill="none"
             />
           </svg>
-          <p className="mt-6 text-sky-500/60 text-sm font-serif tracking-widest animate-pulse">
+          <p className="mt-6 text-amber-500/60 text-sm font-serif tracking-widest animate-pulse">
             Chargement...
           </p>
         </div>
       )}
-      <main className={`flex-1 text-sky-100/90 transition-colors duration-1000 ${focusMode ? 'focus-mode-active' : ''}`} {...swipeHandlers.handlers}>
+      <main className={`flex-1 text-amber-100/90 transition-colors duration-1000 ${focusMode ? 'focus-mode-active' : ''}`} {...swipeHandlers.handlers}>
         {/* Background layers */}
         <div className="fixed inset-0 -z-10">
           <div className={`absolute inset-0 ${getMoodClasses()}`} style={{ transition: 'background 1.5s ease' }} />
@@ -308,11 +308,11 @@ export default function Home() {
               {showSettingsButton && (
                 <button
                   onClick={() => setSettingsOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
                   title="Paramètres"
                   aria-label="Ouvrir les paramètres"
                 >
-                  <Settings className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <Settings className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -320,11 +320,11 @@ export default function Home() {
               {showSettingsButton && (
                 <button
                   onClick={() => setPageSearchOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
                   title="Rechercher"
                   aria-label="Rechercher dans l'histoire"
                 >
-                  <Search className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <Search className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -332,11 +332,11 @@ export default function Home() {
               {showJournalButton && (
                 <button
                   onClick={() => setJournalOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
-                  title="Journal de Nawfel"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Journal de Souhayl"
                   aria-label="Ouvrir le journal"
                 >
-                  <Scroll className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <Scroll className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -344,11 +344,11 @@ export default function Home() {
               {showGlossaryButton && (
                 <button
                   onClick={() => setGlossaryOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
                   title="Abécédaire spirituel"
                   aria-label="Ouvrir l'abécédaire spirituel"
                 >
-                  <BookMarked className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <BookMarked className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -356,11 +356,11 @@ export default function Home() {
               {showGlossaryButton && (
                 <button
                   onClick={() => setQuizOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
                   title="Quiz Spirituel"
                   aria-label="Ouvrir le quiz spirituel"
                 >
-                  <HelpCircle className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <HelpCircle className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -368,11 +368,11 @@ export default function Home() {
               {showSettingsButton && (
                 <button
                   onClick={() => setChapterMapOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
                   title="Carte du Voyage"
                   aria-label="Ouvrir la carte du voyage"
                 >
-                  <MapIcon className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <MapIcon className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -380,18 +380,18 @@ export default function Home() {
               {showSettingsButton && (
                 <button
                   onClick={() => setAchievementsOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
                   title="Succès"
                   aria-label="Ouvrir les succès"
                 >
-                  <Trophy className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <Trophy className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
               {/* Reading Stats button */}
               {showSettingsButton && (
-                <button onClick={() => setReadingStatsOpen(true)} className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group" title="Statistiques" aria-label="Statistiques de lecture">
-                  <BarChart3 className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                <button onClick={() => setReadingStatsOpen(true)} className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group" title="Statistiques" aria-label="Statistiques de lecture">
+                  <BarChart3 className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
 
@@ -399,11 +399,11 @@ export default function Home() {
               {showSettingsButton && (
                 <button
                   onClick={() => setStoryPathOpen(true)}
-                  className="p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
                   title="Carte des chemins"
                   aria-label="Ouvrir la carte des chemins"
                 >
-                  <GitBranch className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+                  <GitBranch className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
             </div>}
@@ -417,11 +417,11 @@ export default function Home() {
         {showReadingUI && !focusMode && (
           <button
             onClick={handleGoHome}
-            className="fixed top-14 left-4 z-30 p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+            className="fixed top-14 left-4 z-30 p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
             title="Accueil"
             aria-label="Retourner à l'accueil"
           >
-            <HomeIcon className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+            <HomeIcon className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
           </button>
         )}
 
@@ -429,11 +429,11 @@ export default function Home() {
         {showBookmarkButton && !focusMode && (
           <button
             onClick={() => setBookmarkOpen(true)}
-            className="fixed top-14 left-14 z-30 p-2.5 rounded-lg bg-[#0a0e1a]/80 backdrop-blur-sm border border-sky-800/15 hover:bg-sky-900/20 hover:border-sky-700/30 transition-all duration-300 group"
+            className="fixed top-14 left-14 z-30 p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
             title="Favoris"
             aria-label="Ouvrir les favoris"
           >
-            <Bookmark className="w-4 h-4 text-sky-500/50 group-hover:text-sky-400/70 transition-colors" />
+            <Bookmark className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
           </button>
         )}
 
@@ -577,20 +577,20 @@ export default function Home() {
 
       {/* Sticky footer — only during reading, hidden in focus mode */}
       {showFooter && !focusMode && (
-        <footer className="enhanced-footer footer-bottom-fade relative z-20 mt-auto py-3 px-4 text-center bg-gradient-to-t from-[#070b16]/80 to-transparent backdrop-blur-sm border-t border-sky-900/10">
+        <footer className="enhanced-footer footer-bottom-fade relative z-20 mt-auto py-3 px-4 text-center bg-gradient-to-t from-[#0a0a0f]/80 to-transparent backdrop-blur-sm border-t border-amber-900/10">
           {/* Shimmer line above footer text */}
           <div className="footer-shimmer-line" />
           <div className="flex items-center justify-center gap-2">
-            <span className="icon-breathe text-sky-700/25" style={{ fontSize: '12px', '--delay': '0s' } as React.CSSProperties}>✦</span>
-            <Moon className="icon-breathe footer-icon w-3 h-3 text-sky-700/30" style={{ '--delay': '0.5s' } as React.CSSProperties} />
-            <span className="text-sky-700/30 text-[11px] font-serif tracking-wide">
-              Le Voyage Intérieur de Nawfel — Tome 1
+            <span className="icon-breathe text-amber-700/25" style={{ fontSize: '12px', '--delay': '0s' } as React.CSSProperties}>✦</span>
+            <Moon className="icon-breathe footer-icon w-3 h-3 text-amber-700/30" style={{ '--delay': '0.5s' } as React.CSSProperties} />
+            <span className="text-amber-700/30 text-[11px] font-serif tracking-wide">
+              Le Voyage Intérieur de Souhayl — Tome 1
             </span>
-            <Star className="icon-breathe footer-icon w-2.5 h-2.5 text-sky-700/20" style={{ '--delay': '1.2s' } as React.CSSProperties} />
+            <Star className="icon-breathe footer-icon w-2.5 h-2.5 text-amber-700/20" style={{ '--delay': '1.2s' } as React.CSSProperties} />
           </div>
           {/* Keyboard shortcut hint — desktop only */}
           <div className="hidden md:flex items-center justify-center gap-1.5 mt-1">
-            <span className="text-sky-700/20 text-[9px] font-serif">
+            <span className="text-amber-700/20 text-[9px] font-serif">
               ⌨️ Espace pour continuer • 1-2-3 pour choisir • Échap pour revenir
             </span>
           </div>

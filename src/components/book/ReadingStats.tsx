@@ -274,7 +274,7 @@ export default function ReadingStats({ isOpen, onClose }: ReadingStatsProps) {
                     <AnimatedStatNumber value={stats.visitedPages} /> / {totalPages} pages
                   </p>
                   <p className="text-amber-500/40 text-xs font-serif mt-1">
-                    Continue ton voyage, Nawfel !
+                    Continue ton voyage, Souhayl !
                   </p>
                 </div>
               </motion.div>

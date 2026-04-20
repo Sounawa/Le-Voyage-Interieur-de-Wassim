@@ -13,49 +13,34 @@ interface EndingScreenProps {
 
 const endingLabels: Record<string, { title: string; description: string; emoji: string }> = {
   light: {
-    title: 'La Lumière du Ciel',
-    description: 'Nawfel a remis les étoiles dans le ciel et illuminé le Royaume pour tous.',
+    title: 'La Lumière de l\'Âme',
+    description: 'Souhayl a atteint la paix intérieure et s\'est rendu à Allah. Son cœur est purifié.',
     emoji: '🌟',
-  },
-  fraternal: {
-    title: 'La Lumière Fraternelle',
-    description: 'Nawfel et Nawfel partagent un lien indéfectible — chaque frère a son propre voyage.',
-    emoji: '💫',
-  },
-  guardian: {
-    title: 'Le Gardien des Étoiles',
-    description: 'Nawfel a fait de Lumina l\'étoile la plus brillante et est devenu le Gardien du Royaume.',
-    emoji: '⭐',
-  },
-  dream: {
-    title: 'Les Rêves Partagés',
-    description: 'Nawfel a ramené la magie des étoiles dans le monde réel pour tous les enfants.',
-    emoji: '🌍',
   },
   wisdom: {
     title: 'La Sagesse du Chemin',
-    description: 'Le chemin est plus important que la destination.',
+    description: 'Souhayl a compris que le chemin est plus important que la destination.',
     emoji: '📖',
   },
   shadow: {
     title: 'L\'Ombre Révélée',
-    description: 'Même dans l\'échec apparent, il y a des vérités profondes à découvrir.',
+    description: 'Même dans l\'échec apparent, Souhayl a découvert des vérités profondes sur lui-même.',
     emoji: '🌙',
   },
   pure: {
     title: 'Le Miroir Pur',
-    description: 'La plus grande sagesse est de vivre chaque jour avec un cœur éveillé.',
+    description: 'Souhayl a appris que la plus grande sagesse est de vivre chaque jour avec un cœur éveillé.',
     emoji: '🪞',
   },
 };
 
-// Confetti color palette: blue, sky, silver
+// Confetti color palette: gold, amber, warm white
 const confettiColors = [
-  'rgba(147, 197, 253, VAR)',  // blue-300
-  'rgba(56, 189, 248, VAR)',    // sky-400
-  'rgba(224, 231, 255, VAR)',  // blue-100
-  'rgba(14, 165, 233, VAR)',   // sky-500
-  'rgba(186, 230, 253, VAR)',  // sky-200
+  'rgba(218, 165, 32, VAR)',   // gold
+  'rgba(212, 165, 116, VAR)',  // amber
+  'rgba(255, 248, 230, VAR)',  // warm white
+  'rgba(184, 134, 11, VAR)',   // dark gold
+  'rgba(245, 222, 179, VAR)',  // wheat
 ];
 
 // 8-pointed star SVG ornament component
@@ -76,9 +61,9 @@ function EightPointedStar({ className }: { className?: string }) {
         width="40"
         height="40"
         transform="rotate(0 50 50)"
-        stroke="rgba(147, 197, 253, 0.3)"
+        stroke="rgba(212, 165, 116, 0.3)"
         strokeWidth="1"
-        fill="rgba(147, 197, 253, 0.03)"
+        fill="rgba(212, 165, 116, 0.03)"
       />
       <rect
         x="30"
@@ -86,16 +71,16 @@ function EightPointedStar({ className }: { className?: string }) {
         width="40"
         height="40"
         transform="rotate(45 50 50)"
-        stroke="rgba(56, 189, 248, 0.25)"
+        stroke="rgba(218, 165, 32, 0.25)"
         strokeWidth="1"
-        fill="rgba(56, 189, 248, 0.03)"
+        fill="rgba(218, 165, 32, 0.03)"
       />
       {/* Center dot */}
       <circle
         cx="50"
         cy="50"
         r="2"
-        fill="rgba(147, 197, 253, 0.4)"
+        fill="rgba(212, 165, 116, 0.4)"
       />
       {/* Decorative inner diamond */}
       <rect
@@ -104,7 +89,7 @@ function EightPointedStar({ className }: { className?: string }) {
         width="12"
         height="12"
         transform="rotate(45 50 50)"
-        stroke="rgba(147, 197, 253, 0.15)"
+        stroke="rgba(212, 165, 116, 0.15)"
         strokeWidth="0.5"
         fill="none"
       />
@@ -153,7 +138,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
 
   const handleShareEnding = useCallback(async () => {
     const text = [
-      `${ending.emoji} J'ai atteint ${ending.title} dans Le Voyage Intérieur de Nawfel!`,
+      `${ending.emoji} J'ai atteint ${ending.title} dans Le Voyage Intérieur de Souhayl!`,
       ``,
       ending.description,
       ``,
@@ -253,7 +238,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
-          className="text-sky-500/60 text-sm uppercase tracking-[0.3em] font-serif mb-4"
+          className="text-amber-500/60 text-sm uppercase tracking-[0.3em] font-serif mb-4"
         >
           Fin découverte
         </motion.p>
@@ -263,8 +248,8 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1 }}
-          className="font-serif text-3xl sm:text-4xl text-sky-100 font-bold mb-6 shimmer-text-sky ending-title-float"
-          style={{ textShadow: '0 0 30px rgba(147, 197, 253, 0.15)' }}
+          className="font-serif text-3xl sm:text-4xl text-amber-100 font-bold mb-6 shimmer-text-gold ending-title-float"
+          style={{ textShadow: '0 0 30px rgba(212, 165, 116, 0.15)' }}
         >
           {ending.title}
         </motion.h2>
@@ -274,7 +259,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3, duration: 1 }}
-          className="text-sky-200/60 font-serif text-lg mb-10"
+          className="text-amber-200/60 font-serif text-lg mb-10"
         >
           {ending.description}
         </motion.p>
@@ -288,7 +273,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5 + i * 0.2, duration: 0.8 }}
-                className="font-serif text-sky-100/70 leading-relaxed"
+                className="font-serif text-amber-100/70 leading-relaxed"
                 style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
               >
                 {p}
@@ -304,9 +289,9 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           transition={{ delay: 2 + page.paragraphs.length * 0.2, duration: 0.8 }}
           className="flex items-center justify-center gap-4 mb-8"
         >
-          <div className="h-px w-16 bg-gradient-to-r from-transparent to-sky-700/40" />
-          <Star className="w-4 h-4 text-sky-600/40" />
-          <div className="h-px w-16 bg-gradient-to-l from-transparent to-sky-700/40" />
+          <div className="h-px w-16 bg-gradient-to-r from-transparent to-amber-700/40" />
+          <Star className="w-4 h-4 text-amber-600/40" />
+          <div className="h-px w-16 bg-gradient-to-l from-transparent to-amber-700/40" />
         </motion.div>
 
         {/* Endings progress with animated counter */}
@@ -317,13 +302,13 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           className="mb-8"
         >
           <div className="flex items-center justify-center gap-2 mb-3">
-            <BookOpen className="w-4 h-4 text-sky-600/50" />
-            <span className="text-sky-300/50 text-sm font-serif">
-              Fins découvertes : <span className="text-sky-300/80 font-bold tabular-nums">{displayCount}</span>/{totalEndings}
+            <BookOpen className="w-4 h-4 text-amber-600/50" />
+            <span className="text-amber-300/50 text-sm font-serif">
+              Fins découvertes : <span className="text-amber-300/80 font-bold tabular-nums">{displayCount}</span>/{totalEndings}
             </span>
           </div>
           <div className="flex items-center justify-center gap-3">
-            {['light', 'fraternal', 'guardian', 'dream'].map((type) => {
+            {['light', 'wisdom', 'shadow', 'pure'].map((type) => {
               const isFound = endingsFound.includes(type);
               return (
                 <motion.div
@@ -336,15 +321,15 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
                   <div
                     className={`w-5 h-5 rounded-full transition-all duration-500 ${
                       isFound
-                        ? 'bg-sky-500 shadow-md shadow-sky-500/50 border-2 border-sky-400/60'
-                        : 'bg-sky-900/20 border-2 border-sky-800/15'
+                        ? 'bg-amber-500 shadow-md shadow-amber-500/50 border-2 border-amber-400/60'
+                        : 'bg-amber-900/20 border-2 border-amber-800/15'
                     }`}
                     title={endingLabels[type].title}
                   />
                   {/* Tooltip */}
                   {isFound && (
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                      <span className="text-[10px] font-serif text-sky-400/70 bg-[#0d0e1a]/90 px-2 py-0.5 rounded border border-sky-800/15">
+                      <span className="text-[10px] font-serif text-amber-400/70 bg-[#12111a]/90 px-2 py-0.5 rounded border border-amber-800/15">
                         {endingLabels[type].emoji} {endingLabels[type].title}
                       </span>
                     </div>
@@ -354,8 +339,8 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
             })}
           </div>
           {foundCount < totalEndings && (
-            <p className="text-sky-400/40 text-xs mt-3 font-serif italic">
-              D&apos;autres destins attendent Nawfel... Rejouez pour les découvrir.
+            <p className="text-amber-400/40 text-xs mt-3 font-serif italic">
+              D&apos;autres destins attendent Souhayl... Rejouez pour les découvrir.
             </p>
           )}
           {allFound && (
@@ -365,10 +350,10 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
               transition={{ delay: 3, duration: 0.8 }}
               className="mt-4 px-6 py-3 rounded-lg celebration-border"
             >
-              <p className="text-sky-300/70 text-sm font-serif italic mb-1">
-                ✦ Tu as découvert tous les chemins de Nawfel ✦
+              <p className="text-amber-300/70 text-sm font-serif italic mb-1">
+                ✦ Tu as découvert tous les chemins de Souhayl ✦
               </p>
-              <p className="text-sky-400/50 text-xs font-serif">
+              <p className="text-amber-400/50 text-xs font-serif">
                 Chaque fin est un enseignement. Chaque choix est une lumière.
               </p>
             </motion.div>
@@ -383,7 +368,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
           onClick={onRestart}
-          className="restart-btn restart-gradient-border inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-sky-800 to-sky-700 hover:from-sky-700 hover:to-sky-600 text-sky-100 font-serif rounded-lg shadow-lg shadow-sky-900/20 border border-sky-600/20 cursor-pointer"
+          className="restart-btn restart-gradient-border inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-amber-100 font-serif rounded-lg shadow-lg shadow-amber-900/20 border border-amber-600/20 cursor-pointer"
         >
           <RotateCcw className="w-4 h-4 restart-icon" />
           <span>Recommencer le voyage</span>
@@ -397,7 +382,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleShareEnding}
-          className="inline-flex items-center gap-2 px-8 py-3 mt-3 bg-sky-950/20 border border-sky-800/20 hover:border-sky-700/30 text-sky-400/60 hover:text-sky-300/80 font-serif rounded-lg transition-all duration-300 cursor-pointer"
+          className="inline-flex items-center gap-2 px-8 py-3 mt-3 bg-amber-950/20 border border-amber-800/20 hover:border-amber-700/30 text-amber-400/60 hover:text-amber-300/80 font-serif rounded-lg transition-all duration-300 cursor-pointer"
         >
           <Share2 className="w-4 h-4" />
           <span>{shareCopied ? '✓ Copié !' : 'Partager cette fin'}</span>
