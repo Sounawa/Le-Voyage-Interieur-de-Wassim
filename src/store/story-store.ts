@@ -419,7 +419,7 @@ export const useStoryStore = create<StoryStore>()(
       _clearPendingUnlock: () => set({ _pendingUnlock: null }),
     }),
     {
-      name: 'souhayl-journey-v1',
+      name: 'nawfel-journey-v1',
     }
   )
 );

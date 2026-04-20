@@ -158,7 +158,7 @@ export default function StoryHint({ hasChoices, choiceCount }: StoryHintProps) {
           {/* Hint text — only visible in 'text' stage */}
           {stage === 'text' && (
             <p className="story-hint-text story-hint-text-reveal">
-              Que ferais-tu, Souhayl&nbsp;?
+              Que ferais-tu, Nawfel&nbsp;?
             </p>
           )}
           {/* Choice count indicator in glow stage */}
