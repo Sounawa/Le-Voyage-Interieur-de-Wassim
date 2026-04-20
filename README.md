@@ -1,6 +1,6 @@
-# 🌙 Le Voyage Intérieur de Souhayl — Tome 1 : L'Éveil
+# 🌟 Le Voyage Intérieur de Nawfel — Tome 1 : Les Étoiles du Cœur
 
-> *Une histoire spirituelle interactive*
+> *Une aventure interactive dans le Royaume des Étoiles Perdues*
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
@@ -9,30 +9,30 @@
 
 ## 📖 Description
 
-**Le Voyage Intérieur de Souhayl** est un livre interactif numérique qui raconte l'histoire de Souhayl, un garçon de dix ans qui rêve de comprendre le **Tassawuf** — le chemin de la purification du cœur. Pour cela, il devra pénétrer dans son monde intérieur et affronter son plus grand ennemi : son propre ego.
+**Le Voyage Intérieur de Nawfel** est un livre interactif numérique qui raconte l'histoire de Nawfel, un garçon de huit ans (presque neuf !) qui découvre un royaume magique où les étoiles ont disparu. Accompagné de Lumina, une petite étoile tombée pleine d'esprit, Nawfel part à la recherche des étoiles perdues à travers quatre royaumes enchantés.
 
-Conçu pour les jeunes lecteurs (8-14 ans), ce livre combine narration riche, choix moraux et concepts spirituels de la tradition soufie.
+Conçu pour les jeunes lecteurs (7-11 ans), ce livre combine aventure, choix moraux et thèmes de bienveillance, fraternité et courage.
 
 ## ✨ Caractéristiques
 
 ### Histoire
-- **167 pages** de narration immersive en français
-- **20 points de choix** avec 3 options chacun, tous valides
-- **4 fins distinctes** : La Lumière, La Sagesse, L'Ombre, La Pureté
-- **5 chapitres** : Prologue, La Découverte, Le Désert de l'Âme, La Forêt des Épreuves, La Montagne de la Vérité
-- **6 illustrations** IA aux moments clés de l'histoire
+- **62 pages** de narration immersive en français
+- **9 points de choix** avec 3 options chacun, tous valides
+- **4 fins distinctes** : La Lumière du Ciel, La Lumière Fraternelle, Le Gardien des Étoiles, Les Rêves Partagés
+- **5 chapitres** : Prologue, La Cité de Cristal, La Forêt Murmurante, L'Océan des Larmes, La Montagne des Rêves Vrais
+- **Personnages** : Lumina (guide), Mémé Khadija (sagesse), Ondine, le Géant du Regret, l'Ombre des Rêves Oubliés
 
 ### Fonctionnalités
 - 🎧 **Narration TTS** — Synthèse vocale en français (Web Speech API)
 - 🔊 **Effets sonores** — Sons de page, choix, chapitres (Web Audio API)
-- 📚 **Abécédaire spirituel** — 25 termes du Tassawuf avec script arabe
+- 📚 **Abécédaire spirituel** — Termes de sagesse avec explications
 - 🧭 **Carte du voyage** — Navigation par chapitre avec progression
-- 🏆 **12 succès** — Système de réalisations déblocables
+- 🏆 **Succès** — Système de réalisations déblocables
 - 🔍 **Recherche** — Recherche plein texte dans l'histoire
 - 📊 **Statistiques** — Temps de lecture, pages visitées, choix faits
 - 🔖 **Favoris** — Système de marque-pages persistant
 - 🗺️ **Carte des chemins** — Visualisation des branches narratives
-- 🧩 **Quiz spirituel** — 10 questions sur le Tassawuf et l'histoire
+- 🧩 **Quiz spirituel** — Questions sur l'histoire et les personnages
 - 🎯 **Mode immersif** — Lecture sans interface pour immersion totale
 - ⏱️ **Minuteur de lecture** — Suivi du temps de session et total
 - 🔥 **Séries de lecture** — Streaks quotidiens
@@ -41,9 +41,8 @@ Conçu pour les jeunes lecteurs (8-14 ans), ce livre combine narration riche, ch
 - 👆 **Navigation tactile** — Glisser gauche/droite pour tourner les pages
 
 ### Design
-- 🌌 Thème sombre mystérieux avec accents dorés
+- 🌌 Thème bleu nuit profond avec étoiles argentées
 - ✨ Animations Framer Motion fluides
-- 🕌 Motifs géométriques islamiques
 - 🌟 Particules d'ambiance dynamiques selon l'humeur du chapitre
 - 📱 Design responsive (mobile-first)
 
@@ -71,8 +70,8 @@ Conçu pour les jeunes lecteurs (8-14 ans), ce livre combine narration riche, ch
 
 ```bash
 # Cloner le dépôt
-git clone https://github.com/Sounawa/Le-Voyage-Interieur-de-Souhayl.git
-cd Le-Voyage-Interieur-de-Souhayl
+git clone https://github.com/Sounawa/Le-Voyage-Interieur-de-Nawfel.git
+cd Le-Voyage-Interieur-de-Nawfel
 
 # Installer les dépendances
 bun install
@@ -96,30 +95,30 @@ bun run start
 src/
 ├── app/
 │   ├── page.tsx                # Orchestrateur principal
-│   ├── layout.tsx              # Layout racine (thème sombre)
-│   └── globals.css             # ~3 600 lignes de CSS custom
+│   ├── layout.tsx              # Layout racine (thème bleu nuit)
+│   └── globals.css             # CSS custom (thème étoiles)
 ├── components/
-│   ├── book/                   # 36 composants du livre interactif
-│   │   ├── BookCover.tsx       # Couverture animée avec parallaxe
+│   ├── book/                   # Composants du livre interactif
+│   │   ├── BookCover.tsx       # Couverture animée avec champ d'étoiles
 │   │   ├── StoryPageView.tsx   # Pages d'histoire avec drop cap
 │   │   ├── ChoiceButtons.tsx   # Boutons de choix interactifs
 │   │   ├── ChapterTitle.tsx    # Transitions de chapitre
-│   │   ├── EndingScreen.tsx    # Écrans de fin
+│   │   ├── EndingScreen.tsx    # Écrans de fin (4 fins)
 │   │   ├── TTSNarration.tsx    # Narration vocale
 │   │   ├── SpiritualQuiz.tsx   # Quiz mini-jeu
 │   │   ├── ChapterMap.tsx      # Carte de navigation
 │   │   ├── AchievementsPanel.tsx # Panneau des succès
-│   │   └── ...                 # + 27 autres composants
+│   │   └── ...                 # + autres composants
 │   └── ui/                     # Composants shadcn/ui
 ├── data/
-│   ├── story-data.ts           # 1 837 lignes, 167 pages, 20 choix
+│   ├── story-data.ts           # 62 pages, 9 choix, 4 fins
 │   └── achievements.ts         # Définitions des succès
-├── hooks/                      # Hooks custom (TTS, swipe, mobile)
+├── hooks/                      # Hooks custom (TTS, swipe, navigation)
 ├── lib/                        # Types et utilitaires
 ├── store/
 │   └── story-store.ts          # Store Zustand (état persisté)
 └── public/
-    └── images/                 # 6 illustrations IA
+    └── images/                 # Illustrations des royaumes
 ```
 
 ## 🎮 Guide de navigation
@@ -132,13 +131,12 @@ src/
 
 ## 📊 Statistiques du projet
 
-- **~13 200 lignes** de code TypeScript/CSS
+- **~12 000 lignes** de code TypeScript/CSS
 - **36 composants** React
 - **4 hooks** custom
-- **167 pages** d'histoire
-- **20 points de choix**
-- **12 succès** déblocables
-- **10 questions** de quiz
+- **62 pages** d'histoire
+- **9 points de choix**
+- **4 fins distinctes**
 
 ## 📄 Licence
 
@@ -146,4 +144,4 @@ Ce projet est privé et réservé à un usage personnel.
 
 ---
 
-*« Le Voyage Intérieur de Souhayl » — Conçu avec ❤️ pour les jeunes chercheurs de sagesse.*
+*« Le Voyage Intérieur de Nawfel » — Conçu avec 💙 pour les jeunes aventuriers des étoiles.*
